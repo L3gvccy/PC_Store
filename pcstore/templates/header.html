@@ -1,0 +1,81 @@
+{% load static %}
+<!--  HEADER  -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <!-- Логотип -->
+      <a class="navbar-brand" href="">
+        <img src="{% static 'images/logo.png' %}" alt="" height="72px" width="72px">
+        ПК-Магазин
+    </a>
+  
+      <!-- Кнопка бургер -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Меню -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+  
+          <!-- Головна -->
+          <li class="nav-item">
+            <a class="nav-link" href="">Головна</a>
+          </li>
+  
+          <!-- Каталог (розгортаємий список) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="catalogDropdown" role="button" data-bs-toggle="dropdown">
+              Каталог
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="">Процесори</a></li>
+              <li><a class="dropdown-item" href="">Відеокарти</a></li>
+              <li><a class="dropdown-item" href="">Оперативна пам’ять</a></li>
+              <!-- Додай інші типи компонентів -->
+            </ul>
+          </li>
+  
+          <!-- Про нас -->
+          <li class="nav-item">
+            <a class="nav-link" href="#about">Про нас</a>
+          </li>
+        </ul>
+  
+        <!-- Правий блок -->
+        <ul class="navbar-nav ms-auto">
+  
+          <!-- Іконка корзини -->
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="">
+                <img src="{% static 'images/cart.png' %}" alt="" height="24px" width="24px">
+              {% if request.session.cart %}
+                <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">
+                  {{ request.session.cart|length }}
+                </span>
+              {% endif %}
+            </a>
+          </li>
+  
+          <!-- Користувач (розгортаємий список) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                <img src="{% static 'images/person.png' %}" alt="" height="24px" width="24px">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end">
+  
+              {% if user.is_authenticated %}
+                <li><span class="dropdown-item-text">Привіт, {{ user.username }}!</span></li>
+                <li><a class="dropdown-item" href="">Мій кабінет</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="">Вийти</a></li>
+              {% else %}
+                <li><a class="dropdown-item" href="">Увійти</a></li>
+                <li><a class="dropdown-item" href="">Реєстрація</a></li>
+              {% endif %}
+  
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
