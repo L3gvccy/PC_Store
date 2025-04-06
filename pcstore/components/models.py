@@ -1,4 +1,5 @@
 from django.db import models
+<<<<<<< HEAD
 from django.apps import apps
 
 # Create your models here.
@@ -87,3 +88,7 @@ class Case(Product):
     max_cooler_height = models.IntegerField(help_text="mm")
     max_aio_size = models.IntegerField(help_text="mm")
     tempered_glass = models.BooleanField(default=False)
+=======
+
+# Create your models here.
+>>>>>>> 67d780e (add header)

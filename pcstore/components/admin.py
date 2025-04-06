@@ -1,4 +1,5 @@
 from django.contrib import admin
+<<<<<<< HEAD
 from .models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 
 # Register your models here.
@@ -11,3 +12,7 @@ admin.site.register(PSU)
 admin.site.register(Cooler)
 admin.site.register(AIO)
 admin.site.register(Case)
+=======
+
+# Register your models here.
+>>>>>>> 67d780e (add header)

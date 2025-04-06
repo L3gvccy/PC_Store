@@ -1,4 +1,5 @@
 {% load static %}
+<<<<<<< HEAD
 
 <!--  HEADER  -->
 <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark shadow">
@@ -7,6 +8,15 @@
       <a class="navbar-brand" href="/">
         <img src="{% static 'images/logo.png' %}" alt="" height="72px" width="72px">
         CorePC
+=======
+<!--  HEADER  -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+      <!-- Логотип -->
+      <a class="navbar-brand" href="">
+        <img src="{% static 'images/logo.png' %}" alt="" height="72px" width="72px">
+        ПК-Магазин
+>>>>>>> 67d780e (add header)
     </a>
   
       <!-- Кнопка бургер -->
@@ -20,11 +30,16 @@
   
           <!-- Головна -->
           <li class="nav-item">
+<<<<<<< HEAD
             <a class="nav-link {% if request.path == '/' %} text-mainpurple {% endif %}" href="/">Головна</a>
+=======
+            <a class="nav-link" href="">Головна</a>
+>>>>>>> 67d780e (add header)
           </li>
   
           <!-- Каталог (розгортаємий список) -->
           <li class="nav-item dropdown">
+<<<<<<< HEAD
             <a class="nav-link dropdown-toggle {% if request.path|slice:':11' == '/components' %} text-mainpurple {% endif %}" href="#" id="navbarDarkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Каталог
             </a>
@@ -40,15 +55,29 @@
               <li><a class="dropdown-item" href="/components/coolers/">Системи охолодження</a></li>
               <li><a class="dropdown-item" href="/components/aios/">Водяне охолодження</a></li>
               <li><a class="dropdown-item" href="/components/cases/">Корпуси</a></li>
+=======
+            <a class="nav-link dropdown-toggle" href="#" id="catalogDropdown" role="button" data-bs-toggle="dropdown">
+              Каталог
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="">Процесори</a></li>
+              <li><a class="dropdown-item" href="">Відеокарти</a></li>
+              <li><a class="dropdown-item" href="">Оперативна пам’ять</a></li>
+              <!-- Додай інші типи компонентів -->
+>>>>>>> 67d780e (add header)
             </ul>
           </li>
   
           <!-- Про нас -->
           <li class="nav-item">
+<<<<<<< HEAD
             <a class="nav-link" href="/#about">Про нас</a>
           </li>
           <li class="nav-item">
             <a class="nav-link {% if request.path|slice:':13' == '/configurator' %} text-mainpurple {% endif %}" href="/configurator/">Конфігуратор</a>
+=======
+            <a class="nav-link" href="#about">Про нас</a>
+>>>>>>> 67d780e (add header)
           </li>
         </ul>
   
@@ -56,6 +85,7 @@
         <ul class="navbar-nav ms-auto">
   
           <!-- Іконка корзини -->
+<<<<<<< HEAD
           <li class="nav-item mr-4">
             <a class="nav-link position-relative" href="/cart/">
                 <img src="{% static 'images/cart.png' %}" alt="" height="24px" width="24px">
@@ -64,6 +94,16 @@
                     {{ cart_item_count }}
                   </span>
                 {% endif %}
+=======
+          <li class="nav-item">
+            <a class="nav-link position-relative" href="">
+                <img src="{% static 'images/cart.png' %}" alt="" height="24px" width="24px">
+              {% if request.session.cart %}
+                <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">
+                  {{ request.session.cart|length }}
+                </span>
+              {% endif %}
+>>>>>>> 67d780e (add header)
             </a>
           </li>
   
@@ -72,6 +112,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
                 <img src="{% static 'images/person.png' %}" alt="" height="24px" width="24px">
             </a>
+<<<<<<< HEAD
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
   
               {% if user.is_authenticated %}
@@ -83,6 +124,18 @@
               {% else %}
                 <li><a class="dropdown-item" href="/account/login/">Увійти</a></li>
                 <li><a class="dropdown-item" href="/account/register/">Реєстрація</a></li>
+=======
+            <ul class="dropdown-menu dropdown-menu-end">
+  
+              {% if user.is_authenticated %}
+                <li><span class="dropdown-item-text">Привіт, {{ user.username }}!</span></li>
+                <li><a class="dropdown-item" href="">Мій кабінет</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="">Вийти</a></li>
+              {% else %}
+                <li><a class="dropdown-item" href="">Увійти</a></li>
+                <li><a class="dropdown-item" href="">Реєстрація</a></li>
+>>>>>>> 67d780e (add header)
               {% endif %}
   
             </ul>
@@ -90,6 +143,7 @@
         </ul>
       </div>
     </div>
+<<<<<<< HEAD
   </nav>
 
   <div class="toast-container position-fixed top-2 end-0 p-3" style="z-index: 1100;">
@@ -114,3 +168,6 @@
       </div>
     {% endfor %}
   </div>
+=======
+  </nav>
+>>>>>>> 67d780e (add header)

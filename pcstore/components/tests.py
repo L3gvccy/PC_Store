@@ -1,4 +1,5 @@
 from django.test import TestCase
+<<<<<<< HEAD
 from django.urls import reverse
 from .models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 
@@ -351,3 +352,7 @@ class ComponentViewsTests(TestCase):
         response = self.client.get(reverse('cases'), {'brand': 'MSI'})
         self.assertEqual(response.status_code, 200)
         self.assertNotContains(response, self.case.name)
+=======
+
+# Create your tests here.
+>>>>>>> 67d780e (add header)

@@ -1,10 +1,14 @@
 from django.shortcuts import render
+<<<<<<< HEAD
 from django.db.models import Q
 from .models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
+=======
+>>>>>>> 67d780e (add header)
 
 # Create your views here.
 
 def landing(req):
+<<<<<<< HEAD
     return render(req, 'components/landing.html')
 
 def components(req):
@@ -682,3 +686,6 @@ def case_detail(req, case_id):
         'case': case,
     }
     return render(req, 'components/case_detail.html', context)
+=======
+    return render(req, 'components/landing.html')
+>>>>>>> 67d780e (add header)
