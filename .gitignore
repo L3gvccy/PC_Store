@@ -295,6 +295,9 @@ pip-selfcheck.json
 .ionide
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a85afa3 (update gitignore)
 # Created by https://www.toptal.com/developers/gitignore/api/node
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
 
@@ -439,6 +442,9 @@ dist
 .svelte-kit
 
 
+<<<<<<< HEAD
 =======
 >>>>>>> 0963b4b (add gitignore)
+=======
+>>>>>>> a85afa3 (update gitignore)
 # End of https://www.toptal.com/developers/gitignore/api/python,django,visualstudiocode,venv
