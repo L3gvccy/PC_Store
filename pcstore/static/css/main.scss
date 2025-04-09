@@ -3,11 +3,16 @@
 
 $custom-colors: (
 <<<<<<< HEAD
+<<<<<<< HEAD
     "mainpurple": #8341d2,
     "lightpurple": #cc41d2
 =======
     "mainpurple": #8341d2
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+    "mainpurple": #8341d2,
+    "lightpurple": #cc41d2
+>>>>>>> ff3728d (Design update, registration redirect fix)
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);

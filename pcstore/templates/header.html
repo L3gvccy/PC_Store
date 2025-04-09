@@ -48,6 +48,7 @@
           <li class="nav-item">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a class="nav-link {% if request.path == '/' %} text-mainpurple {% endif %}" href="/">Головна</a>
 =======
             <a class="nav-link" href="">Головна</a>
@@ -55,10 +56,14 @@
 =======
             <a class="nav-link" href="/">Головна</a>
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+            <a class="nav-link {% if request.path == '/' %} text-mainpurple {% endif %}" href="/">Головна</a>
+>>>>>>> ff3728d (Design update, registration redirect fix)
           </li>
   
           <!-- Каталог (розгортаємий список) -->
           <li class="nav-item dropdown">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <a class="nav-link dropdown-toggle {% if request.path|slice:':11' == '/components' %} text-mainpurple {% endif %}" href="#" id="navbarDarkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Каталог
@@ -85,6 +90,17 @@
               <li><a class="dropdown-item" href="">Оперативна пам’ять</a></li>
               <!-- Додай інші типи компонентів -->
 >>>>>>> 67d780e (add header)
+=======
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Каталог
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdown">
+              <li><a class="dropdown-item" href="#">Процесори</a></li>
+              <li><a class="dropdown-item" href="#">Відеокарти</a></li>
+              <li><a class="dropdown-item" href="#">ОЗП</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Інші</a></li>
+>>>>>>> ff3728d (Design update, registration redirect fix)
             </ul>
           </li>
   
@@ -137,6 +153,7 @@
                 <img src="{% static 'images/person.png' %}" alt="" height="24px" width="24px">
             </a>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
   
               {% if user.is_authenticated %}
@@ -150,6 +167,9 @@
                 <li><a class="dropdown-item" href="/account/register/">Реєстрація</a></li>
 =======
             <ul class="dropdown-menu dropdown-menu-end">
+=======
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+>>>>>>> ff3728d (Design update, registration redirect fix)
   
               {% if user.is_authenticated %}
                 <li><span class="dropdown-item-text">Привіт, {{ user.username }}!</span></li>

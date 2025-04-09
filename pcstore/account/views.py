@@ -42,8 +42,12 @@ def register_user(request):
 =======
         if password != confirm_password:
             messages.error(request, "Паролі не співпадають.")
+<<<<<<< HEAD
             return render(request, 'account/register.html')
 >>>>>>> 64a115f (update register)
+=======
+            return
+>>>>>>> ff3728d (Design update, registration redirect fix)
 
         user = User.objects.create_user(
             username=username,

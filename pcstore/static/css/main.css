@@ -43,9 +43,13 @@
   --bs-dark: #212529;
   --bs-mainpurple: #8341d2;
 <<<<<<< HEAD
+<<<<<<< HEAD
   --bs-lightpurple: #cc41d2;
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+  --bs-lightpurple: #cc41d2;
+>>>>>>> ff3728d (Design update, registration redirect fix)
   --bs-primary-rgb: 13, 110, 253;
   --bs-secondary-rgb: 108, 117, 125;
   --bs-success-rgb: 25, 135, 84;
@@ -56,9 +60,13 @@
   --bs-dark-rgb: 33, 37, 41;
   --bs-mainpurple-rgb: 131, 65, 210;
 <<<<<<< HEAD
+<<<<<<< HEAD
   --bs-lightpurple-rgb: 204, 65, 210;
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+  --bs-lightpurple-rgb: 204, 65, 210;
+>>>>>>> ff3728d (Design update, registration redirect fix)
   --bs-primary-text-emphasis: #052c65;
   --bs-secondary-text-emphasis: #2b2f32;
   --bs-success-text-emphasis: #0a3622;
@@ -3174,6 +3182,9 @@ textarea.form-control-lg {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .btn-lightpurple {
   --bs-btn-color: #000;
   --bs-btn-bg: #cc41d2;
@@ -3191,8 +3202,11 @@ textarea.form-control-lg {
   --bs-btn-disabled-border-color: #cc41d2;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .btn-outline-primary {
   --bs-btn-color: #0d6efd;
   --bs-btn-border-color: #0d6efd;
@@ -3347,6 +3361,9 @@ textarea.form-control-lg {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .btn-outline-lightpurple {
   --bs-btn-color: #cc41d2;
   --bs-btn-border-color: #cc41d2;
@@ -3364,8 +3381,11 @@ textarea.form-control-lg {
   --bs-gradient: none;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .btn-link {
   --bs-btn-font-weight: 400;
   --bs-btn-color: var(--bs-link-color);
@@ -5003,6 +5023,9 @@ textarea.form-control-lg {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .alert-lightpurple {
   --bs-alert-color: var(--bs-lightpurple-text-emphasis);
   --bs-alert-bg: var(--bs-lightpurple-bg-subtle);
@@ -5010,8 +5033,11 @@ textarea.form-control-lg {
   --bs-alert-link-color: var(--bs-lightpurple-text-emphasis);
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 @keyframes progress-bar-stripes {
   0% {
     background-position-x: var(--bs-progress-height);
@@ -5431,6 +5457,9 @@ textarea.form-control-lg {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .list-group-item-lightpurple {
   --bs-list-group-color: var(--bs-lightpurple-text-emphasis);
   --bs-list-group-bg: var(--bs-lightpurple-bg-subtle);
@@ -5444,8 +5473,11 @@ textarea.form-control-lg {
   --bs-list-group-active-border-color: var(--bs-lightpurple-text-emphasis);
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .btn-close {
   --bs-btn-close-color: #000;
   --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414'/%3e%3c/svg%3e");
@@ -6984,13 +7016,19 @@ textarea.form-control-lg {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .text-bg-lightpurple {
   color: #000 !important;
   background-color: RGBA(var(--bs-lightpurple-rgb), var(--bs-bg-opacity, 1)) !important;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .link-primary {
   color: RGBA(var(--bs-primary-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-primary-rgb), var(--bs-link-underline-opacity, 1)) !important;
@@ -7073,6 +7111,9 @@ textarea.form-control-lg {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .link-lightpurple {
   color: RGBA(var(--bs-lightpurple-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-lightpurple-rgb), var(--bs-link-underline-opacity, 1)) !important;
@@ -7082,8 +7123,11 @@ textarea.form-control-lg {
   text-decoration-color: RGBA(214, 103, 219, var(--bs-link-underline-opacity, 1)) !important;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .link-body-emphasis {
   color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-opacity, 1)) !important;
   text-decoration-color: RGBA(var(--bs-emphasis-color-rgb), var(--bs-link-underline-opacity, 1)) !important;
@@ -7525,12 +7569,18 @@ textarea.form-control-lg {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .focus-ring-lightpurple {
   --bs-focus-ring-color: rgba(var(--bs-lightpurple-rgb), var(--bs-focus-ring-opacity));
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .position-static {
   position: static !important;
 }
@@ -7697,13 +7747,19 @@ textarea.form-control-lg {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .border-lightpurple {
   --bs-border-opacity: 1;
   border-color: rgba(var(--bs-lightpurple-rgb), var(--bs-border-opacity)) !important;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .border-black {
   --bs-border-opacity: 1;
   border-color: rgba(var(--bs-black-rgb), var(--bs-border-opacity)) !important;
@@ -8667,13 +8723,19 @@ textarea.form-control-lg {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .text-lightpurple {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-lightpurple-rgb), var(--bs-text-opacity)) !important;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .text-black {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-black-rgb), var(--bs-text-opacity)) !important;
@@ -8882,13 +8944,19 @@ textarea.form-control-lg {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .link-underline-lightpurple {
   --bs-link-underline-opacity: 1;
   text-decoration-color: rgba(var(--bs-lightpurple-rgb), var(--bs-link-underline-opacity)) !important;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .link-underline {
   --bs-link-underline-opacity: 1;
   text-decoration-color: rgba(var(--bs-link-color-rgb), var(--bs-link-underline-opacity, 1)) !important;
@@ -8988,13 +9056,19 @@ textarea.form-control-lg {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .bg-lightpurple {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-lightpurple-rgb), var(--bs-bg-opacity)) !important;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+>>>>>>> ff3728d (Design update, registration redirect fix)
 .bg-black {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-black-rgb), var(--bs-bg-opacity)) !important;
