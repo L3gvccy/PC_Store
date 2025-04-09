@@ -1,6 +1,8 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import update_session_auth_hash
 
 def register_user(request):
     if request.method == 'POST':
@@ -50,3 +52,39 @@ def login_user(request):
             return render(request, 'account/login.html')
 
     return render(request, 'account/login.html')
+
+@login_required
+def profile_user(request):
+    if request.method == 'POST':
+        user = request.user
+        user.first_name = request.POST['first_name']
+        user.last_name = request.POST['last_name']
+        user.email = request.POST['email']
+        user.save()
+
+        messages.success(request, "Інформацію оновлено успішно!")
+        return redirect('/account/profile/')
+
+    return render(request, 'account/profile.html', {'user': request.user})
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        old_password = request.POST['old_password']
+        new_password = request.POST['new_password']
+        confirm_password = request.POST['confirm_password']
+
+        user = request.user
+
+        if not user.check_password(old_password):
+            messages.error(request, "Старий пароль введено невірно.")
+        elif new_password != confirm_password:
+            messages.error(request, "Нові паролі не співпадають.")
+        else:
+            user.set_password(new_password)
+            user.save()
+            update_session_auth_hash(request, user)  # Зберегти сесію
+            messages.success(request, "Пароль успішно змінено.")
+            return redirect('/account/profile/')
+
+    return render(request, 'account/change_password.html')
