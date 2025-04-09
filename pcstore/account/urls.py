@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('login/', views.login_user, name='login_user'),
     path('logout/', views.logout, name='logout'),
     path('register/', views.register_user, name='register_user'),
@@ -11,4 +12,8 @@ urlpatterns = [
 =======
     path('register/', views.register_user)
 >>>>>>> 0c2974f (Add registration)
+=======
+    path('logout/', views.logout),
+    path('register/', views.register_user),
+>>>>>>> 00e9245 (styling register)
 ]

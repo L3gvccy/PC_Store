@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
@@ -10,6 +11,9 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib import messages
+=======
+from django.contrib import messages, auth
+>>>>>>> 00e9245 (styling register)
 
 def register_user(request):
     if request.method == 'POST':
@@ -124,4 +128,11 @@ def change_password(request):
 >>>>>>> 0c2974f (Add registration)
 =======
 
+<<<<<<< HEAD
 >>>>>>> db35cdc (Update registration)
+=======
+def logout(request):
+    auth.logout(request)
+    messages.success(request, "Ви успішно вийшли з акаунту!")
+    return redirect('/')
+>>>>>>> 00e9245 (styling register)

@@ -135,11 +135,15 @@
                 <li><span class="dropdown-item-text">Привіт, {{ user.username }}!</span></li>
                 <li><a class="dropdown-item" href="">Мій кабінет</a></li>
                 <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="">Вийти</a></li>
+                <li><a class="dropdown-item" href="/account/logout/">Вийти</a></li>
               {% else %}
                 <li><a class="dropdown-item" href="">Увійти</a></li>
+<<<<<<< HEAD
                 <li><a class="dropdown-item" href="">Реєстрація</a></li>
 >>>>>>> 67d780e (add header)
+=======
+                <li><a class="dropdown-item" href="/account/register/">Реєстрація</a></li>
+>>>>>>> 00e9245 (styling register)
               {% endif %}
   
             </ul>

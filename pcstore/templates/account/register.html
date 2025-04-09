@@ -68,6 +68,7 @@
 <body>
     {% include "header.html" %}
 
+<<<<<<< HEAD
     <form method="post">
         {% csrf_token %}
         <label>Логін: <input type="text" name="username" required></label><br>
@@ -81,6 +82,48 @@
 <<<<<<< HEAD
 >>>>>>> 0c2974f (Add registration)
 =======
+=======
+    <div class="card mt-4 border-1" style="width: 100%; max-width: 500px; margin: auto;">
+        <div class="card-body">
+            <h5 class="card-title text-center mb-4">Реєстрація</h5>
+            <form method="post">
+                {% csrf_token %}
+                
+                <div class="mb-3">
+                    <label for="username" class="form-label">Логін:</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Пароль:</label>
+                    <input type="password" name="password" id="password" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="confirm_password" class="form-label">Повтор паролю:</label>
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="last_name" class="form-label">Прізвище:</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="first_name" class="form-label">Ім'я:</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control" required>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" name="email" id="email" class="form-control" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">Зареєструватися</button>
+            </form>
+        </div>
+    </div>
+>>>>>>> 00e9245 (styling register)
 
     {% include "footer.html" %}
 
