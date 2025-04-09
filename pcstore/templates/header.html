@@ -1,12 +1,12 @@
 {% load static %}
 
 <!--  HEADER  -->
-<nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+<nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark shadow">
     <div class="container">
       <!-- Логотип -->
-      <a class="navbar-brand" href="">
+      <a class="navbar-brand" href="/">
         <img src="{% static 'images/logo.png' %}" alt="" height="72px" width="72px">
-        ПК-Магазин
+        CorePC
     </a>
   
       <!-- Кнопка бургер -->
@@ -20,7 +20,7 @@
   
           <!-- Головна -->
           <li class="nav-item">
-            <a class="nav-link" href="">Головна</a>
+            <a class="nav-link" href="/">Головна</a>
           </li>
   
           <!-- Каталог (розгортаємий список) -->
@@ -66,7 +66,7 @@
   
               {% if user.is_authenticated %}
                 <li><span class="dropdown-item-text">Привіт, {{ user.username }}!</span></li>
-                <li><a class="dropdown-item" href="">Мій кабінет</a></li>
+                <li><a class="dropdown-item" href="/account/profile/">Мій кабінет</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/account/logout/">Вийти</a></li>
               {% else %}
