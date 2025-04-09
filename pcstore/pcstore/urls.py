@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.urls import path, include
 import components.views
 
@@ -24,10 +25,18 @@ urlpatterns = [
     path('account/', include('account.urls')),
 =======
 from django.urls import path
+=======
+from django.urls import path, include
+>>>>>>> 0c2974f (Add registration)
 import components.views
+import account.urls
 
 urlpatterns = [
+<<<<<<< HEAD
 >>>>>>> 67d780e (add header)
+=======
+    path('account/', include('account.urls')),
+>>>>>>> 0c2974f (Add registration)
     path('', components.views.landing, name="landing"),
     path('admin/', admin.site.urls),
     path('cart/', include('cart.urls')),

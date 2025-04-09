@@ -33,12 +33,16 @@ ALLOWED_HOSTS = ['https://l3gaccy.pythonanywhere.com', '127.0.0.1']
 
 INSTALLED_APPS = [
 <<<<<<< HEAD
+<<<<<<< HEAD
     'configurator',
     'order',
     'cart',
     'account',
 =======
 >>>>>>> 67d780e (add header)
+=======
+    'account',
+>>>>>>> 0c2974f (Add registration)
     'components',
     'django.contrib.admin',
     'django.contrib.auth',

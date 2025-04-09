@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.test import TestCase, Client
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -77,3 +78,8 @@ class AccountViewsTest(TestCase):
         self.assertEqual(response.status_code, 200)
         self.user.refresh_from_db()
         self.assertTrue(self.user.check_password('oldpassword'))
+=======
+from django.test import TestCase
+
+# Create your tests here.
+>>>>>>> 0c2974f (Add registration)

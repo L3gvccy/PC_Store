@@ -1,18 +1,25 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
+<<<<<<< HEAD
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
+=======
+>>>>>>> 0c2974f (Add registration)
 
 def register_user(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
+<<<<<<< HEAD
         confirm_password = request.POST['confirm_password']
+=======
+>>>>>>> 0c2974f (Add registration)
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
 
+<<<<<<< HEAD
         if password != confirm_password:
             messages.error(request, "Паролі не співпадають.")
             return
@@ -88,3 +95,11 @@ def change_password(request):
             return redirect('/account/profile/')
 
     return render(request, 'account/change_password.html')
+=======
+        user = User.objects.create_user(username=username, password=password, email=email,first_name = first_name,last_name = last_name)
+        user.save()
+
+        return redirect('/account/register/') 
+    
+    return render(request, 'account/register.html')
+>>>>>>> 0c2974f (Add registration)
