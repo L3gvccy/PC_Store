@@ -4,6 +4,7 @@
 
 <!--  HEADER  -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark shadow">
     <div class="container">
       <!-- Логотип -->
@@ -19,12 +20,19 @@
 =======
 <nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
 >>>>>>> 7bd74d9 (Add login)
+=======
+<nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark shadow">
+>>>>>>> f4874a6 (Add landing, changing style)
     <div class="container">
       <!-- Логотип -->
-      <a class="navbar-brand" href="">
+      <a class="navbar-brand" href="/">
         <img src="{% static 'images/logo.png' %}" alt="" height="72px" width="72px">
+<<<<<<< HEAD
         ПК-Магазин
 >>>>>>> 67d780e (add header)
+=======
+        CorePC
+>>>>>>> f4874a6 (Add landing, changing style)
     </a>
   
       <!-- Кнопка бургер -->
@@ -39,10 +47,14 @@
           <!-- Головна -->
           <li class="nav-item">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a class="nav-link {% if request.path == '/' %} text-mainpurple {% endif %}" href="/">Головна</a>
 =======
             <a class="nav-link" href="">Головна</a>
 >>>>>>> 67d780e (add header)
+=======
+            <a class="nav-link" href="/">Головна</a>
+>>>>>>> f4874a6 (Add landing, changing style)
           </li>
   
           <!-- Каталог (розгортаємий список) -->
@@ -137,7 +149,7 @@
   
               {% if user.is_authenticated %}
                 <li><span class="dropdown-item-text">Привіт, {{ user.username }}!</span></li>
-                <li><a class="dropdown-item" href="">Мій кабінет</a></li>
+                <li><a class="dropdown-item" href="/account/profile/">Мій кабінет</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/account/logout/">Вийти</a></li>
               {% else %}

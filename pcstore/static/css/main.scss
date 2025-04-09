@@ -2,8 +2,12 @@
 @import "../../../node_modules/bootstrap/scss/variables";
 
 $custom-colors: (
+<<<<<<< HEAD
     "mainpurple": #8341d2,
     "lightpurple": #cc41d2
+=======
+    "mainpurple": #8341d2
+>>>>>>> f4874a6 (Add landing, changing style)
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
