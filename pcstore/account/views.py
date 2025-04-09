@@ -15,3 +15,4 @@ def register_user(request):
         return redirect('/account/register/') 
     
     return render(request, 'account/register.html')
+
