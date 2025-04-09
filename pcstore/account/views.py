@@ -7,22 +7,36 @@ from django.contrib.auth import update_session_auth_hash
 =======
 >>>>>>> 0c2974f (Add registration)
 
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
 def register_user(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
 <<<<<<< HEAD
+<<<<<<< HEAD
         confirm_password = request.POST['confirm_password']
 =======
 >>>>>>> 0c2974f (Add registration)
+=======
+        confirm_password = request.POST['confirm_password']
+>>>>>>> 64a115f (update register)
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         email = request.POST['email']
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         if password != confirm_password:
             messages.error(request, "Паролі не співпадають.")
             return
+=======
+        if password != confirm_password:
+            messages.error(request, "Паролі не співпадають.")
+            return render(request, 'account/register.html')
+>>>>>>> 64a115f (update register)
 
         user = User.objects.create_user(
             username=username,
@@ -31,6 +45,7 @@ def register_user(request):
             first_name=first_name,
             last_name=last_name
         )
+<<<<<<< HEAD
         user.save()
 
         messages.success(request, "Реєстрація успішна!")
@@ -97,10 +112,13 @@ def change_password(request):
     return render(request, 'account/change_password.html')
 =======
         user = User.objects.create_user(username=username, password=password, email=email,first_name = first_name,last_name = last_name)
+=======
+>>>>>>> 64a115f (update register)
         user.save()
 
-        return redirect('/account/register/') 
-    
+        messages.success(request, "Реєстрація успішна!")
+        return redirect('/account/register/')
+
     return render(request, 'account/register.html')
 <<<<<<< HEAD
 >>>>>>> 0c2974f (Add registration)
