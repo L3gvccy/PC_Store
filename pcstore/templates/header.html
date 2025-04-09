@@ -20,19 +20,20 @@
   
           <!-- Головна -->
           <li class="nav-item">
-            <a class="nav-link" href="/">Головна</a>
+            <a class="nav-link {% if request.path == '/' %} text-mainpurple {% endif %}" href="/">Головна</a>
           </li>
   
           <!-- Каталог (розгортаємий список) -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="catalogDropdown" role="button" data-bs-toggle="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Каталог
             </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="">Процесори</a></li>
-              <li><a class="dropdown-item" href="">Відеокарти</a></li>
-              <li><a class="dropdown-item" href="">Оперативна пам’ять</a></li>
-              <!-- Додай інші типи компонентів -->
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdown">
+              <li><a class="dropdown-item" href="#">Процесори</a></li>
+              <li><a class="dropdown-item" href="#">Відеокарти</a></li>
+              <li><a class="dropdown-item" href="#">ОЗП</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Інші</a></li>
             </ul>
           </li>
   
@@ -62,7 +63,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
                 <img src="{% static 'images/person.png' %}" alt="" height="24px" width="24px">
             </a>
-            <ul class="dropdown-menu dropdown-menu-end">
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
   
               {% if user.is_authenticated %}
                 <li><span class="dropdown-item-text">Привіт, {{ user.username }}!</span></li>
