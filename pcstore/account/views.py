@@ -78,6 +78,7 @@ def login_user(request):
             return render(request, 'account/login.html')
 
     return render(request, 'account/login.html')
+<<<<<<< HEAD
 
 @login_required
 def profile_user(request):
@@ -136,3 +137,5 @@ def logout(request):
     messages.success(request, "Ви успішно вийшли з акаунту!")
     return redirect('/')
 >>>>>>> 00e9245 (styling register)
+=======
+>>>>>>> 7bd74d9 (Add login)
