@@ -15,7 +15,7 @@ def register_user(request):
 
         if password != confirm_password:
             messages.error(request, "Паролі не співпадають.")
-            return render(request, 'account/register.html')
+            return
 
         user = User.objects.create_user(
             username=username,
@@ -27,7 +27,7 @@ def register_user(request):
         user.save()
 
         messages.success(request, "Реєстрація успішна!")
-        return redirect('/account/register/')
+        return redirect('/account/login/')
 
     return render(request, 'account/register.html')
 
