@@ -8,10 +8,10 @@
         <link rel="stylesheet" href="{% static 'css/font.css' %}">
         <title>CorePC</title>
     </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column min-vh-100 bg-dark">
     {% include "header.html" %}
 
-    <div class="card mt-4 mb-4 border-1 rounded-5" style="width: 100%; max-width: 500px; margin: auto;">
+    <div class="card mt-4 mb-4 border-1 rounded-5 bg-dark border-mainpurple text-light" style="width: 100%; max-width: 500px; margin: auto; box-shadow: 4px 4px 15px rgba(131,65,210,0.4);">
         <div class="card-body">
             <h5 class="card-title text-center mb-4">Реєстрація</h5>
             <form method="post">
@@ -19,35 +19,35 @@
                 
                 <div class="mb-3">
                     <label for="username" class="form-label">Логін:</label>
-                    <input type="text" name="username" id="username" class="form-control rounded-pill" required>
+                    <input type="text" name="username" id="username" class="form-control rounded-pill focus-ring focus-ring-mainpurple" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="password" class="form-label">Пароль:</label>
-                    <input type="password" name="password" id="password" class="form-control rounded-pill" required>
+                    <input type="password" name="password" id="password" class="form-control rounded-pill focus-ring focus-ring-mainpurple" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="confirm_password" class="form-label">Повтор паролю:</label>
-                    <input type="password" name="confirm_password" id="confirm_password" class="form-control rounded-pill" required>
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control rounded-pill focus-ring focus-ring-mainpurple" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="last_name" class="form-label">Прізвище:</label>
-                    <input type="text" name="last_name" id="last_name" class="form-control rounded-pill" required>
+                    <input type="text" name="last_name" id="last_name" class="form-control rounded-pill focus-ring focus-ring-mainpurple" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="first_name" class="form-label">Ім'я:</label>
-                    <input type="text" name="first_name" id="first_name" class="form-control rounded-pill" required>
+                    <input type="text" name="first_name" id="first_name" class="form-control rounded-pill focus-ring focus-ring-mainpurple" required>
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Email:</label>
-                    <input type="email" name="email" id="email" class="form-control rounded-pill" required>
+                    <input type="email" name="email" id="email" class="form-control rounded-pill focus-ring focus-ring-mainpurple" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100 rounded-pill">Зареєструватися</button>
+                <button type="submit" class="btn btn-mainpurple w-100 rounded-pill">Зареєструватися</button>
             </form>
         </div>
     </div>
