@@ -2,7 +2,8 @@
 @import "../../../node_modules/bootstrap/scss/variables";
 
 $custom-colors: (
-    "mainpurple": #8341d2
+    "mainpurple": #8341d2,
+    "lightpurple": #cc41d2
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
