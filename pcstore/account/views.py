@@ -33,3 +33,20 @@ def logout(request):
     auth.logout(request)
     messages.success(request, "Ви успішно вийшли з акаунту!")
     return redirect('/')
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = auth.authenticate(username=username, password=password)
+
+        if user is not None:
+            auth.login(request, user)
+            messages.success(request, f"Вітаємо, {user.first_name}! Ви увійшли в систему.")
+            return redirect('/')
+        else:
+            messages.error(request, "Невірне ім’я користувача або пароль.")
+            return render(request, 'account/login.html')
+
+    return render(request, 'account/login.html')
