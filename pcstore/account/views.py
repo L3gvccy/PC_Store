@@ -102,4 +102,8 @@ def change_password(request):
         return redirect('/account/register/') 
     
     return render(request, 'account/register.html')
+<<<<<<< HEAD
 >>>>>>> 0c2974f (Add registration)
+=======
+
+>>>>>>> db35cdc (Update registration)
