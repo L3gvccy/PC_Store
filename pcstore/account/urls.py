@@ -19,5 +19,10 @@ urlpatterns = [
 >>>>>>> 7bd74d9 (Add login)
     path('logout/', views.logout),
     path('register/', views.register_user),
+<<<<<<< HEAD
 >>>>>>> 00e9245 (styling register)
+=======
+    path('profile/', views.profile_user),
+    path('profile/change-password/', views.change_password)
+>>>>>>> a3027a8 (Add user profile)
 ]

@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import update_session_auth_hash
+<<<<<<< HEAD
 =======
 >>>>>>> 0c2974f (Add registration)
 
@@ -14,6 +15,8 @@ from django.contrib import messages
 =======
 from django.contrib import messages, auth
 >>>>>>> 00e9245 (styling register)
+=======
+>>>>>>> a3027a8 (Add user profile)
 
 def register_user(request):
     if request.method == 'POST':
@@ -79,6 +82,9 @@ def login_user(request):
 
     return render(request, 'account/login.html')
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a3027a8 (Add user profile)
 
 @login_required
 def profile_user(request):
@@ -114,6 +120,7 @@ def change_password(request):
             messages.success(request, "Пароль успішно змінено.")
             return redirect('/account/profile/')
 
+<<<<<<< HEAD
     return render(request, 'account/change_password.html')
 =======
         user = User.objects.create_user(username=username, password=password, email=email,first_name = first_name,last_name = last_name)
@@ -139,3 +146,6 @@ def logout(request):
 >>>>>>> 00e9245 (styling register)
 =======
 >>>>>>> 7bd74d9 (Add login)
+=======
+    return render(request, 'account/change_password.html')
+>>>>>>> a3027a8 (Add user profile)
