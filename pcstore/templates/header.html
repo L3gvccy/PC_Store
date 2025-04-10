@@ -25,13 +25,18 @@
   
           <!-- Каталог (розгортаємий список) -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle {% if request.path|slice:':11' == '/components' %} text-mainpurple {% endif %}" href="#" id="navbarDarkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Каталог
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdown">
-              <li><a class="dropdown-item" href="#">Процесори</a></li>
+              <li><a class="dropdown-item" href="/components/cpus/">Процесори</a></li>
+              <li><a class="dropdown-item" href="#">Материнські плати</a></li>
               <li><a class="dropdown-item" href="#">Відеокарти</a></li>
               <li><a class="dropdown-item" href="#">ОЗП</a></li>
+              <li><a class="dropdown-item" href="#">Накопичувачі</a></li>
+              <li><a class="dropdown-item" href="#">Блоки живлення</a></li>
+              <li><a class="dropdown-item" href="#">Системи охолодження</a></li>
+              <li><a class="dropdown-item" href="#">Водяне охолодження</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Інші</a></li>
             </ul>
