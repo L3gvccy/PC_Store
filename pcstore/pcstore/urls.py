@@ -20,6 +20,7 @@ import components.views
 import account.urls
 
 urlpatterns = [
+    path('components/', include('components.urls')),
     path('account/', include('account.urls')),
     path('', components.views.landing, name="landing"),
     path('admin/', admin.site.urls),
