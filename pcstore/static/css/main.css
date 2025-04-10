@@ -5,9 +5,13 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+
+>>>>>>> ec58bea (add cpus page)
 :root,
 [data-bs-theme=light] {
   --bs-blue: #0d6efd;
@@ -4649,9 +4653,13 @@ textarea.form-control-lg {
   --bs-accordion-active-color: var(--bs-primary-text-emphasis);
   --bs-accordion-active-bg: var(--bs-primary-bg-subtle);
 <<<<<<< HEAD
+<<<<<<< HEAD
   --bs-accordion-btn-focus-box-shadow: none;
 =======
 >>>>>>> f4874a6 (Add landing, changing style)
+=======
+  --bs-accordion-btn-focus-box-shadow: none;
+>>>>>>> ec58bea (add cpus page)
 }
 
 .accordion-button {

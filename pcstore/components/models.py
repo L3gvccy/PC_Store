@@ -3,6 +3,7 @@ from django.db import models
 from django.apps import apps
 
 # Create your models here.
+<<<<<<< HEAD
 class Product(models.Model):
     name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255)
@@ -14,11 +15,17 @@ class Product(models.Model):
         return self.display_name
 
 class CPU(Product):
+=======
+
+class CPU(models.Model):
+    name = models.CharField(max_length=255)
+>>>>>>> ec58bea (add cpus page)
     brand = models.CharField(max_length=25)
     socket = models.CharField(max_length=25)
     cores = models.IntegerField()
     threads = models.IntegerField()
     frequency = models.FloatField(help_text="GHz")
+<<<<<<< HEAD
     TDP = models.IntegerField(help_text="Watt", default=0)
 
 class Motherboard(Product):
@@ -92,3 +99,10 @@ class Case(Product):
 
 # Create your models here.
 >>>>>>> 67d780e (add header)
+=======
+    price = models.DecimalField(max_digits=20, decimal_places=2)
+    image = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+>>>>>>> ec58bea (add cpus page)

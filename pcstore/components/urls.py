@@ -2,6 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
+<<<<<<< HEAD
     path('', views.components),
     path('cpus/', views.CPUs_view, name='cpus'),
     path('cpu_detail/<int:cpu_id>/', views.cpu_detail, name='cpu_detail'),
@@ -21,4 +22,7 @@ urlpatterns = [
     path('aio_detail/<int:aio_id>/', views.aio_detail, name='aio_detail'),
     path('cases/', views.Cases_view, name='cases'),
     path('case_detail/<int:case_id>/', views.case_detail, name='case_detail'),
+=======
+    path('cpus/', views.CPUs_view),
+>>>>>>> ec58bea (add cpus page)
 ]

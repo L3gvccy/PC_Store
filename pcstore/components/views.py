@@ -1,19 +1,29 @@
 from django.shortcuts import render
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.db.models import Q
 from .models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 =======
 >>>>>>> 67d780e (add header)
+=======
+from .models import CPU
+from .forms import CPUFilterForm
+>>>>>>> ec58bea (add cpus page)
 
 # Create your views here.
 
 def landing(req):
+<<<<<<< HEAD
 <<<<<<< HEAD
     return render(req, 'components/landing.html')
 
 def components(req):
     return render(req, 'components/components.html')
 
+=======
+    return render(req, 'components/landing.html')
+
+>>>>>>> ec58bea (add cpus page)
 def CPUs_view(req):
     cpus = CPU.objects.all()
 
@@ -47,11 +57,15 @@ def CPUs_view(req):
     # Фільтрація за частотою
     selected_frequencies = req.GET.getlist('frequency')
     if selected_frequencies:
+<<<<<<< HEAD
         freq_filter = Q()
         for freq in selected_frequencies:
             min_freq, max_freq = map(float, freq.split('-'))
             freq_filter |= Q(frequency__gte=min_freq, frequency__lte=max_freq)
         cpus = cpus.filter(freq_filter)
+=======
+        cpus = cpus.filter(frequency__in=selected_frequencies)
+>>>>>>> ec58bea (add cpus page)
 
     sort = req.GET.get('sort')
     
@@ -63,18 +77,30 @@ def CPUs_view(req):
     selected_brands = req.GET.getlist('brand')
     selected_sockets = req.GET.getlist('socket')
     selected_cores = req.GET.getlist('cores')
+<<<<<<< HEAD
     selected_threads = req.GET.getlist('threads')
     selected_freqs = req.GET.getlist('frequency')
+=======
+    selected_threads = req.GET.getlist('cores')
+    selected_freqs = req.GET.getlist('cores')
+>>>>>>> ec58bea (add cpus page)
 
     brands = ['Intel', 'AMD']
     sockets = ['AM4', 'AM5', '1851', '1700', '1200', '1151']
     cores = ['6', '8', '10', '12', '14', '16', '24']
     threads = ['8', '12', '16', '20', '32']
+<<<<<<< HEAD
     frequencies = ['2-2.5', '2.6-3', '3.1-3.6', '3.7-4.2', '4.3-5']
 
     context = {
         'processors': cpus,
         'selected_sort': sort,
+=======
+    frequencies = ['2-2.5', '2.6-3', '3.1-3.6', '3.7-4.2', '4.3+']
+
+    context = {
+        'processors': cpus,
+>>>>>>> ec58bea (add cpus page)
         'brands': brands,
         'sockets': sockets,
         'cores': cores,
@@ -87,6 +113,7 @@ def CPUs_view(req):
         'selected_freqs': selected_freqs,
     }
 
+<<<<<<< HEAD
     return render(req, 'components/cpus.html', context)
 
 def cpu_detail(req, cpu_id):
@@ -689,3 +716,6 @@ def case_detail(req, case_id):
 =======
     return render(req, 'components/landing.html')
 >>>>>>> 67d780e (add header)
+=======
+    return render(req, 'components/cpus.html', context)
+>>>>>>> ec58bea (add cpus page)

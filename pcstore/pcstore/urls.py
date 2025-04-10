@@ -33,8 +33,12 @@ import account.urls
 
 urlpatterns = [
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 67d780e (add header)
 =======
+=======
+    path('components/', include('components.urls')),
+>>>>>>> ec58bea (add cpus page)
     path('account/', include('account.urls')),
 >>>>>>> 0c2974f (Add registration)
     path('', components.views.landing, name="landing"),

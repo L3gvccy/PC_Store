@@ -13,6 +13,7 @@
     {% include 'header.html' %}
 
     <div class="container my-4">
+<<<<<<< HEAD
       <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <a href="/components/" class="btn text-secondary">← Назад до компонентів</a>
@@ -36,6 +37,11 @@
             <div class="col-lg-4">
                 <form method="get">
                   <input type="hidden" name="sort" value="{{ selected_sort }}">
+=======
+        <div class="row">
+            <div class="col-lg-4">
+                <form method="get">
+>>>>>>> ec58bea (add cpus page)
                     <div class="accordion accordion-flush" id="filtersAccordion">
                   
                       <!-- Ціна -->
@@ -49,11 +55,19 @@
                           <div class="accordion-body bg-dark border-light">
                             <div class="mb-2">
                               <label for="min_price" class="form-label text-light">Від:</label>
+<<<<<<< HEAD
                               <input type="number" class="form-control bg-dark text-light rounded-pill" name="min_price" id="min_price" value="{{ request.GET.min_price }}">
                             </div>
                             <div>
                               <label for="max_price" class="form-label text-light">До:</label>
                               <input type="number" class="form-control bg-dark text-light rounded-pill" name="max_price" id="max_price" value="{{ request.GET.max_price }}">
+=======
+                              <input type="number" class="form-control" name="min_price" id="min_price" value="{{ request.GET.min_price }}">
+                            </div>
+                            <div>
+                              <label for="max_price" class="form-label text-light">До:</label>
+                              <input type="number" class="form-control" name="max_price" id="max_price" value="{{ request.GET.max_price }}">
+>>>>>>> ec58bea (add cpus page)
                             </div>
                           </div>
                         </div>
@@ -162,7 +176,10 @@
                   
                     </div>
                   
+<<<<<<< HEAD
                     <a href="/components/cpus/" class="btn btn-outline-light mt-3 w-100">Очистити фільтри</a>
+=======
+>>>>>>> ec58bea (add cpus page)
                     <button type="submit" class="btn btn-mainpurple mt-3 w-100">Застосувати фільтри</button>
                 </form>
             </div>
@@ -173,16 +190,28 @@
                             <div class="card mb-4 shadow-sm bg-dark text-light">
                                 <img src="{{ processor.image }}" class="card-img-top p-4" alt="{{ processor.name }}">
                                 <div class="card-body">
+<<<<<<< HEAD
                                     <h6 class="card-title mb-2 fw-bold" style="min-height: 46px;">{{ processor }}</h6>
                                     <p class="card-text mb-2">{{ processor.socket }} socket, {{ processor.frequency }} GHz</p>
                                     <p class="card-text mb-2"><strong>{{ processor.price }}</strong> ₴</p>
                                     <a href="{% url 'cpu_detail' processor.id %}" class="btn btn-outline-mainpurple w-100 mb-2">Переглянути</a>
                                     <a href="{% url 'add_to_cart' processor.id %}" class="btn btn-mainpurple w-100">До кошика</a>
+=======
+                                    <h5 class="card-title mb-2 fw-bold">{{ processor.name }}</h5>
+                                    <p class="card-text mb-2">{{ processor.socket }} socket, {{ processor.frequency }} GHz</p>
+                                    <p class="card-text mb-2"><strong>{{ processor.price }}</strong> ₴</p>
+                                    <a href="" class="btn btn-outline-mainpurple w-100 mb-2">Переглянути</a>
+                                    <a href="" class="btn btn-mainpurple w-100">До кошика</a>
+>>>>>>> ec58bea (add cpus page)
                                 </div>
                             </div>
                         </div>
                     {% empty %}
+<<<<<<< HEAD
                         <p class="text-light text-center mt-4">Немає доступних товарів за вашими критеріями фільтрації.</p>
+=======
+                        <p>Немає доступних товарів за вашими критеріями фільтрації.</p>
+>>>>>>> ec58bea (add cpus page)
                     {% endfor %}
                 </div>
             </div>
