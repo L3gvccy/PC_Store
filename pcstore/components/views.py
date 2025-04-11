@@ -114,6 +114,9 @@ def CPUs_view(req):
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 31afb41 (update cart, add cpu detail, add cart item cout)
     return render(req, 'components/cpus.html', context)
 
 def cpu_detail(req, cpu_id):
@@ -121,6 +124,7 @@ def cpu_detail(req, cpu_id):
     context = {
         'cpu': cpu,
     }
+<<<<<<< HEAD
     return render(req, 'components/cpu_detail.html', context)
 
 def Motherboards_view(req):
@@ -719,3 +723,6 @@ def case_detail(req, case_id):
 =======
     return render(req, 'components/cpus.html', context)
 >>>>>>> ec58bea (add cpus page)
+=======
+    return render(req, 'components/cpu_detail.html', context)
+>>>>>>> 31afb41 (update cart, add cpu detail, add cart item cout)

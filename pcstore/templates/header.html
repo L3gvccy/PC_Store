@@ -135,6 +135,7 @@
   
           <!-- Іконка корзини -->
 <<<<<<< HEAD
+<<<<<<< HEAD
           <li class="nav-item mr-4">
             <a class="nav-link position-relative" href="/cart/">
                 <img src="{% static 'images/cart.png' %}" alt="" height="24px" width="24px">
@@ -153,6 +154,16 @@
                 </span>
               {% endif %}
 >>>>>>> 67d780e (add header)
+=======
+          <li class="nav-item mr-4">
+            <a class="nav-link position-relative" href="/cart/">
+                <img src="{% static 'images/cart.png' %}" alt="" height="24px" width="24px">
+                {% if cart_item_count > 0 %}
+                  <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">
+                    {{ cart_item_count }}
+                  </span>
+                {% endif %}
+>>>>>>> 31afb41 (update cart, add cpu detail, add cart item cout)
             </a>
           </li>
   

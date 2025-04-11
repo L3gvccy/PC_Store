@@ -24,5 +24,9 @@ urlpatterns = [
     path('case_detail/<int:case_id>/', views.case_detail, name='case_detail'),
 =======
     path('cpus/', views.CPUs_view),
+<<<<<<< HEAD
 >>>>>>> ec58bea (add cpus page)
+=======
+    path('cpu_detail/<int:cpu_id>/', views.cpu_detail, name='cpu_detail'),
+>>>>>>> 31afb41 (update cart, add cpu detail, add cart item cout)
 ]

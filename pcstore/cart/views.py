@@ -58,9 +58,14 @@ def view_cart(request):
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
 <<<<<<< HEAD
+<<<<<<< HEAD
     total_price = sum(item.cpu.price * item.quantity for item in cart_items)
 >>>>>>> 4efcee2 (Add cart)
 =======
+=======
+    for item in cart_items:
+        item.total_price = item.product.price * item.quantity
+>>>>>>> 31afb41 (update cart, add cpu detail, add cart item cout)
     total_price = sum(item.product.price * item.quantity for item in cart_items)
 >>>>>>> f236aa0 (update cart)
 
