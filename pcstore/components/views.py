@@ -76,3 +76,10 @@ def CPUs_view(req):
     }
 
     return render(req, 'components/cpus.html', context)
+
+def cpu_detail(req, cpu_id):
+    cpu = CPU.objects.get(id=cpu_id)
+    context = {
+        'cpu': cpu,
+    }
+    return render(req, 'components/cpu_detail.html', context)
