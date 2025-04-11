@@ -4,6 +4,7 @@ from django.apps import apps
 
 # Create your models here.
 <<<<<<< HEAD
+<<<<<<< HEAD
 class Product(models.Model):
     name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255)
@@ -20,11 +21,24 @@ class CPU(Product):
 class CPU(models.Model):
     name = models.CharField(max_length=255)
 >>>>>>> ec58bea (add cpus page)
+=======
+class Product(models.Model):
+    name = models.CharField(max_length=255)
+    price = models.DecimalField(max_digits=20, decimal_places=2)
+    quantity = models.IntegerField()
+    image = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
+class CPU(Product):
+>>>>>>> 98f1f15 (change cpu model)
     brand = models.CharField(max_length=25)
     socket = models.CharField(max_length=25)
     cores = models.IntegerField()
     threads = models.IntegerField()
     frequency = models.FloatField(help_text="GHz")
+<<<<<<< HEAD
 <<<<<<< HEAD
     TDP = models.IntegerField(help_text="Watt", default=0)
 
@@ -106,3 +120,6 @@ class Case(Product):
     def __str__(self):
         return self.name
 >>>>>>> ec58bea (add cpus page)
+=======
+    TDP = models.IntegerField(help_text="Watt", default=0)
+>>>>>>> 98f1f15 (change cpu model)
