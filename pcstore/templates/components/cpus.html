@@ -209,8 +209,16 @@
                                     <p class="card-text mb-2">{{ processor.socket }} socket, {{ processor.frequency }} GHz</p>
                                     <p class="card-text mb-2"><strong>{{ processor.price }}</strong> ₴</p>
                                     <a href="" class="btn btn-outline-mainpurple w-100 mb-2">Переглянути</a>
+<<<<<<< HEAD
                                     <a href="" class="btn btn-mainpurple w-100">До кошика</a>
 >>>>>>> ec58bea (add cpus page)
+=======
+                                    {% if user.is_authenticated %}
+                                        <a href="{% url 'add_to_cart' processor.id %}" class="btn btn-mainpurple w-100">До кошика</a>
+                                    {% else %}
+                                        <a href="#" class="btn btn-mainpurple w-100" data-bs-toggle="modal" data-bs-target="#registerModal">До кошика</a>
+                                    {% endif %}
+>>>>>>> 4efcee2 (Add cart)
                                 </div>
                             </div>
                         </div>

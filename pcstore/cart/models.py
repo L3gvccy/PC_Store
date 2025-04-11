@@ -9,3 +9,8 @@ class CartItem(models.Model):
     class Meta:
         unique_together = ('user', 'product') 
 
+<<<<<<< HEAD
+=======
+    def __str__(self):
+        return f"{self.cpu.name} x{self.quantity} для {self.user.username}"
+>>>>>>> 4efcee2 (Add cart)

@@ -34,8 +34,11 @@ ALLOWED_HOSTS = ['https://l3gaccy.pythonanywhere.com', '127.0.0.1']
 INSTALLED_APPS = [
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     'configurator',
     'order',
+=======
+>>>>>>> 4efcee2 (Add cart)
     'cart',
     'account',
 =======

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -71,3 +72,8 @@ class CartTests(TestCase):
     def test_view_cart_not_authenticated(self):
         response = self.client.get(reverse('view_cart'))
         self.assertEqual(response.status_code, 302)
+=======
+from django.test import TestCase
+
+# Create your tests here.
+>>>>>>> 4efcee2 (Add cart)
