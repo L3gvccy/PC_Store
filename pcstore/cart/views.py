@@ -30,13 +30,13 @@ def decrease_quantity(request, item_id):
 @login_required
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
-    total_price = sum(item.cpu.price * item.quantity for item in cart_items)
+    total_price = sum(item.product.price * item.quantity for item in cart_items)
 
     context = {
         'cart_items': cart_items,
         'total_price': total_price,
     }
-    return render(request, 'components/cart.html', context)
+    return render(request, 'cart/cart.html', context)
 
 @login_required
 def add_to_cart(request, product_id):
