@@ -2,9 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.contrib import messages, auth
 =======
 >>>>>>> 4efcee2 (Add cart)
+=======
+from django.contrib import messages, auth
+>>>>>>> 078958a (cart update notifications)
 from .models import CartItem
 from components.models import Product
 
@@ -68,6 +72,7 @@ def view_cart(request):
 <<<<<<< HEAD
     return render(request, 'cart/cart.html', context)
 
+<<<<<<< HEAD
 def add_to_cart(request, product_id):
     if not request.user.is_authenticated:
         messages.error(request, "Вам потрібно увійти в систему, щоб додати товар до кошика.")
@@ -81,6 +86,12 @@ def add_to_cart(request, product_id):
 @login_required
 def add_to_cart(request, product_id):
 >>>>>>> 4efcee2 (Add cart)
+=======
+def add_to_cart(request, product_id):
+    if not request.user.is_authenticated:
+        messages.error(request, "Вам потрібно увійти в систему, щоб додати товар до кошика.")
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+>>>>>>> 078958a (cart update notifications)
     product = get_object_or_404(Product, id=product_id)
     cart_item, created = CartItem.objects.get_or_create(user=request.user, product = product)
 
@@ -94,6 +105,7 @@ def add_to_cart(request, product_id):
 
     messages.success(request, f"Товар {product.name} успішно додано до кошика.")
 
+<<<<<<< HEAD
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
 def increase_quantity(request, item_id):
@@ -111,3 +123,6 @@ def increase_quantity(request, item_id):
 
 >>>>>>> 4efcee2 (Add cart)
     return redirect('view_cart')  
+=======
+    return redirect(request.META.get('HTTP_REFERER', '/'))
+>>>>>>> 078958a (cart update notifications)

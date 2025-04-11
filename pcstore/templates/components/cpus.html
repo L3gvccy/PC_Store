@@ -216,7 +216,7 @@
                                     {% if user.is_authenticated %}
                                         <a href="{% url 'add_to_cart' processor.id %}" class="btn btn-mainpurple w-100">До кошика</a>
                                     {% else %}
-                                        <a href="#" class="btn btn-mainpurple w-100" data-bs-toggle="modal" data-bs-target="#registerModal">До кошика</a>
+                                    <a href="{% url 'add_to_cart' processor.id %}" class="btn btn-mainpurple w-100">До кошика</a>
                                     {% endif %}
 >>>>>>> 4efcee2 (Add cart)
                                 </div>
