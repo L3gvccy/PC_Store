@@ -31,6 +31,8 @@ def decrease_quantity(request, item_id):
 @login_required
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
+    for item in cart_items:
+        item.total_price = item.product.price * item.quantity
     total_price = sum(item.product.price * item.quantity for item in cart_items)
 
     context = {

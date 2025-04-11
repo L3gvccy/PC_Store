@@ -52,14 +52,14 @@
         <ul class="navbar-nav ms-auto">
   
           <!-- Іконка корзини -->
-          <li class="nav-item">
+          <li class="nav-item mr-4">
             <a class="nav-link position-relative" href="/cart/">
                 <img src="{% static 'images/cart.png' %}" alt="" height="24px" width="24px">
-              {% if request.session.cart %}
-                <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">
-                  {{ request.session.cart|length }}
-                </span>
-              {% endif %}
+                {% if cart_item_count > 0 %}
+                  <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">
+                    {{ cart_item_count }}
+                  </span>
+                {% endif %}
             </a>
           </li>
   
