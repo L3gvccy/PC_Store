@@ -17,11 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import components.views
-import account.urls
 
 urlpatterns = [
     path('components/', include('components.urls')),
     path('account/', include('account.urls')),
     path('', components.views.landing, name="landing"),
     path('admin/', admin.site.urls),
+    path('cart/', include('cart.urls')),
 ]
