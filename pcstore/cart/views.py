@@ -53,13 +53,18 @@ def view_cart(request):
 @login_required
 def view_cart(request):
     cart_items = CartItem.objects.filter(user=request.user)
+<<<<<<< HEAD
     total_price = sum(item.cpu.price * item.quantity for item in cart_items)
 >>>>>>> 4efcee2 (Add cart)
+=======
+    total_price = sum(item.product.price * item.quantity for item in cart_items)
+>>>>>>> f236aa0 (update cart)
 
     context = {
         'cart_items': cart_items,
         'total_price': total_price,
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
     return render(request, 'cart/cart.html', context)
 
@@ -69,6 +74,9 @@ def add_to_cart(request, product_id):
         return redirect(request.META.get('HTTP_REFERER', '/'))
 =======
     return render(request, 'components/cart.html', context)
+=======
+    return render(request, 'cart/cart.html', context)
+>>>>>>> f236aa0 (update cart)
 
 @login_required
 def add_to_cart(request, product_id):
