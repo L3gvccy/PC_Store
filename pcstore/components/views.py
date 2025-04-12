@@ -178,7 +178,7 @@ def GPUs_view(req):
     brands = ['MSI', 'ASUS', 'Palit', 'Gigabyte']
     gp_brands = ['AMD','Nvidia']
     memory_options = ['6', '8', '10', '12', '16', '24']
-    memory_type = ['GDDR6','GDDR7']
+    memory_types = ['GDDR6', 'GDDR6X','GDDR7','GDDR7X']
 
 
     context = {
@@ -186,7 +186,7 @@ def GPUs_view(req):
         'brands': brands,
         'gp_brands': gp_brands,
         'memory_options': memory_options,
-        'memory_type': memory_type,
+        'memory_types': memory_types,
         'selected_brands': selected_brands,
         'selected_gp_brands' : selected_gp_brands,
         'selected_memory': selected_memory,
