@@ -32,5 +32,9 @@ urlpatterns = [
 >>>>>>> 31afb41 (update cart, add cpu detail, add cart item cout)
 =======
     path('motherboards/', views.Motherboards_view),
+<<<<<<< HEAD
 >>>>>>> 3cce6bf (add motherboards)
+=======
+    path('motherboard_detail/<int:motherboard_id>/', views.motherboard_detail, name='motherboard_detail'),
+>>>>>>> 246302b (add motherboard details)
 ]
