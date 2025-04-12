@@ -30,3 +30,11 @@ class Motherboard(Product):
     M2_slots = models.IntegerField()
     WiFi = models.BooleanField(default=False)
     Bluetooth = models.BooleanField(default=False)
+
+class GPU(Product):
+    brand = models.CharField(max_length=25)
+    gp_brand = models.CharField(max_length=25)
+    series = models.CharField(max_length=25)
+    memory = models.IntegerField(help_text="GB")
+    memory_type = models.CharField(max_length=25)
+    TDP = models.IntegerField(help_text="Watt", default=0)
