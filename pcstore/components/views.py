@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Q
-from .models import CPU, Motherboard, GPU
+from .models import CPU, Motherboard, GPU, RAM
 
 # Create your views here.
 
@@ -152,11 +152,6 @@ def GPUs_view(req):
     if selected_gp_brands:
         gpus = gpus.filter(gp_brands__in=selected_gp_brands)
 
-    # Фільтрація за серією відеокарти 
-    selected_series = req.GET.getlist('series')
-    if selected_series:
-        gpus = gpus.filter(series__in=selected_series)
-
     # Фільтрація за памʼяттю
     selected_memory = req.GET.getlist('memory')
     if selected_memory:
@@ -201,3 +196,75 @@ def gpu_detail(req, gpu_id):
         'gpu': gpu,
     }
     return render(req, 'components/gpu_detail.html', context)
+
+def RAMs_view(req):
+    rams = RAM.objects.all()
+
+    # Фільтрація за ціною
+    min_price = req.GET.get('min_price', None)
+    max_price = req.GET.get('max_price', None)
+    if min_price and max_price:
+        rams = rams.filter(price__gte=min_price, price__lte=max_price)
+
+    # Фільтрація за брендом
+    selected_brands = req.GET.getlist('brand')
+    if selected_brands:
+        rams = rams.filter(brand__in=selected_brands)
+
+    # Фільтрація за обсягом
+    selected_capacities = req.GET.getlist('capacity')
+    if selected_capacities:
+        rams = rams.filter(capacity__in=selected_capacities)
+
+    # Фільтрація за типом пам'яті
+    selected_ram_types = req.GET.getlist('ram_type')
+    if selected_ram_types:
+        rams = rams.filter(ram_type__in=selected_ram_types)
+
+    # Фільтрація за частотою
+    selected_frequencies = req.GET.getlist('frequency')
+    if selected_frequencies:
+        rams = rams.filter(frequency__in=selected_frequencies)
+
+    # Фільтрація за кількістью модулів
+    selected_number_of_modules = req.GET.getlist('num')
+    if selected_number_of_modules:
+        rams = rams.filter(number_of_modules__in=selected_number_of_modules)
+
+    # Сортування
+    sort = req.GET.get('sort')
+    if sort == 'price_asc':
+        rams = rams.order_by('price')
+    elif sort == 'price_desc':
+        rams = rams.order_by('-price')
+
+    # Варіанти для фільтрів
+    brands = ['Corsair', 'G.Skill', 'Kingston', 'Patriot']
+    capacities = ['8','12','16','24','32', '64']
+    ram_types = ['DDR4', 'DDR5']
+    frequencies = ['2400', '2666', '3000', '3200', '4600', '4800', '5200', '5600', '6000']
+    number_of_modules = ['1', '2']
+
+
+    context = {
+        'rams': rams,
+        'brands': brands,
+        'capacities': capacities,
+        'ram_types': ram_types,
+        'frequencies': frequencies,
+        'number_of_modules': number_of_modules,
+        'selected_brands': selected_brands,
+        'selected_capacities': selected_capacities,
+        'selected_ram_types': selected_ram_types,
+        'selected_frequencies': selected_frequencies,
+        'selected_number_of_modules': selected_number_of_modules,
+    }
+
+    return render(req, 'components/rams.html', context)
+
+def ram_detail(req, ram_id):
+    ram = RAM.objects.get(id=ram_id)
+    context = {
+        'ram': ram,
+    }
+    return render(req, 'components/ram_detail.html', context)

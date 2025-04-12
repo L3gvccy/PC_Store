@@ -38,3 +38,10 @@ class GPU(Product):
     memory = models.IntegerField(help_text="GB")
     memory_type = models.CharField(max_length=25)
     TDP = models.IntegerField(help_text="Watt", default=0)
+
+class RAM(Product):
+    brand = models.CharField(max_length=25)
+    capacity = models.IntegerField(help_text="GB")
+    ram_type = models.CharField(max_length=25)
+    frequency = models.IntegerField(help_text="MHz")
+    number_of_modules = models.IntegerField(default=1)
