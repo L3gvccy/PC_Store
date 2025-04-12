@@ -60,7 +60,7 @@ def CPUs_view(req):
     selected_freqs = req.GET.getlist('frequency')
 
     brands = ['Intel', 'AMD']
-    sockets = ['AM4', 'AM5', '1851', '1700', '1200', '1151']
+    sockets = ['AM4', 'AM5', '1851', '1700', '1200']
     cores = ['6', '8', '10', '12', '14', '16', '24']
     threads = ['8', '12', '16', '20', '32']
     frequencies = ['2-2.5', '2.6-3', '3.1-3.6', '3.7-4.2', '4.3-5']
@@ -108,18 +108,46 @@ def Motherboards_view(req):
     if selected_sockets:
         motherboards = motherboards.filter(socket__in=selected_sockets)
 
-    selected_brands = req.GET.getlist('brand')
-    selected_sockets = req.GET.getlist('socket')
+    # Фільтрація за чіпсетом
+    selected_chipsets = req.GET.getlist('chipset')
+    if selected_chipsets:
+        motherboards = motherboards.filter(chipset__in=selected_chipsets)
+
+    # Фільтрація за форм-фактором
+    selected_form_factors = req.GET.getlist('form_factor')
+    if selected_form_factors:
+        motherboards = motherboards.filter(form_factor__in=selected_form_factors)
+
+    # Фільтрація за типом ОЗП
+    selected_ram_types = req.GET.getlist('ram_type')
+    if selected_ram_types:
+        motherboards = motherboards.filter(RAM_type__in=selected_ram_types)
 
     brands = ['AsRock', 'Asus', 'Gigabyte', 'MSI']
-    sockets = ['AM4', 'AM5', '1851', '1700', '1200', '1151']
+    sockets = ['AM4', 'AM5', '1851', '1700', '1200']
+    chipsets = ['B550', 'B650', 'B850', 'X870', 'B560', 'H510', 'B760', 'Z790', 'B860', 'Z890']
+    ram_types = ['DDR4', 'DDR5']
+    form_factors = ['ATX', 'Micro-ATX', 'Mini-ITX']
 
     context = {
         'mbs': motherboards,
         'brands': brands,
         'sockets': sockets,
+        'chipsets': chipsets,
+        'form_factors': form_factors,
+        'ram_types': ram_types,
         'selected_brands': selected_brands,
         'selected_sockets': selected_sockets,
+        'selected_chipsets': selected_chipsets,
+        'selected_form_factors': selected_form_factors,
+        'selected_ram_types': selected_ram_types,
     }
     
     return render(req, 'components/motherboards.html', context)
+
+def motherboard_detail(req, motherboard_id):
+    mb = Motherboard.objects.get(id=motherboard_id)
+    context = {
+        'mb': mb,
+    }
+    return render(req, 'components/motherboard_detail.html', context)
