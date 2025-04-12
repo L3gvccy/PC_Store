@@ -37,8 +37,7 @@
               <li><a class="dropdown-item" href="#">Блоки живлення</a></li>
               <li><a class="dropdown-item" href="#">Системи охолодження</a></li>
               <li><a class="dropdown-item" href="#">Водяне охолодження</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Інші</a></li>
+              <li><a class="dropdown-item" href="#">Корпуси</a></li>
             </ul>
           </li>
   
@@ -73,6 +72,7 @@
               {% if user.is_authenticated %}
                 <li><span class="dropdown-item-text">Привіт, {{ user.username }}!</span></li>
                 <li><a class="dropdown-item" href="/account/profile/">Мій кабінет</a></li>
+                <li><a class="dropdown-item" href="/orders/myorders/">Мої замовлення</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/account/logout/">Вийти</a></li>
               {% else %}
