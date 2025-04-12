@@ -72,6 +72,9 @@ class GPU(Product):
     memory_type = models.CharField(max_length=25)
     TDP = models.IntegerField(help_text="Watt", default=0)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ef1f7ff (Add RAM)
 
 class RAM(Product):
     brand = models.CharField(max_length=25)
@@ -79,6 +82,7 @@ class RAM(Product):
     ram_type = models.CharField(max_length=25)
     frequency = models.IntegerField(help_text="MHz")
     number_of_modules = models.IntegerField(default=1)
+<<<<<<< HEAD
 
 class Storage(Product):
     brand = models.CharField(max_length=25)
@@ -139,3 +143,5 @@ class Case(Product):
 >>>>>>> 3cce6bf (add motherboards)
 =======
 >>>>>>> 01cc471 (Add GPU)
+=======
+>>>>>>> ef1f7ff (Add RAM)
