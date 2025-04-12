@@ -861,7 +861,7 @@ def GPUs_view(req):
     return render(req, 'components/gpus.html', context)
 
 def gpu_detail(req, gpu_id):
-    gpu = Motherboard.objects.get(id=gpu_id)
+    gpu = GPU.objects.get(id=gpu_id)
     context = {
         'gpu': gpu,
     }
