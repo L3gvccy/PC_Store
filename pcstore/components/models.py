@@ -60,6 +60,9 @@ class Motherboard(Product):
     WiFi = models.BooleanField(default=False)
     Bluetooth = models.BooleanField(default=False)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 01cc471 (Add GPU)
 
 class GPU(Product):
     brand = models.CharField(max_length=25)
@@ -68,6 +71,7 @@ class GPU(Product):
     memory = models.IntegerField(help_text="GB")
     memory_type = models.CharField(max_length=25)
     TDP = models.IntegerField(help_text="Watt", default=0)
+<<<<<<< HEAD
 
 class RAM(Product):
     brand = models.CharField(max_length=25)
@@ -133,3 +137,5 @@ class Case(Product):
 >>>>>>> 98f1f15 (change cpu model)
 =======
 >>>>>>> 3cce6bf (add motherboards)
+=======
+>>>>>>> 01cc471 (Add GPU)

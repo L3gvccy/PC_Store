@@ -12,8 +12,12 @@ from .forms import CPUFilterForm
 >>>>>>> ec58bea (add cpus page)
 =======
 from django.db.models import Q
+<<<<<<< HEAD
 from .models import CPU, Motherboard
 >>>>>>> 3cce6bf (add motherboards)
+=======
+from .models import CPU, Motherboard, GPU
+>>>>>>> 01cc471 (Add GPU)
 
 # Create your views here.
 
@@ -102,7 +106,7 @@ def CPUs_view(req):
 >>>>>>> 3cce6bf (add motherboards)
 
     brands = ['Intel', 'AMD']
-    sockets = ['AM4', 'AM5', '1851', '1700', '1200']
+    sockets = ['AM4', 'AM5', '1851', '1700', '1200', '1151']
     cores = ['6', '8', '10', '12', '14', '16', '24']
     threads = ['8', '12', '16', '20', '32']
 <<<<<<< HEAD
@@ -170,6 +174,7 @@ def Motherboards_view(req):
     if selected_sockets:
         motherboards = motherboards.filter(socket__in=selected_sockets)
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -760,25 +765,20 @@ def case_detail(req, case_id):
     selected_sockets = req.GET.getlist('socket')
 =======
 >>>>>>> 246302b (add motherboard details)
+=======
+    selected_brands = req.GET.getlist('brand')
+    selected_sockets = req.GET.getlist('socket')
+>>>>>>> 01cc471 (Add GPU)
 
     brands = ['AsRock', 'Asus', 'Gigabyte', 'MSI']
-    sockets = ['AM4', 'AM5', '1851', '1700', '1200']
-    chipsets = ['B550', 'B650', 'B850', 'X870', 'B560', 'H510', 'B760', 'Z790', 'B860', 'Z890']
-    ram_types = ['DDR4', 'DDR5']
-    form_factors = ['ATX', 'Micro-ATX', 'Mini-ITX']
+    sockets = ['AM4', 'AM5', '1851', '1700', '1200', '1151']
 
     context = {
         'mbs': motherboards,
         'brands': brands,
         'sockets': sockets,
-        'chipsets': chipsets,
-        'form_factors': form_factors,
-        'ram_types': ram_types,
         'selected_brands': selected_brands,
         'selected_sockets': selected_sockets,
-        'selected_chipsets': selected_chipsets,
-        'selected_form_factors': selected_form_factors,
-        'selected_ram_types': selected_ram_types,
     }
     
     return render(req, 'components/motherboards.html', context)
@@ -792,4 +792,78 @@ def motherboard_detail(req, motherboard_id):
         'mb': mb,
     }
     return render(req, 'components/motherboard_detail.html', context)
+<<<<<<< HEAD
 >>>>>>> 246302b (add motherboard details)
+=======
+
+
+
+def GPUs_view(req):
+    gpus = GPU.objects.all()
+
+    # Фільтрація за ціною
+    min_price = req.GET.get('min_price', None)
+    max_price = req.GET.get('max_price', None)
+    if min_price and max_price:
+        gpus = gpus.filter(price__gte=min_price, price__lte=max_price)
+
+    # Фільтрація за брендом
+    selected_brands = req.GET.getlist('brand')
+    if selected_brands:
+        gpus = gpus.filter(brand__in=selected_brands)
+
+    # Фільтрація за виробником графічного процесору
+    selected_gp_brands = req.GET.getlist('gp_brand')
+    if selected_gp_brands:
+        gpus = gpus.filter(gp_brands__in=selected_gp_brands)
+
+    # Фільтрація за серією відеокарти 
+    selected_series = req.GET.getlist('series')
+    if selected_series:
+        gpus = gpus.filter(series__in=selected_series)
+
+    # Фільтрація за памʼяттю
+    selected_memory = req.GET.getlist('memory')
+    if selected_memory:
+        gpus = gpus.filter(memory__in=selected_memory)
+
+    # Фільтрація за памʼяттю
+    selected_memory_types = req.GET.getlist('memory_type')
+    if selected_memory_types:
+        gpus = gpus.filter(memory_type__in=selected_memory_types)
+
+    # Сортування
+    sort = req.GET.get('sort')
+    if sort == 'price_asc':
+        gpus = gpus.order_by('price')
+    elif sort == 'price_desc':
+        gpus = gpus.order_by('-price')
+
+    # Варіанти для фільтрів
+    brands = ['MSI', 'ASUS', 'Palit', 'Gigabyte']
+    gp_brands = ['AMD','Nvidia']
+    memory_options = ['6', '8', '10', '12', '16', '24']
+    memory_type = ['GDDR6','GDDR7']
+
+
+    context = {
+        'gpus': gpus,
+        'brands': brands,
+        'gp_brands': gp_brands,
+        'memory_options': memory_options,
+        'memory_type': memory_type,
+        'selected_brands': selected_brands,
+        'selected_gp_brands' : selected_gp_brands,
+        'selected_memory': selected_memory,
+        'selected_memory_types': selected_memory_types,
+    }
+
+    return render(req, 'components/gpus.html', context)
+
+def gpu_detail(req, gpu_id):
+    gpu = Motherboard.objects.get(id=gpu_id)
+    context = {
+        'gpu': gpu,
+    }
+    return render(req, 'components/gpu_detail.html', context)
+>>>>>>> 01cc471 (Add GPU)

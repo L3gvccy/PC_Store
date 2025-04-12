@@ -9,6 +9,7 @@ urlpatterns = [
 <<<<<<< HEAD
     path('motherboards/', views.Motherboards_view, name='motherboards'),
     path('motherboard_detail/<int:motherboard_id>/', views.motherboard_detail, name='motherboard_detail'),
+<<<<<<< HEAD
     path('gpus/', views.GPUs_view, name='gpus'),
     path('gpu_detail/<int:gpu_id>/', views.gpu_detail, name='gpu_detail'),
     path('rams/', views.RAMs_view, name='rams'),
@@ -37,4 +38,8 @@ urlpatterns = [
 =======
     path('motherboard_detail/<int:motherboard_id>/', views.motherboard_detail, name='motherboard_detail'),
 >>>>>>> 246302b (add motherboard details)
+=======
+    path('gpus/', views.GPUs_view),
+    path('gpu_detail/<int:gpu_id>/', views.gpu_detail, name='gpu_detail'),
+>>>>>>> 01cc471 (Add GPU)
 ]
