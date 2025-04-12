@@ -9,5 +9,3 @@ class CartItem(models.Model):
     class Meta:
         unique_together = ('user', 'product') 
 
-    def __str__(self):
-        return f"{self.cpu.name} x{self.quantity} для {self.user.username}"

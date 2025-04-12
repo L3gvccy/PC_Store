@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import CPU
-from .forms import CPUFilterForm
+from django.db.models import Q
+from .models import CPU, Motherboard
 
 # Create your views here.
 
@@ -40,7 +40,11 @@ def CPUs_view(req):
     # Фільтрація за частотою
     selected_frequencies = req.GET.getlist('frequency')
     if selected_frequencies:
-        cpus = cpus.filter(frequency__in=selected_frequencies)
+        freq_filter = Q()
+        for freq in selected_frequencies:
+            min_freq, max_freq = map(float, freq.split('-'))
+            freq_filter |= Q(frequency__gte=min_freq, frequency__lte=max_freq)
+        cpus = cpus.filter(freq_filter)
 
     sort = req.GET.get('sort')
     
@@ -52,14 +56,14 @@ def CPUs_view(req):
     selected_brands = req.GET.getlist('brand')
     selected_sockets = req.GET.getlist('socket')
     selected_cores = req.GET.getlist('cores')
-    selected_threads = req.GET.getlist('cores')
-    selected_freqs = req.GET.getlist('cores')
+    selected_threads = req.GET.getlist('threads')
+    selected_freqs = req.GET.getlist('frequency')
 
     brands = ['Intel', 'AMD']
     sockets = ['AM4', 'AM5', '1851', '1700', '1200', '1151']
     cores = ['6', '8', '10', '12', '14', '16', '24']
     threads = ['8', '12', '16', '20', '32']
-    frequencies = ['2-2.5', '2.6-3', '3.1-3.6', '3.7-4.2', '4.3+']
+    frequencies = ['2-2.5', '2.6-3', '3.1-3.6', '3.7-4.2', '4.3-5']
 
     context = {
         'processors': cpus,
@@ -83,3 +87,39 @@ def cpu_detail(req, cpu_id):
         'cpu': cpu,
     }
     return render(req, 'components/cpu_detail.html', context)
+
+def Motherboards_view(req):
+    motherboards = Motherboard.objects.all()
+
+    # Фільтрація за ціною
+    min_price = req.GET.get('min_price', None)
+    max_price = req.GET.get('max_price', None)
+
+    if min_price and max_price:
+        motherboards = motherboards.filter(price__gte=min_price, price__lte=max_price)
+
+    # Фільтрація за брендом
+    selected_brands = req.GET.getlist('brand')
+    if selected_brands:
+        motherboards = motherboards.filter(brand__in=selected_brands)
+
+    # Фільтрація за сокетом
+    selected_sockets = req.GET.getlist('socket')
+    if selected_sockets:
+        motherboards = motherboards.filter(socket__in=selected_sockets)
+
+    selected_brands = req.GET.getlist('brand')
+    selected_sockets = req.GET.getlist('socket')
+
+    brands = ['AsRock', 'Asus', 'Gigabyte', 'MSI']
+    sockets = ['AM4', 'AM5', '1851', '1700', '1200', '1151']
+
+    context = {
+        'mbs': motherboards,
+        'brands': brands,
+        'sockets': sockets,
+        'selected_brands': selected_brands,
+        'selected_sockets': selected_sockets,
+    }
+    
+    return render(req, 'components/motherboards.html', context)

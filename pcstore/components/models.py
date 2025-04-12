@@ -1,14 +1,16 @@
 from django.db import models
+from django.apps import apps
 
 # Create your models here.
 class Product(models.Model):
     name = models.CharField(max_length=255)
+    display_name = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=20, decimal_places=2)
     quantity = models.IntegerField()
     image = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.display_name
 
 class CPU(Product):
     brand = models.CharField(max_length=25)
@@ -17,3 +19,14 @@ class CPU(Product):
     threads = models.IntegerField()
     frequency = models.FloatField(help_text="GHz")
     TDP = models.IntegerField(help_text="Watt", default=0)
+
+class Motherboard(Product):
+    brand = models.CharField(max_length=25)
+    socket = models.CharField(max_length=25)
+    chipset = models.CharField(max_length=25)
+    form_factor = models.CharField(max_length=25, default="ATX")
+    RAM_slots = models.IntegerField()
+    RAM_type = models.CharField(max_length=25)
+    M2_slots = models.IntegerField()
+    WiFi = models.BooleanField(default=False)
+    Bluetooth = models.BooleanField(default=False)
