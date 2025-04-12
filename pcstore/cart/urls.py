@@ -10,6 +10,7 @@ urlpatterns = [
     path('add/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
     path('remove/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
     path('clear_cart/', views.clear_cart, name='clear_cart'),
+<<<<<<< HEAD
 =======
     path('add/<int:cpu_id>/', views.add_to_cart, name='add_to_cart'),
 =======
@@ -17,4 +18,6 @@ urlpatterns = [
 >>>>>>> f236aa0 (update cart)
     path('remove/<int:item_id>/', views.remove_from_cart, name='remove_from_cart'),
 >>>>>>> 4efcee2 (Add cart)
+=======
+>>>>>>> d39d9a1 (add clear_cart)
 ]

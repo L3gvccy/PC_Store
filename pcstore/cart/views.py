@@ -14,14 +14,20 @@ from components.models import Product
 
 @login_required
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> d39d9a1 (add clear_cart)
 def clear_cart(request):
     CartItem.objects.filter(user=request.user).delete()
     messages.success(request, "Ваш кошик очищено.")
     return redirect('view_cart')
 
 @login_required
+<<<<<<< HEAD
 =======
 >>>>>>> 4efcee2 (Add cart)
+=======
+>>>>>>> d39d9a1 (add clear_cart)
 def remove_from_cart(request, item_id):
     item = get_object_or_404(CartItem, id=item_id, user=request.user)
     item.delete()

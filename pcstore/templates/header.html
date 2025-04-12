@@ -107,9 +107,13 @@
               <li><a class="dropdown-item" href="#">Блоки живлення</a></li>
               <li><a class="dropdown-item" href="#">Системи охолодження</a></li>
               <li><a class="dropdown-item" href="#">Водяне охолодження</a></li>
+<<<<<<< HEAD
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Інші</a></li>
 >>>>>>> ff3728d (Design update, registration redirect fix)
+=======
+              <li><a class="dropdown-item" href="#">Корпуси</a></li>
+>>>>>>> d39d9a1 (add clear_cart)
             </ul>
           </li>
   
@@ -179,6 +183,7 @@
               {% if user.is_authenticated %}
                 <li><span class="dropdown-item-text">Привіт, {{ user.username }}!</span></li>
                 <li><a class="dropdown-item" href="/account/profile/">Мій кабінет</a></li>
+<<<<<<< HEAD
                 <li><a class="dropdown-item" href="/order/my_orders/">Мої замовлення</a></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/account/logout/">Вийти</a></li>
@@ -194,6 +199,9 @@
               {% if user.is_authenticated %}
                 <li><span class="dropdown-item-text">Привіт, {{ user.username }}!</span></li>
                 <li><a class="dropdown-item" href="/account/profile/">Мій кабінет</a></li>
+=======
+                <li><a class="dropdown-item" href="/orders/myorders/">Мої замовлення</a></li>
+>>>>>>> d39d9a1 (add clear_cart)
                 <li><hr class="dropdown-divider"></li>
                 <li><a class="dropdown-item" href="/account/logout/">Вийти</a></li>
               {% else %}
