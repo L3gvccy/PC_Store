@@ -14,7 +14,12 @@
     <main class="flex-grow-1">
         <div class="card mt-4 mb-4 border-1 rounded-5 bg-dark border-mainpurple text-light" style="width: 100%; max-width: 500px; margin: auto; box-shadow: 4px 4px 15px rgba(131,65,210,0.4);">
             <div class="card-body">
-                <h5 class="card-title text-center mb-4">Мій кабінет</h5>
+                <h4 class="card-title text-center mb-2">Мій кабінет</h4>
+                <hr>
+                <h5 class="card-title text-center mb-2">Замовлення</h5>
+                <a href="/orders/myorders/" class="btn btn-outline-mainpurple w-100 rounded-pill">Переглянути мої замовлення</a>
+                <hr>
+                <h5 class="card-title text-center mb-2">Мої дані</h5>
                 <form method="post">
                     {% csrf_token %}
 
