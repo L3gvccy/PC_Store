@@ -1,5 +1,8 @@
 from django.db import models
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3cce6bf (add motherboards)
 from django.apps import apps
 
 # Create your models here.
@@ -24,12 +27,13 @@ class CPU(models.Model):
 =======
 class Product(models.Model):
     name = models.CharField(max_length=255)
+    display_name = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=20, decimal_places=2)
     quantity = models.IntegerField()
     image = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.name
+        return self.display_name
 
 class CPU(Product):
 >>>>>>> 98f1f15 (change cpu model)
@@ -40,6 +44,9 @@ class CPU(Product):
     frequency = models.FloatField(help_text="GHz")
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3cce6bf (add motherboards)
     TDP = models.IntegerField(help_text="Watt", default=0)
 
 class Motherboard(Product):
@@ -52,6 +59,7 @@ class Motherboard(Product):
     M2_slots = models.IntegerField()
     WiFi = models.BooleanField(default=False)
     Bluetooth = models.BooleanField(default=False)
+<<<<<<< HEAD
 
 class GPU(Product):
     brand = models.CharField(max_length=25)
@@ -123,3 +131,5 @@ class Case(Product):
 =======
     TDP = models.IntegerField(help_text="Watt", default=0)
 >>>>>>> 98f1f15 (change cpu model)
+=======
+>>>>>>> 3cce6bf (add motherboards)

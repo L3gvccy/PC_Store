@@ -10,7 +10,10 @@ class CartItem(models.Model):
         unique_together = ('user', 'product') 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     def __str__(self):
         return f"{self.cpu.name} x{self.quantity} для {self.user.username}"
 >>>>>>> 4efcee2 (Add cart)
+=======
+>>>>>>> 3cce6bf (add motherboards)

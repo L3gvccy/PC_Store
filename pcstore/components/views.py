@@ -1,6 +1,7 @@
 from django.shortcuts import render
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.db.models import Q
 from .models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 =======
@@ -9,6 +10,10 @@ from .models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 from .models import CPU
 from .forms import CPUFilterForm
 >>>>>>> ec58bea (add cpus page)
+=======
+from django.db.models import Q
+from .models import CPU, Motherboard
+>>>>>>> 3cce6bf (add motherboards)
 
 # Create your views here.
 
@@ -58,14 +63,20 @@ def CPUs_view(req):
     selected_frequencies = req.GET.getlist('frequency')
     if selected_frequencies:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3cce6bf (add motherboards)
         freq_filter = Q()
         for freq in selected_frequencies:
             min_freq, max_freq = map(float, freq.split('-'))
             freq_filter |= Q(frequency__gte=min_freq, frequency__lte=max_freq)
         cpus = cpus.filter(freq_filter)
+<<<<<<< HEAD
 =======
         cpus = cpus.filter(frequency__in=selected_frequencies)
 >>>>>>> ec58bea (add cpus page)
+=======
+>>>>>>> 3cce6bf (add motherboards)
 
     sort = req.GET.get('sort')
     
@@ -78,17 +89,23 @@ def CPUs_view(req):
     selected_sockets = req.GET.getlist('socket')
     selected_cores = req.GET.getlist('cores')
 <<<<<<< HEAD
+<<<<<<< HEAD
     selected_threads = req.GET.getlist('threads')
     selected_freqs = req.GET.getlist('frequency')
 =======
     selected_threads = req.GET.getlist('cores')
     selected_freqs = req.GET.getlist('cores')
 >>>>>>> ec58bea (add cpus page)
+=======
+    selected_threads = req.GET.getlist('threads')
+    selected_freqs = req.GET.getlist('frequency')
+>>>>>>> 3cce6bf (add motherboards)
 
     brands = ['Intel', 'AMD']
     sockets = ['AM4', 'AM5', '1851', '1700', '1200', '1151']
     cores = ['6', '8', '10', '12', '14', '16', '24']
     threads = ['8', '12', '16', '20', '32']
+<<<<<<< HEAD
 <<<<<<< HEAD
     frequencies = ['2-2.5', '2.6-3', '3.1-3.6', '3.7-4.2', '4.3-5']
 
@@ -97,6 +114,9 @@ def CPUs_view(req):
         'selected_sort': sort,
 =======
     frequencies = ['2-2.5', '2.6-3', '3.1-3.6', '3.7-4.2', '4.3+']
+=======
+    frequencies = ['2-2.5', '2.6-3', '3.1-3.6', '3.7-4.2', '4.3-5']
+>>>>>>> 3cce6bf (add motherboards)
 
     context = {
         'processors': cpus,
@@ -125,6 +145,9 @@ def cpu_detail(req, cpu_id):
         'cpu': cpu,
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3cce6bf (add motherboards)
     return render(req, 'components/cpu_detail.html', context)
 
 def Motherboards_view(req):
@@ -147,6 +170,7 @@ def Motherboards_view(req):
     if selected_sockets:
         motherboards = motherboards.filter(socket__in=selected_sockets)
 
+<<<<<<< HEAD
     selected_chipsets = req.GET.getlist('chipset')
     if selected_chipsets:
         motherboards = motherboards.filter(chipset__in=selected_chipsets)
@@ -726,3 +750,20 @@ def case_detail(req, case_id):
 =======
     return render(req, 'components/cpu_detail.html', context)
 >>>>>>> 31afb41 (update cart, add cpu detail, add cart item cout)
+=======
+    selected_brands = req.GET.getlist('brand')
+    selected_sockets = req.GET.getlist('socket')
+
+    brands = ['AsRock', 'Asus', 'Gigabyte', 'MSI']
+    sockets = ['AM4', 'AM5', '1851', '1700', '1200', '1151']
+
+    context = {
+        'mbs': motherboards,
+        'brands': brands,
+        'sockets': sockets,
+        'selected_brands': selected_brands,
+        'selected_sockets': selected_sockets,
+    }
+    
+    return render(req, 'components/motherboards.html', context)
+>>>>>>> 3cce6bf (add motherboards)

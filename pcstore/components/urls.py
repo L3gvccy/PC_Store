@@ -6,6 +6,7 @@ urlpatterns = [
     path('', views.components),
     path('cpus/', views.CPUs_view, name='cpus'),
     path('cpu_detail/<int:cpu_id>/', views.cpu_detail, name='cpu_detail'),
+<<<<<<< HEAD
     path('motherboards/', views.Motherboards_view, name='motherboards'),
     path('motherboard_detail/<int:motherboard_id>/', views.motherboard_detail, name='motherboard_detail'),
     path('gpus/', views.GPUs_view, name='gpus'),
@@ -29,4 +30,7 @@ urlpatterns = [
 =======
     path('cpu_detail/<int:cpu_id>/', views.cpu_detail, name='cpu_detail'),
 >>>>>>> 31afb41 (update cart, add cpu detail, add cart item cout)
+=======
+    path('motherboards/', views.Motherboards_view),
+>>>>>>> 3cce6bf (add motherboards)
 ]
