@@ -2,6 +2,7 @@ from django.contrib import admin
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from .models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 
 # Register your models here.
@@ -26,8 +27,15 @@ admin.site.register(CPU)
 >>>>>>> ec58bea (add cpus page)
 =======
 from .models import CPU, Motherboard
+=======
+from .models import CPU, Motherboard, GPU
+>>>>>>> f3827ea (Update CPU)
 
 # Register your models here.
 admin.site.register(CPU)
 admin.site.register(Motherboard)
+<<<<<<< HEAD
 >>>>>>> 3cce6bf (add motherboards)
+=======
+admin.site.register(GPU)
+>>>>>>> f3827ea (Update CPU)
