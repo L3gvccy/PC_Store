@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <title>Охолодження для процесору | CorePC</title>
+</head>
+<body class="d-flex flex-column min-vh-100 bg-dark">
+    
+    {% include 'header.html' %}
+
+    <div class="container my-2">
+        <a href="/components/coolers/" class="btn text-secondary">← Назад до категорії</a>
+        <h2 class="text-light p-2">{{ cooler }}</h2>
+
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ cooler.image }}" alt="{{ cooler.name }}" class="img-fluid rounded">
+            </div>
+            <div class="col-md-8 text-light">
+                <h2 class="text-center">Характеристики кулера {{ cooler }}</h2>
+                <table class="table table-dark table-striped table-hover my-4">
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="col-5">Бренд</th>
+                            <td>{{ cooler.brand }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-5">Кількість теплотрубок</th>
+                            <td>{{ cooler.heat_tube_number }}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-5">Висота</th>
+                            <td>{{ cooler.height }} мм</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-5">Підсвічування</th>
+                            <td>{% if cooler.argb %} З ARBG підсвічуванням {% else %} Без ARBG підсвічування {% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="col-5">Максимальне TDP</th>
+                            <td>{{ cooler.max_tdp }} Вт</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="justify-content-between d-flex align-items-center">
+                    <h4 class="text-light m-0">Ціна: {{ cooler.price }} ₴</h4>
+                    <a href="{% url 'add_to_cart' cooler.id %}" class="btn btn-mainpurple">Додати до кошика</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer.html' %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>
