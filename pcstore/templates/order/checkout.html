@@ -17,42 +17,50 @@
 
     <div class="row">
         <!-- Персональні дані -->
-        <div class="col-md-6 mb-4">
-            <h4 class="text-light">Ваші дані:</h4>
-            <ul class="list-group bg-dark text-light">
-                <li class="list-group-item bg-dark text-light">Ім’я: {{ user.first_name }}</li>
-                <li class="list-group-item bg-dark text-light">Прізвище: {{ user.last_name }}</li>
-                <li class="list-group-item bg-dark text-light">Email: {{ user.email }}</li>
-                <li class="list-group-item bg-dark text-light">Логін: {{ user.username }}</li>
-            </ul>
+        <div class="col-md-6 mb-4 order-2 order-md-1">
+            <!-- Форма замовлення -->
+            <form method="post">
+              <h4 class="text-light">Ваші дані:</h4>
+              <label for="first_name" class="form-label">Логін</label>
+              <input type="text" name="login" class="form-control rounded-pill focus-ring focus-ring-mainpurple mb-2" readonly value="{{ user.username }}">
+
+              <label for="first_name" class="form-label">Ім'я</label>
+              <input type="text" name="first_name" class="form-control rounded-pill focus-ring focus-ring-mainpurple mb-2" required value="{{ user.first_name }}">
+              
+              <label for="last_name" class="form-label">Прізвище</label>
+              <input type="text" name="last_name" class="form-control rounded-pill focus-ring focus-ring-mainpurple mb-2" required value="{{ user.last_name }}">
+
+              <label for="email" class="form-label">Email</label>
+              <input type="email" name="email" class="form-control rounded-pill focus-ring focus-ring-mainpurple mb-2" required value="{{ user.email }}">
+
+              <label for="phone_number" class="form-label">Номер телефону</label>
+              <input type="text" name="phone_number" class="form-control rounded-pill focus-ring focus-ring-mainpurple mb-2" required>
+
+              {% csrf_token %}
+              <h5>{{ form.delivery_type.label }}</h5>
+              {{ form.delivery_type }}
+            
+              <div id="post_company_field" style="display: none;">
+                {{ form.post_company.label_tag }}
+                {{ form.post_company }}
+              </div>
+            
+              <button type="submit" class="btn btn-mainpurple mt-4">Підтвердити замовлення</button>
+          </form>
         </div>
 
         <!-- Товари в кошику -->
-        <div class="col-md-6 mb-4">
+        <div class="col-md-6 mb-4 order-1 order-md-2">
             <h4 class="text-light">Ваше замовлення:</h4>
             <ul class="list-group bg-dark text-light">
                 {% for item in cart_items %}
                 <li class="list-group-item bg-dark text-light">
-                    {{ item.product.name }} ({{ item.quantity }} шт) — {{ item.product.price }} ₴
+                    {{ item.product }} ({{ item.quantity }} шт) — {{ item.product.price }} ₴
                 </li>
                 {% endfor %}
             </ul>
         </div>
     </div>
-
-    <!-- Форма замовлення -->
-    <form method="post">
-        {% csrf_token %}
-        {{ form.delivery_type.label }}<br>
-        {{ form.delivery_type }}
-      
-        <div id="post_company_field" style="display: none;">
-          {{ form.post_company.label_tag }}
-          {{ form.post_company }}
-        </div>
-      
-        <button type="submit" class="btn btn-mainpurple mt-4" >Підтвердити замовлення</button>
-      </form>
       
 </div>
 
@@ -77,8 +85,5 @@
       togglePostCompany();
     });
 </script>
-    
-  
-
 </body>
 </html>
