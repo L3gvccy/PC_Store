@@ -34,8 +34,10 @@ def decrease_quantity(request, item_id):
         item.delete()
     return redirect('view_cart')
 
-@login_required
 def view_cart(request):
+    if not request.user.is_authenticated:
+        messages.error(request, "Вам потрібно увійти в систему, щоб переглянути кошик.")
+        return redirect(request.META.get('HTTP_REFERER', '/'))
     cart_items = CartItem.objects.filter(user=request.user)
     for item in cart_items:
         item.total_price = item.product.price * item.quantity
