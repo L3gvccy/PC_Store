@@ -44,10 +44,13 @@ def checkout_view(request):
             order.last_name = request.POST['last_name']
             order.email = request.POST['email']
             order.phone_number = request.POST['phone_number']
+<<<<<<< HEAD
             order.total_price = total_price
 =======
             order.user = user
 >>>>>>> c4c30a5 (Add order)
+=======
+>>>>>>> 77ce071 (order views update)
             order.save()
 
             for item in cart_items:
