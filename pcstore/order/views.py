@@ -17,6 +17,7 @@ def checkout_view(request):
     user = request.user
     cart_items = CartItem.objects.filter(user=user)
 <<<<<<< HEAD
+<<<<<<< HEAD
     total_price = sum(item.product.price * item.quantity for item in cart_items)
 
     if cart_items.count() == 0:
@@ -24,6 +25,9 @@ def checkout_view(request):
         return redirect(request.META.get('HTTP_REFERER', '/'))
 =======
 >>>>>>> c4c30a5 (Add order)
+=======
+    total_price = sum(item.product.price * item.quantity for item in cart_items)
+>>>>>>> 0045f6f (add my_orders)
 
     if cart_items.count() == 0:
         messages.error(request, "Додайте хочаб один товар, щоб створити замволення.")
@@ -45,12 +49,16 @@ def checkout_view(request):
             order.email = request.POST['email']
             order.phone_number = request.POST['phone_number']
 <<<<<<< HEAD
+<<<<<<< HEAD
             order.total_price = total_price
 =======
             order.user = user
 >>>>>>> c4c30a5 (Add order)
 =======
 >>>>>>> 77ce071 (order views update)
+=======
+            order.total_price = total_price
+>>>>>>> 0045f6f (add my_orders)
             order.save()
 
             for item in cart_items:
@@ -75,6 +83,7 @@ def checkout_view(request):
         'user': user,
         'cart_items': cart_items,
 <<<<<<< HEAD
+<<<<<<< HEAD
         'form': form,
         'total_price': total_price,
     }
@@ -83,6 +92,10 @@ def checkout_view(request):
 
 =======
         'form': form
+=======
+        'form': form,
+        'total_price': total_price,
+>>>>>>> 0045f6f (add my_orders)
     }
 >>>>>>> c4c30a5 (Add order)
     return render(request, 'order/checkout.html', context)
@@ -90,6 +103,9 @@ def checkout_view(request):
 
 def order_success(request):
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0045f6f (add my_orders)
     return render(request, 'order/order_success.html')
 
 def view_orders(request):
@@ -101,7 +117,11 @@ def view_orders(request):
     context = {
         'orders': orders,
     }
+<<<<<<< HEAD
     return render(request, 'order/my_orders.html', context)
 =======
     return render(request, 'order/order_success.html')
 >>>>>>> c4c30a5 (Add order)
+=======
+    return render(request, 'order/my_orders.html', context)
+>>>>>>> 0045f6f (add my_orders)

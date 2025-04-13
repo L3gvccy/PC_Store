@@ -50,9 +50,13 @@ class Order(models.Model):
     post_company = models.CharField(max_length=50, choices=POST_COMPANIES, blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="Очікує", verbose_name="Order status")
 <<<<<<< HEAD
+<<<<<<< HEAD
     total_price = models.DecimalField(max_digits=20, decimal_places=2, default=0.00)
 =======
 >>>>>>> c4c30a5 (Add order)
+=======
+    total_price = models.DecimalField(max_digits=20, decimal_places=2, default=0.00)
+>>>>>>> 0045f6f (add my_orders)
 
     def __str__(self):
         return f"Замовлення #{self.pk} від {self.user.username}"
