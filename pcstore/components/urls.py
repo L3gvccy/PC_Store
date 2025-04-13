@@ -10,4 +10,6 @@ urlpatterns = [
     path('gpu_detail/<int:gpu_id>/', views.gpu_detail, name='gpu_detail'),
     path('rams/', views.RAMs_view),
     path('ram_detail/<int:ram_id>/', views.ram_detail, name='ram_detail'),
+    path('storages/', views.Storages_view),
+    path('storage_detail/<int:storage_id>/', views.storage_detail, name='storage_detail'),
 ]
