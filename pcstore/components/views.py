@@ -7,6 +7,9 @@ from .models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 def landing(req):
     return render(req, 'components/landing.html')
 
+def components(req):
+    return render(req, 'components/components.html')
+
 def CPUs_view(req):
     cpus = CPU.objects.all()
 
