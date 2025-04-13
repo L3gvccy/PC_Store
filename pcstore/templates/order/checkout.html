@@ -37,15 +37,16 @@
               <input type="text" name="phone_number" class="form-control rounded-pill focus-ring focus-ring-mainpurple mb-2" required>
 
               {% csrf_token %}
-              <h5>{{ form.delivery_type.label }}</h5>
+              <h4>{{ form.delivery_type.label }}:</h4>
               {{ form.delivery_type }}
             
               <div id="post_company_field" style="display: none;">
                 {{ form.post_company.label_tag }}
                 {{ form.post_company }}
               </div>
-            
-              <button type="submit" class="btn btn-mainpurple mt-4">Підтвердити замовлення</button>
+              
+              <h5 class="mt-2">Загальна сума: {{ total_price }} ₴</h5>
+              <button type="submit" class="btn btn-mainpurple my-2">Підтвердити замовлення</button>
           </form>
         </div>
 
