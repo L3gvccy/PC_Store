@@ -108,18 +108,38 @@ def Motherboards_view(req):
     if selected_sockets:
         motherboards = motherboards.filter(socket__in=selected_sockets)
 
-    selected_brands = req.GET.getlist('brand')
-    selected_sockets = req.GET.getlist('socket')
+    selected_chipsets = req.GET.getlist('chipset')
+    if selected_chipsets:
+        motherboards = motherboards.filter(chipset__in=selected_chipsets)
+
+    # Фільтрація за форм-фактором
+    selected_form_factors = req.GET.getlist('form_factor')
+    if selected_form_factors:
+        motherboards = motherboards.filter(form_factor__in=selected_form_factors)
+
+    # Фільтрація за типом ОЗП
+    selected_ram_types = req.GET.getlist('ram_type')
+    if selected_ram_types:
+        motherboards = motherboards.filter(RAM_type__in=selected_ram_types)
 
     brands = ['AsRock', 'Asus', 'Gigabyte', 'MSI']
-    sockets = ['AM4', 'AM5', '1851', '1700', '1200', '1151']
+    sockets = ['AM4', 'AM5', '1851', '1700', '1200']
+    chipsets = ['B550', 'B650', 'B850', 'X870', 'B560', 'H510', 'B760', 'Z790', 'B860', 'Z890']
+    ram_types = ['DDR4', 'DDR5']
+    form_factors = ['ATX', 'Micro-ATX', 'Mini-ITX']
 
     context = {
         'mbs': motherboards,
         'brands': brands,
         'sockets': sockets,
+        'chipsets': chipsets,
+        'form_factors': form_factors,
+        'ram_types': ram_types,
         'selected_brands': selected_brands,
         'selected_sockets': selected_sockets,
+        'selected_chipsets': selected_chipsets,
+        'selected_form_factors': selected_form_factors,
+        'selected_ram_types': selected_ram_types,
     }
     
     return render(req, 'components/motherboards.html', context)
@@ -333,3 +353,159 @@ def storage_detail(req, storage_id):
         'storage': storage,
     }
     return render(req, 'components/storage_detail.html', context)
+
+def Coolers_view(req):
+    coolers = Cooler.objects.all()
+
+    # Фільтрація за ціною
+    min_price = req.GET.get('min_price', None)
+    max_price = req.GET.get('max_price', None)
+    if min_price and max_price:
+        coolers = coolers.filter(price__gte=min_price, price__lte=max_price)
+
+    # Фільтрація за брендом
+    selected_brands = req.GET.getlist('brand')
+    if selected_brands:
+        coolers = coolers.filter(brand__in=selected_brands)
+
+    # Фільтрація за к-тю теплотрубок
+    selected_heat_tube_numbers = req.GET.getlist('heat_tube_number')
+    if selected_heat_tube_numbers:
+        coolers = coolers.filter(heat_tube_number__in=selected_heat_tube_numbers)
+
+    # Фільтрація за висотою
+    selected_heights = req.GET.getlist('height')
+    if selected_heights:
+        height_filter = Q()
+        for height in selected_heights:
+            min_height, max_height = map(float, height.split('-'))
+            height_filter |= Q(height__gte=min_height, height__lte=max_height)
+        coolers = coolers.filter(height_filter)
+
+    # Фільтрація за RGB
+    selected_argbs = req.GET.getlist('argb')
+    if 'З ARGB підсвіткою' in selected_argbs and 'Без ARGB підсвітки' not in selected_argbs:
+        coolers = coolers.filter(argb=True)
+    elif 'Без ARGB підсвітки' in selected_argbs and 'З ARGB підсвіткою' not in selected_argbs:
+        coolers = coolers.filter(argb=False)
+
+    # Фільтрація за максимальним TDP
+    selected_max_tdps = req.GET.getlist('max_tdp')
+    if selected_max_tdps:
+        max_tdp_filter = Q()
+        for max_tdp in selected_max_tdps:
+            min_max_tdps, max_max_tdps = map(float, max_tdp.split('-'))
+            max_tdp_filter |= Q(max_tdp__gte=min_max_tdps, max_tdp__lte=max_max_tdps)
+        coolers = coolers.filter(max_tdp_filter)
+
+    # Сортування
+    sort = req.GET.get('sort')
+    if sort == 'price_asc':
+        coolers = coolers.order_by('price')
+    elif sort == 'price_desc':
+        coolers = coolers.order_by('-price')
+
+    # Варіанти для фільтрів
+    brands = ['Deepcool', 'Arctic', 'ID Cooling']
+    heat_tube_numbers = ['4', '5', '6', '7']
+    heights = ['51-100', '101-150', '151-200']
+    argbs = ['З ARGB підсвіткою', 'Без ARGB підсвітки']
+    max_tdps = ['0-100', '101-150', '151-200', '201-250']
+
+    context = {
+        'coolers': coolers,
+        'brands': brands,
+        'heat_tube_numbers': heat_tube_numbers,
+        'heights': heights,
+        'argbs': argbs,
+        'max_tdps': max_tdps,
+        'selected_brands': selected_brands,
+        'selected_heat_tube_numbers': selected_heat_tube_numbers,
+        'selected_heights': selected_heights,
+        'selected_argbs': selected_argbs,
+        'selected_max_tdps': selected_max_tdps,
+    }
+
+    return render(req, 'components/coolers.html', context)
+
+def cooler_detail(req, cooler_id):
+    cooler = Cooler.objects.get(id=cooler_id)
+    context = {
+        'cooler': cooler,
+    }
+    return render(req, 'components/cooler_detail.html', context)
+
+def AIOSs_view(req):
+    aios = AIO.objects.all()
+
+    # Фільтрація за ціною
+    min_price = req.GET.get('min_price', None)
+    max_price = req.GET.get('max_price', None)
+    if min_price and max_price:
+        aios = aios.filter(price__gte=min_price, price__lte=max_price)
+
+    # Фільтрація за брендом
+    selected_brands = req.GET.getlist('brand')
+    if selected_brands:
+        aios = aios.filter(brand__in=selected_brands)
+
+    # Фільтрація за к-тю теплотрубок
+    selected_heat_tube_numbers = req.GET.getlist('heat_tube_number')
+    if selected_heat_tube_numbers:
+        aios = aios.filter(heat_tube_number__in=selected_heat_tube_numbers)
+
+    # Фільтрація за довжиною
+    selected_sizes = req.GET.getlist('size')
+    if selected_sizes:
+        aios = aios.filter(size__in=selected_sizes)
+
+    # Фільтрація за RGB
+    selected_argbs = req.GET.getlist('argb')
+    if 'З ARGB підсвіткою' in selected_argbs and 'Без ARGB підсвітки' not in selected_argbs:
+        aios = aios.filter(argb=True)
+    elif 'Без ARGB підсвітки' in selected_argbs and 'З ARGB підсвіткою' not in selected_argbs:
+        aios = aios.filter(argb=False)
+
+    # Фільтрація за максимальним TDP
+    selected_max_tdps = req.GET.getlist('max_tdp')
+    if selected_max_tdps:
+        max_tdp_filter = Q()
+        for max_tdp in selected_max_tdps:
+            min_max_tdps, max_max_tdps = map(float, max_tdp.split('-'))
+            max_tdp_filter |= Q(max_tdp__gte=min_max_tdps, max_tdp__lte=max_max_tdps)
+        aios = aios.filter(max_tdp_filter)
+
+    # Сортування
+    sort = req.GET.get('sort')
+    if sort == 'price_asc':
+        aios = aios.order_by('price')
+    elif sort == 'price_desc':
+        aios = aios.order_by('-price')
+
+    # Варіанти для фільтрів
+    brands = ['Deepcool', 'Arctic', 'MSI']
+    sizes = ['120', '240', '360']
+    argbs = ['З ARGB підсвіткою', 'Без ARGB підсвітки']
+    max_tdps = ['151-250', '251-350']
+
+    context = {
+        'aios': aios,
+        'brands': brands,
+        'sizes': sizes,
+        'argbs': argbs,
+        'max_tdps': max_tdps,
+        'selected_brands': selected_brands,
+        'selected_heat_tube_numbers': selected_heat_tube_numbers,
+        'selected_sizes': selected_sizes,
+        'selected_argbs': selected_argbs,
+        'selected_max_tdps': selected_max_tdps,
+    }
+
+    return render(req, 'components/aios.html', context)
+
+def aio_detail(req, aio_id):
+    aio = AIO.objects.get(id=aio_id)
+    context = {
+        'aio': aio,
+    }
+    return render(req, 'components/aio_detail.html', context)
