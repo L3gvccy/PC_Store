@@ -57,9 +57,23 @@ def add_to_cart(request, product_id):
     cart_item, created = CartItem.objects.get_or_create(user=request.user, product = product)
 
     if not created:
+        if cart_item.quantity >= product.quantity:
+            messages.warning(request, "Неможливо додати більше. Товар закінчується на складі.")
+            return redirect(request.META.get('HTTP_REFERER', '/'))
         cart_item.quantity += 1
         cart_item.save()
 
     messages.success(request, f"Товар {product.name} успішно додано до кошика.")
 
     return redirect(request.META.get('HTTP_REFERER', '/'))
+
+def increase_quantity(request, item_id):
+    item = get_object_or_404(CartItem, id=item_id, user=request.user)
+
+    if item.quantity < item.product.quantity:
+        item.quantity += 1
+        item.save()
+    else:
+        messages.warning(request, "Неможливо додати більше. Товар закінчується на складі.")
+
+    return redirect('view_cart')  

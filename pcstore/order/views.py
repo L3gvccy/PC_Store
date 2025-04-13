@@ -18,6 +18,8 @@ def checkout_view(request):
         form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
+            if order.delivery_type != 'post_office':
+                order.post_company = '---------'
             order.user = user
             order.save()
 
