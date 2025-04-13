@@ -51,6 +51,9 @@ def decrease_quantity(request, item_id):
     return redirect('view_cart')
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> a834df8 (update cart view)
 def view_cart(request):
     if not request.user.is_authenticated:
         messages.error(request, "Вам потрібно увійти в систему, щоб переглянути кошик.")
