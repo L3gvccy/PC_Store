@@ -4,21 +4,29 @@ from django.contrib import admin
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 from .models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 =======
 from .models import CPU, Motherboard, GPU, RAM
 >>>>>>> ef1f7ff (Add RAM)
+=======
+from .models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
+>>>>>>> 5fc22e5 (Add storages)
 
 # Register your models here.
 admin.site.register(CPU)
 admin.site.register(Motherboard)
 admin.site.register(GPU)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 5fc22e5 (Add storages)
 admin.site.register(RAM)
 admin.site.register(Storage)
 admin.site.register(PSU)
 admin.site.register(Cooler)
 admin.site.register(AIO)
+<<<<<<< HEAD
 admin.site.register(Case)
 =======
 
@@ -47,3 +55,6 @@ admin.site.register(GPU)
 =======
 admin.site.register(RAM)
 >>>>>>> ef1f7ff (Add RAM)
+=======
+admin.site.register(Case)
+>>>>>>> 5fc22e5 (Add storages)

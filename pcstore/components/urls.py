@@ -46,5 +46,10 @@ urlpatterns = [
 =======
     path('rams/', views.RAMs_view),
     path('ram_detail/<int:ram_id>/', views.ram_detail, name='ram_detail'),
+<<<<<<< HEAD
 >>>>>>> ef1f7ff (Add RAM)
+=======
+    path('storages/', views.Storages_view),
+    path('storage_detail/<int:storage_id>/', views.storage_detail, name='storage_detail'),
+>>>>>>> 5fc22e5 (Add storages)
 ]
