@@ -21,6 +21,10 @@ def checkout_view(request):
             if order.delivery_type != 'post_office':
                 order.post_company = '---------'
             order.user = user
+            order.first_name = request.POST['first_name']
+            order.last_name = request.POST['last_name']
+            order.email = request.POST['email']
+            order.phone_number = request.POST['phone_number']
             order.save()
 
             for item in cart_items:
