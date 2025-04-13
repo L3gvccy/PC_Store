@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Q
-from .models import CPU, Motherboard, GPU, RAM
+from .models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 
 # Create your views here.
 
@@ -130,8 +130,6 @@ def motherboard_detail(req, motherboard_id):
         'mb': mb,
     }
     return render(req, 'components/motherboard_detail.html', context)
-
-
 
 def GPUs_view(req):
     gpus = GPU.objects.all()
@@ -268,3 +266,70 @@ def ram_detail(req, ram_id):
         'ram': ram,
     }
     return render(req, 'components/ram_detail.html', context)
+
+def Storages_view(req):
+    storages = Storage.objects.all()
+
+    # Фільтрація за ціною
+    min_price = req.GET.get('min_price', None)
+    max_price = req.GET.get('max_price', None)
+    if min_price and max_price:
+        storages = storages.filter(price__gte=min_price, price__lte=max_price)
+
+    # Фільтрація за брендом
+    selected_brands = req.GET.getlist('brand')
+    if selected_brands:
+        storages = storages.filter(brand__in=selected_brands)
+
+    # Фільтрація за обсягом
+    selected_capacities = req.GET.getlist('capacity')
+    if selected_capacities:
+        storages = storages.filter(capacity__in=selected_capacities)
+
+    # Фільтрація за типом накопичувача
+    selected_storage_types = req.GET.getlist('storage_type')
+    if selected_storage_types:
+        storages = storages.filter(storage_type__in=selected_storage_types)
+
+    # Фільтрація за швидкістю
+    selected_speeds = req.GET.getlist('speed')
+    if selected_speeds:
+        speed_filter = Q()
+        for speed in selected_speeds:
+            min_speed, max_speed = map(float, speed.split('-'))
+            speed_filter |= Q(speed__gte=min_speed, speed__lte=max_speed)
+        storages = storages.filter(speed_filter)
+
+    # Сортування
+    sort = req.GET.get('sort')
+    if sort == 'price_asc':
+        storages = storages.order_by('price')
+    elif sort == 'price_desc':
+        storages = storages.order_by('-price')
+
+    # Варіанти для фільтрів
+    brands = ['Adata', 'Kingston', 'Samsung', 'Toshiba']
+    capacities = ['128 GB','256 GB','512 GB','1 TB','2 TB', '4 TB']
+    storage_types = ['HDD', 'SSD', 'NVMe']
+    speeds = ['0-1000', '1001-2000', '2001-3000', '3001-4000', '4001-5000', '5001-6000', '6001-7000', '7001-8000', '8001-9000', '9001-10000']
+
+    context = {
+        'storages': storages,
+        'brands': brands,
+        'capacities': capacities,
+        'storage_types': storage_types,
+        'speeds': speeds,
+        'selected_brands': selected_brands,
+        'selected_capacities': selected_capacities,
+        'selected_storage_types': selected_storage_types,
+        'selected_speeds': selected_speeds,
+    }
+
+    return render(req, 'components/storages.html', context)
+
+def storage_detail(req, storage_id):
+    storage = Storage.objects.get(id=storage_id)
+    context = {
+        'storage': storage,
+    }
+    return render(req, 'components/storage_detail.html', context)
