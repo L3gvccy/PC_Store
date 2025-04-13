@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
 <<<<<<< HEAD
+<<<<<<< HEAD
 from django.contrib import messages
 =======
 >>>>>>> c4c30a5 (Add order)
+=======
+from django.contrib import messages
+>>>>>>> ea4c7eb (order error exception)
 from cart.models import CartItem
 from .models import Order, OrderItem
 from .forms import OrderForm
@@ -20,6 +24,10 @@ def checkout_view(request):
         return redirect(request.META.get('HTTP_REFERER', '/'))
 =======
 >>>>>>> c4c30a5 (Add order)
+
+    if cart_items.count() == 0:
+        messages.error(request, "Додайте хочаб один товар, щоб створити замволення.")
+        return redirect(request.META.get('HTTP_REFERER', '/'))
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
