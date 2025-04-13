@@ -40,6 +40,7 @@ class Order(models.Model):
     delivery_type = models.CharField(max_length=50, choices=DELIVERY_CHOICES)
     post_company = models.CharField(max_length=50, choices=POST_COMPANIES, blank=True, null=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="Очікує", verbose_name="Order status")
+    total_price = models.DecimalField(max_digits=20, decimal_places=2, default=0.00)
 
     def __str__(self):
         return f"Замовлення #{self.pk} від {self.user.username}"
