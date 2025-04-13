@@ -18,6 +18,9 @@
     <div class="row">
         <!-- Персональні дані -->
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 72ab873 (order update)
         <div class="col-md-6 mb-4 order-2 order-md-1">
             <!-- Форма замовлення -->
             <form method="post">
@@ -38,6 +41,7 @@
               <input type="text" name="phone_number" class="form-control rounded-pill focus-ring focus-ring-mainpurple mb-2" required>
 
               {% csrf_token %}
+<<<<<<< HEAD
               <h4>{{ form.delivery_type.label }}:</h4>
               {{ form.delivery_type }}
             
@@ -69,20 +73,41 @@
         <!-- Товари в кошику -->
         <div class="col-md-6 mb-4">
 >>>>>>> c4c30a5 (Add order)
+=======
+              <h5>{{ form.delivery_type.label }}</h5>
+              {{ form.delivery_type }}
+            
+              <div id="post_company_field" style="display: none;">
+                {{ form.post_company.label_tag }}
+                {{ form.post_company }}
+              </div>
+            
+              <button type="submit" class="btn btn-mainpurple mt-4">Підтвердити замовлення</button>
+          </form>
+        </div>
+
+        <!-- Товари в кошику -->
+        <div class="col-md-6 mb-4 order-1 order-md-2">
+>>>>>>> 72ab873 (order update)
             <h4 class="text-light">Ваше замовлення:</h4>
             <ul class="list-group bg-dark text-light">
                 {% for item in cart_items %}
                 <li class="list-group-item bg-dark text-light">
 <<<<<<< HEAD
+<<<<<<< HEAD
                     {{ item.product }} ({{ item.quantity }} шт) — {{ item.product.price }} ₴
 =======
                     {{ item.product.name }} ({{ item.quantity }} шт) — {{ item.product.price }} ₴
 >>>>>>> c4c30a5 (Add order)
+=======
+                    {{ item.product }} ({{ item.quantity }} шт) — {{ item.product.price }} ₴
+>>>>>>> 72ab873 (order update)
                 </li>
                 {% endfor %}
             </ul>
         </div>
     </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 
@@ -100,6 +125,8 @@
         <button type="submit" class="btn btn-mainpurple mt-4" >Підтвердити замовлення</button>
       </form>
 >>>>>>> c4c30a5 (Add order)
+=======
+>>>>>>> 72ab873 (order update)
       
 </div>
 
@@ -132,10 +159,13 @@
     });
 </script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     
   
 
 >>>>>>> c4c30a5 (Add order)
+=======
+>>>>>>> 72ab873 (order update)
 </body>
 </html>

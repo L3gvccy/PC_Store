@@ -33,12 +33,18 @@ class Order(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 72ab873 (order update)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     phone_number = models.CharField(max_length=20)
+<<<<<<< HEAD
 =======
 >>>>>>> c4c30a5 (Add order)
+=======
+>>>>>>> 72ab873 (order update)
     created_at = models.DateTimeField(auto_now_add=True)
     delivery_type = models.CharField(max_length=50, choices=DELIVERY_CHOICES)
     post_company = models.CharField(max_length=50, choices=POST_COMPANIES, blank=True, null=True)
