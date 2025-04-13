@@ -3,8 +3,13 @@ from . import views
 
 urlpatterns = [
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('', views.components),
     path('cpus/', views.CPUs_view, name='cpus'),
+=======
+    path('', views.components),
+    path('cpus/', views.CPUs_view),
+>>>>>>> 218d31d (add components main page)
     path('cpu_detail/<int:cpu_id>/', views.cpu_detail, name='cpu_detail'),
 <<<<<<< HEAD
     path('motherboards/', views.Motherboards_view, name='motherboards'),

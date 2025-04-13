@@ -37,10 +37,13 @@ def landing(req):
 def components(req):
     return render(req, 'components/components.html')
 
+<<<<<<< HEAD
 =======
     return render(req, 'components/landing.html')
 
 >>>>>>> ec58bea (add cpus page)
+=======
+>>>>>>> 218d31d (add components main page)
 def CPUs_view(req):
     cpus = CPU.objects.all()
 
