@@ -1,5 +1,8 @@
 from django.shortcuts import render, redirect
+<<<<<<< HEAD
 from django.contrib import messages
+=======
+>>>>>>> c4c30a5 (Add order)
 from cart.models import CartItem
 from .models import Order, OrderItem
 from .forms import OrderForm
@@ -9,16 +12,20 @@ from django.contrib.auth.decorators import login_required
 def checkout_view(request):
     user = request.user
     cart_items = CartItem.objects.filter(user=user)
+<<<<<<< HEAD
     total_price = sum(item.product.price * item.quantity for item in cart_items)
 
     if cart_items.count() == 0:
         messages.error(request, "Додайте хочаб один товар, щоб створити замволення.")
         return redirect(request.META.get('HTTP_REFERER', '/'))
+=======
+>>>>>>> c4c30a5 (Add order)
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
+<<<<<<< HEAD
             if order.delivery_type != 'post_office':
                 order.post_company = '---------'
             order.user = user
@@ -27,6 +34,9 @@ def checkout_view(request):
             order.email = request.POST['email']
             order.phone_number = request.POST['phone_number']
             order.total_price = total_price
+=======
+            order.user = user
+>>>>>>> c4c30a5 (Add order)
             order.save()
 
             for item in cart_items:
@@ -36,9 +46,12 @@ def checkout_view(request):
                     quantity=item.quantity
                 )
 
+<<<<<<< HEAD
                 item.product.quantity -= item.quantity
                 item.product.save()
 
+=======
+>>>>>>> c4c30a5 (Add order)
             cart_items.delete()
             return redirect('order_success')
     else:
@@ -47,16 +60,22 @@ def checkout_view(request):
     context = {
         'user': user,
         'cart_items': cart_items,
+<<<<<<< HEAD
         'form': form,
         'total_price': total_price,
     }
 
     
 
+=======
+        'form': form
+    }
+>>>>>>> c4c30a5 (Add order)
     return render(request, 'order/checkout.html', context)
 
 
 def order_success(request):
+<<<<<<< HEAD
     return render(request, 'order/order_success.html')
 
 def view_orders(request):
@@ -69,3 +88,6 @@ def view_orders(request):
         'orders': orders,
     }
     return render(request, 'order/my_orders.html', context)
+=======
+    return render(request, 'order/order_success.html')
+>>>>>>> c4c30a5 (Add order)

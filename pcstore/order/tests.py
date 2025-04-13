@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.test import TestCase, Client
 from django.urls import reverse
 from django.contrib.auth.models import User
@@ -104,3 +105,8 @@ class OrderModelTest(TestCase):
         self.assertEqual(response.status_code, 302)
         messages = list(response.wsgi_request._messages)
         self.assertEqual(str(messages[0]), "Вам потрібно увійти в систему, щоб переглянути замовлення.")
+=======
+from django.test import TestCase
+
+# Create your tests here.
+>>>>>>> c4c30a5 (Add order)

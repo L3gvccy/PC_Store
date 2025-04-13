@@ -17,6 +17,7 @@
 
     <div class="row">
         <!-- Персональні дані -->
+<<<<<<< HEAD
         <div class="col-md-6 mb-4 order-2 order-md-1">
             <!-- Форма замовлення -->
             <form method="post">
@@ -54,16 +55,51 @@
 
         <!-- Товари в кошику -->
         <div class="col-md-6 mb-4 order-1 order-md-2">
+=======
+        <div class="col-md-6 mb-4">
+            <h4 class="text-light">Ваші дані:</h4>
+            <ul class="list-group bg-dark text-light">
+                <li class="list-group-item bg-dark text-light">Ім’я: {{ user.first_name }}</li>
+                <li class="list-group-item bg-dark text-light">Прізвище: {{ user.last_name }}</li>
+                <li class="list-group-item bg-dark text-light">Email: {{ user.email }}</li>
+                <li class="list-group-item bg-dark text-light">Логін: {{ user.username }}</li>
+            </ul>
+        </div>
+
+        <!-- Товари в кошику -->
+        <div class="col-md-6 mb-4">
+>>>>>>> c4c30a5 (Add order)
             <h4 class="text-light">Ваше замовлення:</h4>
             <ul class="list-group bg-dark text-light">
                 {% for item in cart_items %}
                 <li class="list-group-item bg-dark text-light">
+<<<<<<< HEAD
                     {{ item.product }} ({{ item.quantity }} шт) — {{ item.product.price }} ₴
+=======
+                    {{ item.product.name }} ({{ item.quantity }} шт) — {{ item.product.price }} ₴
+>>>>>>> c4c30a5 (Add order)
                 </li>
                 {% endfor %}
             </ul>
         </div>
     </div>
+<<<<<<< HEAD
+=======
+
+    <!-- Форма замовлення -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.delivery_type.label }}<br>
+        {{ form.delivery_type }}
+      
+        <div id="post_company_field" style="display: none;">
+          {{ form.post_company.label_tag }}
+          {{ form.post_company }}
+        </div>
+      
+        <button type="submit" class="btn btn-mainpurple mt-4" >Підтвердити замовлення</button>
+      </form>
+>>>>>>> c4c30a5 (Add order)
       
 </div>
 
@@ -79,10 +115,13 @@
         const selected = document.querySelector('input[name="delivery_type"]:checked');
         if (selected && selected.value === 'post_office') {
           postCompanyField.style.display = 'block';
+<<<<<<< HEAD
           postCompanyField.style.minHeight = '70px';
           const selectMenu = document.getElementById('id_post_company');
           selectMenu.style.display = 'block';
           selectMenu.classList.add('dropdown-menu', 'bg-dark', 'text-light', 'border', 'border-light');
+=======
+>>>>>>> c4c30a5 (Add order)
         } else {
           postCompanyField.style.display = 'none';
         }
@@ -92,5 +131,11 @@
       togglePostCompany();
     });
 </script>
+<<<<<<< HEAD
+=======
+    
+  
+
+>>>>>>> c4c30a5 (Add order)
 </body>
 </html>

@@ -35,10 +35,14 @@ INSTALLED_APPS = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     'configurator',
     'order',
 =======
 >>>>>>> 4efcee2 (Add cart)
+=======
+    'order',
+>>>>>>> c4c30a5 (Add order)
     'cart',
     'account',
 =======
