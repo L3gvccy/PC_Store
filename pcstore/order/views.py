@@ -34,6 +34,9 @@ def checkout_view(request):
         if form.is_valid():
             order = form.save(commit=False)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3a5d3f0 (Update order and cart view)
             if order.delivery_type != 'post_office':
                 order.post_company = '---------'
             order.user = user

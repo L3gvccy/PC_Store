@@ -111,6 +111,9 @@ def add_to_cart(request, product_id):
 
     if not created:
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3a5d3f0 (Update order and cart view)
         if cart_item.quantity >= product.quantity:
             messages.warning(request, "Неможливо додати більше. Товар закінчується на складі.")
             return redirect(request.META.get('HTTP_REFERER', '/'))
@@ -120,6 +123,9 @@ def add_to_cart(request, product_id):
     messages.success(request, f"Товар {product.name} успішно додано до кошика.")
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 3a5d3f0 (Update order and cart view)
     return redirect(request.META.get('HTTP_REFERER', '/'))
 
 def increase_quantity(request, item_id):
@@ -131,6 +137,7 @@ def increase_quantity(request, item_id):
     else:
         messages.warning(request, "Неможливо додати більше. Товар закінчується на складі.")
 
+<<<<<<< HEAD
 =======
         cart_item.quantity += 1
         cart_item.save()
@@ -140,3 +147,6 @@ def increase_quantity(request, item_id):
 =======
     return redirect(request.META.get('HTTP_REFERER', '/'))
 >>>>>>> 078958a (cart update notifications)
+=======
+    return redirect('view_cart')  
+>>>>>>> 3a5d3f0 (Update order and cart view)
