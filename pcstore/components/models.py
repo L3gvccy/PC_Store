@@ -45,3 +45,37 @@ class RAM(Product):
     ram_type = models.CharField(max_length=25)
     frequency = models.IntegerField(help_text="MHz")
     number_of_modules = models.IntegerField(default=1)
+
+class Storage(Product):
+    brand = models.CharField(max_length=25)
+    capacity = models.CharField(max_length=25)
+    storage_type = models.CharField(max_length=25)
+    speed = models.IntegerField(help_text="MB/s")
+
+class PSU(Product):
+    brand = models.CharField(max_length=25)
+    series = models.CharField(max_length=50)
+    wattage = models.IntegerField(help_text="Watt")
+    certificate = models.CharField(max_length=25)
+    modular = models.BooleanField(default=False)
+
+class Cooler(Product):
+    brand = models.CharField(max_length=25)
+    heat_tube_number = models.IntegerField()
+    height = models.IntegerField(help_text="mm")
+    argb = models.BooleanField(default=False)
+    max_tdp = models.IntegerField(help_text="Watt")
+
+class AIO(Product):
+    brand = models.CharField(max_length=25)
+    size = models.IntegerField(help_text="mm")
+    argb = models.BooleanField(default=False)
+    max_tdp = models.IntegerField(help_text="Watt")
+
+class Case(Product):
+    brand = models.CharField(max_length=25)
+    form_factor = models.CharField(max_length=25, default="ATX")
+    fans = models.IntegerField(help_text="mm")
+    max_cooler_height = models.IntegerField(help_text="mm")
+    max_aio_size = models.IntegerField(help_text="mm")
+    tempered_glass = models.BooleanField(default=False)
