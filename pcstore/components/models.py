@@ -83,6 +83,9 @@ class RAM(Product):
     frequency = models.IntegerField(help_text="MHz")
     number_of_modules = models.IntegerField(default=1)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 38218fe (add all product models)
 
 class Storage(Product):
     brand = models.CharField(max_length=25)
@@ -91,6 +94,7 @@ class Storage(Product):
     speed = models.IntegerField(help_text="MB/s")
 
 class PSU(Product):
+<<<<<<< HEAD
     certificate_choices = [
         ('80 Plus Titanium', '80 Plus Titanium'),
         ('80 Plus Platinum', '80 Plus Platinum'),
@@ -103,6 +107,12 @@ class PSU(Product):
     series = models.CharField(max_length=50)
     wattage = models.IntegerField(help_text="Watt")
     certificate = models.CharField(max_length=25, choices=certificate_choices, default='Без сертифікату')
+=======
+    brand = models.CharField(max_length=25)
+    series = models.CharField(max_length=50)
+    wattage = models.IntegerField(help_text="Watt")
+    certificate = models.CharField(max_length=25)
+>>>>>>> 38218fe (add all product models)
     modular = models.BooleanField(default=False)
 
 class Cooler(Product):
@@ -121,6 +131,7 @@ class AIO(Product):
 class Case(Product):
     brand = models.CharField(max_length=25)
     form_factor = models.CharField(max_length=25, default="ATX")
+<<<<<<< HEAD
     fans = models.IntegerField()
     max_cooler_height = models.IntegerField(help_text="mm")
     max_aio_size = models.IntegerField(help_text="mm")
@@ -145,3 +156,9 @@ class Case(Product):
 >>>>>>> 01cc471 (Add GPU)
 =======
 >>>>>>> ef1f7ff (Add RAM)
+=======
+    fans = models.IntegerField(help_text="mm")
+    max_cooler_height = models.IntegerField(help_text="mm")
+    max_aio_size = models.IntegerField(help_text="mm")
+    tempered_glass = models.BooleanField(default=False)
+>>>>>>> 38218fe (add all product models)
