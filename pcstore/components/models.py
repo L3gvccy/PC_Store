@@ -83,7 +83,7 @@ class AIO(Product):
 class Case(Product):
     brand = models.CharField(max_length=25)
     form_factor = models.CharField(max_length=25, default="ATX")
-    fans = models.IntegerField(help_text="mm")
+    fans = models.IntegerField()
     max_cooler_height = models.IntegerField(help_text="mm")
     max_aio_size = models.IntegerField(help_text="mm")
     tempered_glass = models.BooleanField(default=False)
