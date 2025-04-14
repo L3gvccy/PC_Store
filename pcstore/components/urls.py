@@ -19,4 +19,6 @@ urlpatterns = [
     path('cooler_detail/<int:cooler_id>/', views.cooler_detail, name='cooler_detail'),
     path('aios/', views.AIOs_view),
     path('aio_detail/<int:aio_id>/', views.aio_detail, name='aio_detail'),
+    path('cases/', views.Cases_view),
+    path('case_detail/<int:case_id>/', views.case_detail, name='case_detail'),
 ]
