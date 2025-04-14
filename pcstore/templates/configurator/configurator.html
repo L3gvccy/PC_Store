@@ -13,16 +13,33 @@
 
 {% if user.is_authenticated %}
 
-<div class="container p-4 text-center">
-    <h4>Конфігуратор ПК</h4>
+<div class="container p-4">
+    <h4 class="text-center mb-4">Конфігуратор ПК</h4>
     <form method="get">
+        
+        <!-- Процесор -->
         <div class="accordion-item">
-            <div class="accordion-header" id="headingCPU">
-                <button class="accordion-button collapsed bg-dark text-light border rounded p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCPU">
+            <div class="accordion-header border rounded p-4" id="headingCPU">
+                {% if configuration.cpu %}
+                <button class="accordion-button h4 collapsed bg-dark text-light mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCPU">
                     Процесор
                 </button>
-                {% if configuration.cpu %}
-                    <h5>{{ configuration.cpu }}</h5>
+                <div class="row row d-flex align-items-center">
+                    <div class="col-md-1 col-sm-2">
+                        <img src="{{ configuration.cpu.image }}" class="image-fluid w-100">
+                    </div>
+                    <div class="col-md-7">
+                        <h5 class="m-0">{{ configuration.cpu }}</h5>
+                        <p class="m-0">{{ configuration.cpu.price }} ₴</p>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="{% url 'remove_cpu' %}" type="submit" class="btn w-100 btn-danger">Видалити</a>
+                    </div>
+                </div>
+                {% else %}
+                <button class="accordion-button h1 collapsed bg-dark text-light mb-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCPU">
+                    Процесор
+                </button>
                 {% endif %}
             </div>
             <div id="collapseCPU" class="accordion-collapse collapse">

@@ -29,3 +29,10 @@ def select_cpu(request, cpu_id):
     configuration.save()
 
     return redirect('configurator')
+
+def remove_cpu(request):
+    configuration = Configuration.objects.get(user=request.user)
+    configuration.cpu = None
+    configuration.save()
+
+    return redirect('configurator')
