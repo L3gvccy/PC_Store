@@ -127,6 +127,7 @@ def CPUs_view(req):
     context = {
         'processors': cpus,
         'selected_sort': sort,
+<<<<<<< HEAD
 =======
     frequencies = ['2-2.5', '2.6-3', '3.1-3.6', '3.7-4.2', '4.3+']
 =======
@@ -136,6 +137,8 @@ def CPUs_view(req):
     context = {
         'processors': cpus,
 >>>>>>> ec58bea (add cpus page)
+=======
+>>>>>>> a8316c4 (add sort)
         'brands': brands,
         'sockets': sockets,
         'cores': cores,
@@ -216,6 +219,13 @@ def Motherboards_view(req):
         motherboards = motherboards.order_by('price')
     elif sort == 'price_desc':
         motherboards = motherboards.order_by('-price')
+
+    # Сортування
+    sort = req.GET.get('sort')
+    if sort == 'price_asc':
+        gpus = gpus.order_by('price')
+    elif sort == 'price_desc':
+        gpus = gpus.order_by('-price')
 
     brands = ['AsRock', 'Asus', 'Gigabyte', 'MSI']
     sockets = ['AM4', 'AM5', '1851', '1700', '1200']
@@ -515,6 +525,7 @@ def Coolers_view(req):
     context = {
         'coolers': coolers,
         'selected_sort': sort,
+<<<<<<< HEAD
         'brands': brands,
         'heat_tube_numbers': heat_tube_numbers,
         'heights': heights,
@@ -1097,6 +1108,8 @@ def Coolers_view(req):
 
     context = {
         'coolers': coolers,
+=======
+>>>>>>> a8316c4 (add sort)
         'brands': brands,
         'heat_tube_numbers': heat_tube_numbers,
         'heights': heights,
@@ -1173,6 +1186,7 @@ def AIOs_view(req):
 
     context = {
         'aios': aios,
+        'selected_sort': sort,
         'brands': brands,
         'sizes': sizes,
         'argbs': argbs,
@@ -1246,6 +1260,7 @@ def PSUs_view(req):
 
     context = {
         'psus': psus,
+        'selected_sort': sort,
         'brands': brands,
         'wattages': wattages,
         'certificates': certificates,
@@ -1330,6 +1345,7 @@ def Cases_view(req):
 
     context = {
         'cases': cases,
+        'selected_sort': sort,
         'brands': brands,
         'form_factors': form_factors,
         'fans_ch': fans_ch,
