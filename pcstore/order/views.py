@@ -36,6 +36,9 @@ def checkout_view(request):
                     quantity=item.quantity
                 )
 
+                item.product.quantity -= item.quantity
+                item.product.save()
+
             cart_items.delete()
             return redirect('order_success')
     else:
@@ -47,6 +50,9 @@ def checkout_view(request):
         'form': form,
         'total_price': total_price,
     }
+
+    
+
     return render(request, 'order/checkout.html', context)
 
 
