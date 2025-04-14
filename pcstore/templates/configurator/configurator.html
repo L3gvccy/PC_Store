@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <title>Конфігуратор | CorePC</title>
+</head>
+<body class="d-flex flex-column min-vh-100 bg-dark text-light">
+    {% include "header.html" %}
+
+{% if user.is_authenticated %}
+
+<div class="container p-4 text-center">
+    <h4>Конфігуратор ПК</h4>
+    <form method="get">
+        <div class="accordion-item">
+            <div class="accordion-header" id="headingCPU">
+                <button class="accordion-button collapsed bg-dark text-light border rounded p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCPU">
+                    Процесор
+                </button>
+                {% if configuration.cpu %}
+                    <h5>{{ configuration.cpu }}</h5>
+                {% endif %}
+            </div>
+            <div id="collapseCPU" class="accordion-collapse collapse">
+            <div class="accordion-body bg-dark border-light">
+                {% for cpu in cpus %}
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-2 p-4">
+                            <img src="{{ cpu.image }}" alt="{{ cpu.name }}" class="img-fluid w-100">
+                        </div>
+                        <div class="col-md-8 text-start p-4">
+                            <h5>{{ cpu }}</h5>
+                            <p class="mb-2">{{ cpu.socket }} сокет, {{ cpu.cores }} ядер {{ cpu.threads }} потоків, {{ cpu.frequency }} Ггц</p>
+                            <p class="mb-2">Ціна: <span class="fw-bold">{{ cpu.price }}</span> ₴</p>
+                        </div>
+                        <div class="col-md-2 p-4">
+                            <form method="post">
+                                {% csrf_token %}
+                                <a href="{% url 'select_cpu' cpu.id %}" type="submit" class="btn w-100 btn-mainpurple">Обрати</a>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+{% else %}
+<div class="container p-4 text-center">
+    <h4>Ви не увійшли в акаунт</h4>
+    <p>Щоб скористатися конфігуратором, будь ласка, <a href="/account/login/" class="text-mainpurple">увійдіть</a> або <a href="/account/register/" class="text-mainpurple">зареєструйтеся</a>.</p>
+</div>
+{% endif %}
+
+    {% include "footer.html" %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+</body>
+</html>
