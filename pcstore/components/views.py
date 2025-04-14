@@ -261,7 +261,7 @@ def RAMs_view(req):
 
     # Варіанти для фільтрів
     brands = ['Corsair', 'G.Skill', 'Kingston', 'Patriot']
-    capacities = ['8','12','16','24','32', '64']
+    capacities = ['8','16','32', '64']
     ram_types = ['DDR4', 'DDR5']
     frequencies = ['2400', '2666', '3000', '3200', '4600', '4800', '5200', '5600', '6000']
     number_of_modules = ['1', '2']
