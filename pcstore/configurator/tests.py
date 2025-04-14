@@ -1,4 +1,5 @@
 from django.test import TestCase
+<<<<<<< HEAD
 from django.urls import reverse
 from django.contrib.auth.models import User
 from components.models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
@@ -219,3 +220,7 @@ class ConfiguratorViewsTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertIn("Блок живлення недостатньої потужності!", response.context['psu_msg'])
+=======
+
+# Create your tests here.
+>>>>>>> 394cf17 (add configurator)

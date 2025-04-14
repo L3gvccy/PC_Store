@@ -36,6 +36,9 @@ INSTALLED_APPS = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 394cf17 (add configurator)
     'configurator',
     'order',
 =======

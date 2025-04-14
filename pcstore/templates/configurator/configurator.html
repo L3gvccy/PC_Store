@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/font.css' %}">
     <title>Конфігуратор | CorePC</title>
 </head>
+<<<<<<< HEAD
 <style>
 .accordion, .accordion-item, .accordion-header, .accordion-body {
     border: none;
@@ -50,11 +51,14 @@
     border-radius: 4px;
 }
 </style>
+=======
+>>>>>>> 394cf17 (add configurator)
 <body class="d-flex flex-column min-vh-100 bg-dark text-light">
     {% include "header.html" %}
 
 {% if user.is_authenticated %}
 
+<<<<<<< HEAD
 <div class="container p-4">
     <h4 class="text-center mb-4">Конфігуратор ПК</h4>
     <div class="accordion accordion-flush" id="accordionConfigurator">
@@ -95,6 +99,29 @@
                         </div>
                         <div class="col-md-8 text-start p-4 text-light">
                             <h5><a href="{% url 'components:cpu_detail' cpu.id %}" target="_blank" class="text-decoration-none text-light">{{ cpu }}</a></h5>
+=======
+<div class="container p-4 text-center">
+    <h4>Конфігуратор ПК</h4>
+    <form method="get">
+        <div class="accordion-item">
+            <div class="accordion-header" id="headingCPU">
+                <button class="accordion-button collapsed bg-dark text-light border rounded p-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCPU">
+                    Процесор
+                </button>
+                {% if configuration.cpu %}
+                    <h5>{{ configuration.cpu }}</h5>
+                {% endif %}
+            </div>
+            <div id="collapseCPU" class="accordion-collapse collapse">
+            <div class="accordion-body bg-dark border-light">
+                {% for cpu in cpus %}
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-2 p-4">
+                            <img src="{{ cpu.image }}" alt="{{ cpu.name }}" class="img-fluid w-100">
+                        </div>
+                        <div class="col-md-8 text-start p-4">
+                            <h5>{{ cpu }}</h5>
+>>>>>>> 394cf17 (add configurator)
                             <p class="mb-2">{{ cpu.socket }} сокет, {{ cpu.cores }} ядер {{ cpu.threads }} потоків, {{ cpu.frequency }} Ггц</p>
                             <p class="mb-2">Ціна: <span class="fw-bold">{{ cpu.price }}</span> ₴</p>
                         </div>
@@ -106,6 +133,7 @@
                         </div>
                     </div>
                 {% endfor %}
+<<<<<<< HEAD
                 {% else %}
                 <p class="text-center text-light my-4">Відповідних товарів не знайдено</p>
                 {% endif %}
@@ -556,6 +584,12 @@
         <p class="mb-2"><a href="{% url 'err_configuration' %}" class="btn btn-mainpurple" style="min-width: 250px;">Додати товари до кошика</a></p>
         {% endif %}
     </div>
+=======
+            </div>
+            </div>
+        </div>
+    </form>
+>>>>>>> 394cf17 (add configurator)
 </div>
 
 {% else %}

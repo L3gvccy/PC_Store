@@ -48,9 +48,12 @@ urlpatterns = [
 <<<<<<< HEAD
     path('order/', include('order.urls')),
     path('configurator/', include('configurator.urls')),
+<<<<<<< HEAD
 =======
 >>>>>>> 4efcee2 (Add cart)
 =======
     path('order/', include('order.urls')),
 >>>>>>> c4c30a5 (Add order)
+=======
+>>>>>>> 394cf17 (add configurator)
 ]

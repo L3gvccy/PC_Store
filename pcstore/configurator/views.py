@@ -1,14 +1,22 @@
+<<<<<<< HEAD
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from decimal import Decimal
 from components.models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 from cart.views import add_to_cart
+=======
+from django.shortcuts import render
+from django.shortcuts import get_object_or_404, redirect
+from django.views.decorators.http import require_POST
+from components.models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
+>>>>>>> 394cf17 (add configurator)
 from .models import Configuration
 
 
 # Create your views here.
 def configurator_view(request):
     cpus = CPU.objects.all()
+<<<<<<< HEAD
     motherboards = Motherboard.objects.all()
     gpus = GPU.objects.all()
     rams = RAM.objects.all()
@@ -107,10 +115,22 @@ def configurator_view(request):
         'aio_msg': aio_msg,
         'case_msg': case_msg,
         'is_valid': is_valid,
+=======
+    configuration = None
+
+    if request.user.is_authenticated:
+        configuration, created = Configuration.objects.get_or_create(user=request.user)
+
+    context = {
+        'cpus': cpus,
+
+        'configuration': configuration,
+>>>>>>> 394cf17 (add configurator)
     }
 
     return render(request, 'configurator/configurator.html', context)
 
+<<<<<<< HEAD
 def calculate_price(configuration):
     total_price = Decimal(0.00)
 
@@ -136,6 +156,8 @@ def calculate_price(configuration):
     return total_price
 
 
+=======
+>>>>>>> 394cf17 (add configurator)
 def select_cpu(request, cpu_id):
     cpu = get_object_or_404(CPU, id=cpu_id)
 
@@ -143,6 +165,7 @@ def select_cpu(request, cpu_id):
     configuration.cpu = cpu
     configuration.save()
 
+<<<<<<< HEAD
     return redirect('configurator')
 
 def remove_cpu(request):
@@ -331,4 +354,6 @@ def save_configuration(request):
         add_to_cart(request, configuration.case.id)
         
     messages.success(request, "Ваша збірка була додана до кошика!")
+=======
+>>>>>>> 394cf17 (add configurator)
     return redirect('configurator')

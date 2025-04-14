@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.urls import path, include
 from . import views
 
@@ -25,4 +26,13 @@ urlpatterns = [
     path('clear_configuration/', views.clear_configuration, name="clear_configuration"),
     path('err_configuration/', views.err_configuration, name="err_configuration"),
     path('save_configuration/', views.save_configuration, name="save_configuration"),
+=======
+from django.urls import path
+from . import views
+
+
+urlpatterns = [
+    path('', views.configurator_view, name="configurator"),
+    path('select_cpu/<int:cpu_id>/', views.select_cpu, name="select_cpu"),
+>>>>>>> 394cf17 (add configurator)
 ]
