@@ -69,11 +69,17 @@ def checkout_view(request):
                 )
 
 <<<<<<< HEAD
+<<<<<<< HEAD
                 item.product.quantity -= item.quantity
                 item.product.save()
 
 =======
 >>>>>>> c4c30a5 (Add order)
+=======
+                item.product.quantity -= item.quantity
+                item.product.save()
+
+>>>>>>> f68899f (update order view checkout_view)
             cart_items.delete()
             return redirect('order_success')
     else:
@@ -90,6 +96,7 @@ def checkout_view(request):
 
     
 
+<<<<<<< HEAD
 =======
         'form': form
 =======
@@ -98,6 +105,8 @@ def checkout_view(request):
 >>>>>>> 0045f6f (add my_orders)
     }
 >>>>>>> c4c30a5 (Add order)
+=======
+>>>>>>> f68899f (update order view checkout_view)
     return render(request, 'order/checkout.html', context)
 
 
