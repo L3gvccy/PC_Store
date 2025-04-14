@@ -129,7 +129,7 @@ def Motherboards_view(req):
     sockets = ['AM4', 'AM5', '1851', '1700', '1200']
     chipsets = ['B550', 'B650', 'B850', 'X870', 'Z390', 'B560', 'H510', 'B760', 'Z790', 'B860', 'Z890']
     ram_types = ['DDR4', 'DDR5']
-    form_factors = ['ATX', 'Micro-ATX', 'Mini-ITX']
+    form_factors = ['ATX', 'Micro-ATX']
 
     context = {
         'mbs': motherboards,
@@ -636,10 +636,10 @@ def Cases_view(req):
 
     # Варіанти для фільтрів
     brands = ['Be Quiet!','Gamemax', 'Deepcool', 'MSI']
-    form_factors = ['ATX', 'Micro-ATX', 'Mini-ITX']
-    fans_ch = ['0', '1', '2', '3', '4']
+    form_factors = ['ATX', 'Micro-ATX']
+    fans_ch = ['0', '1', '3', '4']
     max_cooler_heights = ['0-100', '101-150', '151-200']
-    max_aio_sizes = ['120', '240', '360']
+    max_aio_sizes = ['240', '360']
     tempered_glasses = ['Зі склом', 'Без скла']
 
     context = {
