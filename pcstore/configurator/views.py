@@ -166,6 +166,9 @@ def select_cpu(request, cpu_id):
     configuration.save()
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 82bb7ff (add remove CPU functionality and update configurator template)
     return redirect('configurator')
 
 def remove_cpu(request):
@@ -173,6 +176,7 @@ def remove_cpu(request):
     configuration.cpu = None
     configuration.save()
 
+<<<<<<< HEAD
     return redirect('configurator')
 
 def select_mb(request, mb_id):
@@ -356,4 +360,6 @@ def save_configuration(request):
     messages.success(request, "Ваша збірка була додана до кошика!")
 =======
 >>>>>>> 394cf17 (add configurator)
+=======
+>>>>>>> 82bb7ff (add remove CPU functionality and update configurator template)
     return redirect('configurator')

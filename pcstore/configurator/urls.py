@@ -34,5 +34,9 @@ from . import views
 urlpatterns = [
     path('', views.configurator_view, name="configurator"),
     path('select_cpu/<int:cpu_id>/', views.select_cpu, name="select_cpu"),
+<<<<<<< HEAD
 >>>>>>> 394cf17 (add configurator)
+=======
+    path('remove_cpu/', views.remove_cpu, name="remove_cpu"),
+>>>>>>> 82bb7ff (add remove CPU functionality and update configurator template)
 ]
