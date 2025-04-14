@@ -1322,10 +1322,10 @@ def Cases_view(req):
 
     # Варіанти для фільтрів
     brands = ['Be Quiet!','Gamemax', 'Deepcool', 'MSI']
-    form_factors = ['ATX', 'Micro-ATX', 'Mini-ITX']
-    fans_ch = ['0', '1', '2', '3', '4']
+    form_factors = ['ATX', 'Micro-ATX']
+    fans_ch = ['0', '1', '3', '4']
     max_cooler_heights = ['0-100', '101-150', '151-200']
-    max_aio_sizes = ['120', '240', '360']
+    max_aio_sizes = ['240', '360']
     tempered_glasses = ['Зі склом', 'Без скла']
 
     context = {
