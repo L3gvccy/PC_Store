@@ -142,6 +142,7 @@ class Case(Product):
     brand = models.CharField(max_length=25)
     form_factor = models.CharField(max_length=25, default="ATX")
 <<<<<<< HEAD
+<<<<<<< HEAD
     fans = models.IntegerField()
     max_cooler_height = models.IntegerField(help_text="mm")
     max_aio_size = models.IntegerField(help_text="mm")
@@ -168,6 +169,9 @@ class Case(Product):
 >>>>>>> ef1f7ff (Add RAM)
 =======
     fans = models.IntegerField(help_text="mm")
+=======
+    fans = models.IntegerField()
+>>>>>>> 5b57886 (add cases)
     max_cooler_height = models.IntegerField(help_text="mm")
     max_aio_size = models.IntegerField(help_text="mm")
     tempered_glass = models.BooleanField(default=False)

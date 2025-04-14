@@ -1261,4 +1261,92 @@ def psu_detail(req, psu_id):
         'psu': psu,
     }
     return render(req, 'components/psu_detail.html', context)
+<<<<<<< HEAD
 >>>>>>> 99cc666 (add PSUs)
+=======
+
+def Cases_view(req):
+    cases = Case.objects.all()
+
+    # Фільтрація за ціною
+    min_price = req.GET.get('min_price', None)
+    max_price = req.GET.get('max_price', None)
+    if min_price and max_price:
+        cases = cases.filter(price__gte=min_price, price__lte=max_price)
+
+    # Фільтрація за брендом
+    selected_brands = req.GET.getlist('brand')
+    if selected_brands:
+        cases = cases.filter(brand__in=selected_brands)
+
+    # Фільтрація за форм фактором
+    selected_form_factors = req.GET.getlist('form_factor')
+    if selected_form_factors:
+        cases = cases.filter(form_factor__in=selected_form_factors)
+
+    # Фільтрація за кількістю вентиляторів
+    selected_fans = req.GET.getlist('fans')
+    if selected_fans:
+        cases = cases.filter(fans__in=selected_fans)
+
+    # Фільтрація за максимальною висотою кулера
+    selected_max_cooler_heights = req.GET.getlist('max_cooler_height')
+    if selected_max_cooler_heights:
+        height_filter = Q()
+        for height in selected_max_cooler_heights:
+            min_height, max_height = map(float, height.split('-'))
+            height_filter |= Q(max_cooler_height__gte=min_height, max_cooler_height__lte=max_height)
+        cases = cases.filter(height_filter)
+
+    # Фільтрація за максимальною довжиною СРО
+    selected_max_aio_sizes = req.GET.getlist('max_aio_size')
+    if selected_max_aio_sizes:
+        cases = cases.filter(max_aio_size__in=selected_max_aio_sizes)
+
+    # Фільтрація за наявністю скла
+    selected_tempered_glasses = req.GET.getlist('tempered_glass')
+    if 'Зі склом' in selected_tempered_glasses and 'Без скла' not in selected_tempered_glasses:
+        cases = cases.filter(tempered_glass=True)
+    elif 'Без скла' in selected_tempered_glasses and 'Зі склом' not in selected_tempered_glasses:
+        cases = cases.filter(tempered_glass=False)
+
+    # Сортування
+    sort = req.GET.get('sort')
+    if sort == 'price_asc':
+        cases = cases.order_by('price')
+    elif sort == 'price_desc':
+        cases = cases.order_by('-price')
+
+    # Варіанти для фільтрів
+    brands = ['Be Quiet!','Gamemax', 'Deepcool', 'MSI']
+    form_factors = ['ATX', 'Micro-ATX', 'Mini-ITX']
+    fans_ch = ['0', '1', '2', '3', '4']
+    max_cooler_heights = ['0-100', '101-150', '151-200']
+    max_aio_sizes = ['120', '240', '360']
+    tempered_glasses = ['Зі склом', 'Без скла']
+
+    context = {
+        'cases': cases,
+        'brands': brands,
+        'form_factors': form_factors,
+        'fans_ch': fans_ch,
+        'max_cooler_heights': max_cooler_heights,
+        'max_aio_sizes': max_aio_sizes,
+        'tempered_glasses': tempered_glasses,
+        'selected_brands': selected_brands,
+        'selected_form_factors': selected_form_factors,
+        'selected_fans': selected_fans,
+        'selected_max_cooler_heights': selected_max_cooler_heights,
+        'selected_max_aio_sizes': selected_max_aio_sizes,
+        'selected_tempered_glasses': selected_tempered_glasses,
+    }
+
+    return render(req, 'components/cases.html', context)
+
+def case_detail(req, case_id):
+    case = Case.objects.get(id=case_id)
+    context = {
+        'case': case,
+    }
+    return render(req, 'components/case_detail.html', context)
+>>>>>>> 5b57886 (add cases)
