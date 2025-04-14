@@ -127,7 +127,7 @@ def Motherboards_view(req):
 
     brands = ['AsRock', 'Asus', 'Gigabyte', 'MSI']
     sockets = ['AM4', 'AM5', '1851', '1700', '1200']
-    chipsets = ['B550', 'B650', 'B850', 'X870', 'B560', 'H510', 'B760', 'Z790', 'B860', 'Z890']
+    chipsets = ['B550', 'B650', 'B850', 'X870', 'Z390', 'B560', 'H510', 'B760', 'Z790', 'B860', 'Z890']
     ram_types = ['DDR4', 'DDR5']
     form_factors = ['ATX', 'Micro-ATX', 'Mini-ITX']
 
