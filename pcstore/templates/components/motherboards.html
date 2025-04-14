@@ -24,13 +24,19 @@
             <div>
                 <form method="get">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 415aac6 (sort bug fix)
                     {% for key, value in request.GET.items %}
                         {% if key != 'sort' %}
                             <input type="hidden" name="{{ key }}" value="{{ value }}">
                         {% endif %}
                     {% endfor %}
+<<<<<<< HEAD
 =======
 >>>>>>> a8316c4 (add sort)
+=======
+>>>>>>> 415aac6 (sort bug fix)
                     <select name="sort" id="sort" class="form-select bg-dark text-light w-auto rounded-0 border-0 border-bottom border-light" style="box-shadow: none; outline: none;" onchange="this.form.submit()">
                         <option value="">За замовчуванням</option>
                         <option value="price_asc" {% if selected_sort == 'price_asc' %}selected{% endif %}>Ціна ↑</option>
@@ -207,6 +213,7 @@
         <div class="row">
             <div class="col-lg-4">
                 <form method="get">
+                    <input type="hidden" name="sort" value="{{ selected_sort }}">
                     <div class="accordion accordion-flush" id="filtersAccordion">
                   
                         <!-- Ціна -->

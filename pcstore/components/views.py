@@ -223,9 +223,9 @@ def Motherboards_view(req):
     # Сортування
     sort = req.GET.get('sort')
     if sort == 'price_asc':
-        gpus = gpus.order_by('price')
+        motherboards = motherboards.order_by('price')
     elif sort == 'price_desc':
-        gpus = gpus.order_by('-price')
+        motherboards = motherboards.order_by('-price')
 
     brands = ['AsRock', 'Asus', 'Gigabyte', 'MSI']
     sockets = ['AM4', 'AM5', '1851', '1700', '1200']
