@@ -38,5 +38,12 @@ urlpatterns = [
 >>>>>>> 394cf17 (add configurator)
 =======
     path('remove_cpu/', views.remove_cpu, name="remove_cpu"),
+<<<<<<< HEAD
 >>>>>>> 82bb7ff (add remove CPU functionality and update configurator template)
+=======
+    path('select_mb/<int:mb_id>/', views.select_mb, name="select_mb"),
+    path('remove_mb/', views.remove_mb, name="remove_mb"),
+    path('select_ram/<int:ram_id>/', views.select_ram, name="select_ram"),
+    path('remove_ram/', views.remove_ram, name="remove_ram"),
+>>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
 ]

@@ -17,6 +17,7 @@ from .models import Configuration
 def configurator_view(request):
     cpus = CPU.objects.all()
 <<<<<<< HEAD
+<<<<<<< HEAD
     motherboards = Motherboard.objects.all()
     gpus = GPU.objects.all()
     rams = RAM.objects.all()
@@ -116,16 +117,38 @@ def configurator_view(request):
         'case_msg': case_msg,
         'is_valid': is_valid,
 =======
+=======
+    motherboards = Motherboard.objects.all()
+    rams = RAM.objects.all()
+>>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
     configuration = None
+
+    ram_msg = None
 
     if request.user.is_authenticated:
         configuration, created = Configuration.objects.get_or_create(user=request.user)
 
+        if configuration.cpu:
+            motherboards = motherboards.filter(socket=configuration.cpu.socket)
+
+        if configuration.motherboard:
+            cpus = cpus.filter(socket=configuration.motherboard.socket)
+            rams = rams.filter(ram_type=configuration.motherboard.RAM_type)
+
+        if configuration.ram and configuration.motherboard:
+            if configuration.ram.ram_type != configuration.motherboard.RAM_type:
+                ram_msg = "Обрана оперативна пам'ять не підходить до материнської плати!"
+
     context = {
         'cpus': cpus,
-
+        'motherboards': motherboards,
+        'rams': rams,
         'configuration': configuration,
+<<<<<<< HEAD
 >>>>>>> 394cf17 (add configurator)
+=======
+        'ram_msg': ram_msg,
+>>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
     }
 
     return render(request, 'configurator/configurator.html', context)
@@ -177,6 +200,9 @@ def remove_cpu(request):
     configuration.save()
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
     return redirect('configurator')
 
 def select_mb(request, mb_id):
@@ -209,6 +235,7 @@ def remove_ram(request):
     configuration.ram = None
     configuration.save()
 
+<<<<<<< HEAD
     return redirect('configurator')
 
 def select_gpu(request, gpu_id):
@@ -362,4 +389,6 @@ def save_configuration(request):
 >>>>>>> 394cf17 (add configurator)
 =======
 >>>>>>> 82bb7ff (add remove CPU functionality and update configurator template)
+=======
+>>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
     return redirect('configurator')

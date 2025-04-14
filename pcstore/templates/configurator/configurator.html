@@ -9,6 +9,9 @@
     <title>Конфігуратор | CorePC</title>
 </head>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
 <style>
 .accordion, .accordion-item, .accordion-header, .accordion-body {
     border: none;
@@ -51,8 +54,11 @@
     border-radius: 4px;
 }
 </style>
+<<<<<<< HEAD
 =======
 >>>>>>> 394cf17 (add configurator)
+=======
+>>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
 <body class="d-flex flex-column min-vh-100 bg-dark text-light">
     {% include "header.html" %}
 
@@ -63,6 +69,7 @@
 <div class="container p-4">
     <h4 class="text-center mb-4">Конфігуратор ПК</h4>
     <div class="accordion accordion-flush" id="accordionConfigurator">
+<<<<<<< HEAD
     <form method="get">
         
         <!-- Процесор -->
@@ -107,16 +114,18 @@
 <div class="container p-4">
     <h4 class="text-center mb-4">Конфігуратор ПК</h4>
 >>>>>>> 82bb7ff (add remove CPU functionality and update configurator template)
+=======
+>>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
     <form method="get">
         
         <!-- Процесор -->
         <div class="accordion-item">
-            <div class="accordion-header border rounded p-4" id="headingCPU">
+            <div class="accordion-header rounded bg-dark p-4 border-bottom border-light rounded-0" id="headingCPU">
                 {% if configuration.cpu %}
-                <button class="accordion-button h4 collapsed bg-dark text-light mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCPU">
+                <button class="accordion-button h4 collapsed bg-dark text-light mb-4 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCPU">
                     Процесор
                 </button>
-                <div class="row row d-flex align-items-center">
+                <div class="row row d-flex align-items-center bg-dark text-light">
                     <div class="col-md-1 col-sm-2">
                         <img src="{{ configuration.cpu.image }}" class="image-fluid w-100">
                     </div>
@@ -124,24 +133,25 @@
                         <h5 class="m-0">{{ configuration.cpu }}</h5>
                         <p class="m-0">{{ configuration.cpu.price }} ₴</p>
                     </div>
-                    <div class="col-md-4">
-                        <a href="{% url 'remove_cpu' %}" type="submit" class="btn w-100 btn-danger">Видалити</a>
+                    <div class="col-md-4 d-flex align-items-end flex-column">
+                        <a href="{% url 'remove_cpu' %}" type="submit" class="btn btn-danger px-4">Видалити</a>
                     </div>
                 </div>
                 {% else %}
-                <button class="accordion-button h1 collapsed bg-dark text-light mb-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCPU">
+                <button class="accordion-button h1 collapsed bg-dark text-light mb-0 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCPU">
                     Процесор
                 </button>
                 {% endif %}
             </div>
             <div id="collapseCPU" class="accordion-collapse collapse">
-            <div class="accordion-body bg-dark border-light">
+            <div class="accordion-body bg-dark border-bottom border-light rounded-0">
+                {% if cpus.count > 0 %}
                 {% for cpu in cpus %}
                     <div class="row d-flex align-items-center">
-                        <div class="col-md-2 p-4">
-                            <img src="{{ cpu.image }}" alt="{{ cpu.name }}" class="img-fluid w-100">
+                        <div class="col-md-2 p-4 justify-content-center">
+                            <img src="{{ cpu.image }}" alt="{{ cpu.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
                         </div>
-                        <div class="col-md-8 text-start p-4">
+                        <div class="col-md-8 text-start p-4 text-light">
                             <h5>{{ cpu }}</h5>
 >>>>>>> 394cf17 (add configurator)
                             <p class="mb-2">{{ cpu.socket }} сокет, {{ cpu.cores }} ядер {{ cpu.threads }} потоків, {{ cpu.frequency }} Ггц</p>
@@ -155,6 +165,7 @@
                         </div>
                     </div>
                 {% endfor %}
+<<<<<<< HEAD
 <<<<<<< HEAD
                 {% else %}
                 <p class="text-center text-light my-4">Відповідних товарів не знайдено</p>
@@ -607,11 +618,127 @@
         {% endif %}
     </div>
 =======
+=======
+                {% else %}
+                <p class="text-center text-light my-4">Відповідних товарів не знайдено</p>
+                {% endif %}
+>>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
             </div>
             </div>
         </div>
+
+        <!-- Материнська плата -->
+        <div class="accordion-item">
+            <div class="accordion-header rounded bg-dark p-4 border-bottom border-light rounded-0" id="headingMB">
+                {% if configuration.motherboard %}
+                <button class="accordion-button h4 collapsed bg-dark text-light mb-4 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMB">
+                    Материнська плата
+                </button>
+                <div class="row row d-flex align-items-center bg-dark text-light">
+                    <div class="col-md-1 col-sm-2">
+                        <img src="{{ configuration.motherboard.image }}" class="image-fluid w-100">
+                    </div>
+                    <div class="col-md-7">
+                        <h5 class="m-0">{{ configuration.motherboard }}</h5>
+                        <p class="m-0">{{ configuration.motherboard.price }} ₴</p>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end flex-column">
+                        <a href="{% url 'remove_mb' %}" type="submit" class="btn btn-danger px-4">Видалити</a>
+                    </div>
+                </div>
+                {% else %}
+                <button class="accordion-button h1 collapsed bg-dark text-light mb-0 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMB">
+                    Материнська плата
+                </button>
+                {% endif %}
+            </div>
+            <div id="collapseMB" class="accordion-collapse collapse">
+            <div class="accordion-body bg-dark border-bottom border-light rounded-0">
+                {% if motherboards.count > 0 %}
+                {% for mb in motherboards %}
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-2 p-4 justify-content-center">
+                            <img src="{{ mb.image }}" alt="{{ mb.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
+                        </div>
+                        <div class="col-md-8 text-start p-4 text-light">
+                            <h5>{{ mb }}</h5>
+                            <p class="mb-2">{{ mb.socket }} сокет, {{ mb.chipset }} чіпсет, {{ mb.form_factor }}, {{ mb.RAM_type }}</p>
+                            <p class="mb-2">Ціна: <span class="fw-bold">{{ mb.price }}</span> ₴</p>
+                        </div>
+                        <div class="col-md-2 p-4">
+                            <form method="post">
+                                {% csrf_token %}
+                                <a href="{% url 'select_mb' mb.id %}" type="submit" class="btn w-100 btn-mainpurple">Обрати</a>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                <p class="text-center text-light my-4">Відповідних товарів не знайдено</p>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+        <!-- Оперативна пам'ять -->
+        <div class="accordion-item">
+            <div class="accordion-header rounded bg-dark p-4 border-bottom border-light rounded-0" id="headingRAM">
+                {% if configuration.ram %}
+                <button class="accordion-button h4 collapsed bg-dark text-light mb-4 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRAM">
+                    Оперативна пам'ять {% if ram_msg %}<span class="text-warning">&nbsp;{{ ram_msg }}</span>{% endif %}
+                </button>
+                <div class="row row d-flex align-items-center bg-dark text-light">
+                    <div class="col-md-1 col-sm-2">
+                        <img src="{{ configuration.ram.image }}" class="image-fluid w-100">
+                    </div>
+                    <div class="col-md-7">
+                        <h5 class="m-0">{{ configuration.ram }}</h5>
+                        <p class="m-0">{{ configuration.ram.price }} ₴</p>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end flex-column">
+                        <a href="{% url 'remove_ram' %}" type="submit" class="btn btn-danger px-4">Видалити</a>
+                    </div>
+                </div>
+                {% else %}
+                <button class="accordion-button h1 collapsed bg-dark text-light mb-0 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRAM">
+                    Оперативна пам'ять
+                </button>
+                {% endif %}
+            </div>
+            <div id="collapseRAM" class="accordion-collapse collapse">
+            <div class="accordion-body bg-dark border-bottom border-light rounded-0">
+                {% if rams.count > 0 %}
+                {% for ram in rams %}
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-2 p-4 justify-content-center">
+                            <img src="{{ ram.image }}" alt="{{ ram.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
+                        </div>
+                        <div class="col-md-8 text-start p-4 text-light">
+                            <h5>{{ ram }}</h5>
+                            <p class="mb-2">{{ ram.capacity }} GB, {{ ram.frequency }} MHz, {{ ram.ram_type }}</p>
+                            <p class="mb-2">Ціна: <span class="fw-bold">{{ ram.price }}</span> ₴</p>
+                        </div>
+                        <div class="col-md-2 p-4">
+                            <form method="post">
+                                {% csrf_token %}
+                                <a href="{% url 'select_ram' ram.id %}" type="submit" class="btn w-100 btn-mainpurple">Обрати</a>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                <p class="text-center text-light my-4">Відповідних товарів не знайдено</p>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
     </form>
+<<<<<<< HEAD
 >>>>>>> 394cf17 (add configurator)
+=======
+    </div>
+>>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
 </div>
 
 {% else %}
