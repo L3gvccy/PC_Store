@@ -95,6 +95,9 @@ class Storage(Product):
 
 class PSU(Product):
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 99cc666 (add PSUs)
     certificate_choices = [
         ('80 Plus Titanium', '80 Plus Titanium'),
         ('80 Plus Platinum', '80 Plus Platinum'),
@@ -103,6 +106,7 @@ class PSU(Product):
         ('80 Plus Bronze', '80 Plus Bronze'),
         ('Без сертифікату', 'Без сертифікату'),
     ]
+<<<<<<< HEAD
     brand = models.CharField(max_length=25)
     series = models.CharField(max_length=50)
     wattage = models.IntegerField(help_text="Watt")
@@ -113,6 +117,12 @@ class PSU(Product):
     wattage = models.IntegerField(help_text="Watt")
     certificate = models.CharField(max_length=25)
 >>>>>>> 38218fe (add all product models)
+=======
+    brand = models.CharField(max_length=25)
+    series = models.CharField(max_length=50)
+    wattage = models.IntegerField(help_text="Watt")
+    certificate = models.CharField(max_length=25, choices=certificate_choices, default='Без сертифікату')
+>>>>>>> 99cc666 (add PSUs)
     modular = models.BooleanField(default=False)
 
 class Cooler(Product):

@@ -57,11 +57,16 @@ urlpatterns = [
     path('storages/', views.Storages_view),
     path('storage_detail/<int:storage_id>/', views.storage_detail, name='storage_detail'),
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 5fc22e5 (Add storages)
 =======
+=======
+    path('psus/', views.PSUs_view),
+    path('psu_detail/<int:psu_id>/', views.psu_detail, name='psu_detail'),
+>>>>>>> 99cc666 (add PSUs)
     path('coolers/', views.Coolers_view),
     path('cooler_detail/<int:cooler_id>/', views.cooler_detail, name='cooler_detail'),
-    path('aios/', views.AIOSs_view),
+    path('aios/', views.AIOs_view),
     path('aio_detail/<int:aio_id>/', views.aio_detail, name='aio_detail'),
 >>>>>>> 9d3cf93 (add coolers and aios)
 ]

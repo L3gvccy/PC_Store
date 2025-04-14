@@ -1115,7 +1115,7 @@ def cooler_detail(req, cooler_id):
     }
     return render(req, 'components/cooler_detail.html', context)
 
-def AIOSs_view(req):
+def AIOs_view(req):
     aios = AIO.objects.all()
 
     # Фільтрація за ціною
@@ -1189,4 +1189,76 @@ def aio_detail(req, aio_id):
         'aio': aio,
     }
     return render(req, 'components/aio_detail.html', context)
+<<<<<<< HEAD
 >>>>>>> 9d3cf93 (add coolers and aios)
+=======
+
+def PSUs_view(req):
+    psus = PSU.objects.all()
+
+    # Фільтрація за ціною
+    min_price = req.GET.get('min_price', None)
+    max_price = req.GET.get('max_price', None)
+    if min_price and max_price:
+        psus = psus.filter(price__gte=min_price, price__lte=max_price)
+
+    # Фільтрація за брендом
+    selected_brands = req.GET.getlist('brand')
+    if selected_brands:
+        psus = psus.filter(brand__in=selected_brands)
+
+    # Фільтрація за ватами
+    selected_wattages = req.GET.getlist('wattage')
+    if selected_wattages:
+        wattage_filter = Q()
+        for wattage in selected_wattages:
+            min_wattage, max_wattage = map(float, wattage.split('-'))
+            wattage_filter |= Q(wattage__gte=min_wattage, wattage__lte=max_wattage)
+        psus = psus.filter(wattage_filter)
+
+    # Фільтрація за сертифікатом
+    selected_certificates = req.GET.getlist('certificate')
+    if selected_certificates:
+        psus = psus.filter(certificate__in=selected_certificates)
+
+    # Фільтрація за модульністю
+    selected_modularities = req.GET.getlist('modular')
+    if 'Модульний' in selected_modularities and 'Немодульний' not in selected_modularities:
+        psus = psus.filter(modular=True)
+    elif 'Немодульний' in selected_modularities and 'Модульний' not in selected_modularities:
+        psus = psus.filter(modular=False)
+
+    # Сортування
+    sort = req.GET.get('sort')
+    if sort == 'price_asc':
+        psus = psus.order_by('price')
+    elif sort == 'price_desc':
+        psus = psus.order_by('-price')
+
+    # Варіанти для фільтрів
+    brands = ['Be Quiet!','Gigabyte', 'Deepcool', 'MSI']
+    wattages = ['1000-1300', '900-1000', '800-850', '700-750', '600-650', '500-550', '400-450']
+    certificates = ['80 Plus Titanium', '80 Plus Platinum', '80 Plus Gold', '80 Plus Silver', '80 Plus Bronze', 'Без сертифікату']
+    modularities = ['Модульний', 'Немодульний']
+
+    context = {
+        'psus': psus,
+        'brands': brands,
+        'wattages': wattages,
+        'certificates': certificates,
+        'modularities': modularities,
+        'selected_brands': selected_brands,
+        'selected_wattages': selected_wattages,
+        'selected_certificates': selected_certificates,
+        'selected_modularities': selected_modularities,
+    }
+
+    return render(req, 'components/psus.html', context)
+
+def psu_detail(req, psu_id):
+    psu = PSU.objects.get(id=psu_id)
+    context = {
+        'psu': psu,
+    }
+    return render(req, 'components/psu_detail.html', context)
+>>>>>>> 99cc666 (add PSUs)
