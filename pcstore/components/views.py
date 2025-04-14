@@ -171,7 +171,7 @@ def GPUs_view(req):
     # Фільтрація за виробником графічного процесору
     selected_gp_brands = req.GET.getlist('gp_brand')
     if selected_gp_brands:
-        gpus = gpus.filter(gp_brands__in=selected_gp_brands)
+        gpus = gpus.filter(gp_brand__in=selected_gp_brands)
 
     # Фільтрація за памʼяттю
     selected_memory = req.GET.getlist('memory')
@@ -193,7 +193,7 @@ def GPUs_view(req):
     # Варіанти для фільтрів
     brands = ['MSI', 'ASUS', 'Palit', 'Gigabyte']
     gp_brands = ['AMD','Nvidia']
-    memory_options = ['6', '8', '10', '12', '16', '24']
+    memory_options = ['6', '8', '10', '12', '16', '24', '32']
     memory_types = ['GDDR6', 'GDDR6X','GDDR7','GDDR7X']
 
 
