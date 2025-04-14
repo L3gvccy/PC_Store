@@ -41,7 +41,9 @@
               {{ form.delivery_type }}
             
               <div id="post_company_field" style="display: none;">
-                {{ form.post_company.label_tag }}
+                <div style="display: block;">
+                  {{ form.post_company.label_tag }}
+                </div>
                 {{ form.post_company }}
               </div>
               
@@ -77,6 +79,10 @@
         const selected = document.querySelector('input[name="delivery_type"]:checked');
         if (selected && selected.value === 'post_office') {
           postCompanyField.style.display = 'block';
+          postCompanyField.style.minHeight = '70px';
+          const selectMenu = document.getElementById('id_post_company');
+          selectMenu.style.display = 'block';
+          selectMenu.classList.add('dropdown-menu', 'bg-dark', 'text-light', 'border', 'border-light');
         } else {
           postCompanyField.style.display = 'none';
         }
