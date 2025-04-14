@@ -70,6 +70,7 @@ def CPUs_view(req):
 
     context = {
         'processors': cpus,
+        'selected_sort': sort,
         'brands': brands,
         'sockets': sockets,
         'cores': cores,
@@ -125,6 +126,13 @@ def Motherboards_view(req):
     if selected_ram_types:
         motherboards = motherboards.filter(RAM_type__in=selected_ram_types)
 
+    # Сортування
+    sort = req.GET.get('sort')
+    if sort == 'price_asc':
+        gpus = gpus.order_by('price')
+    elif sort == 'price_desc':
+        gpus = gpus.order_by('-price')
+
     brands = ['AsRock', 'Asus', 'Gigabyte', 'MSI']
     sockets = ['AM4', 'AM5', '1851', '1700', '1200']
     chipsets = ['B550', 'B650', 'B850', 'X870', 'Z390', 'B560', 'H510', 'B760', 'Z790', 'B860', 'Z890']
@@ -133,6 +141,7 @@ def Motherboards_view(req):
 
     context = {
         'mbs': motherboards,
+        'selected_sort': sort,
         'brands': brands,
         'sockets': sockets,
         'chipsets': chipsets,
@@ -199,6 +208,7 @@ def GPUs_view(req):
 
     context = {
         'gpus': gpus,
+        'selected_sort': sort,
         'brands': brands,
         'gp_brands': gp_brands,
         'memory_options': memory_options,
@@ -269,6 +279,7 @@ def RAMs_view(req):
 
     context = {
         'rams': rams,
+        'selected_sort': sort,
         'brands': brands,
         'capacities': capacities,
         'ram_types': ram_types,
@@ -338,6 +349,7 @@ def Storages_view(req):
 
     context = {
         'storages': storages,
+        'selected_sort': sort,
         'brands': brands,
         'capacities': capacities,
         'storage_types': storage_types,
@@ -417,6 +429,7 @@ def Coolers_view(req):
 
     context = {
         'coolers': coolers,
+        'selected_sort': sort,
         'brands': brands,
         'heat_tube_numbers': heat_tube_numbers,
         'heights': heights,
@@ -493,6 +506,7 @@ def AIOs_view(req):
 
     context = {
         'aios': aios,
+        'selected_sort': sort,
         'brands': brands,
         'sizes': sizes,
         'argbs': argbs,
@@ -563,6 +577,7 @@ def PSUs_view(req):
 
     context = {
         'psus': psus,
+        'selected_sort': sort,
         'brands': brands,
         'wattages': wattages,
         'certificates': certificates,
@@ -644,6 +659,7 @@ def Cases_view(req):
 
     context = {
         'cases': cases,
+        'selected_sort': sort,
         'brands': brands,
         'form_factors': form_factors,
         'fans_ch': fans_ch,
