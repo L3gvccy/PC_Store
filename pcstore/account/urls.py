@@ -5,11 +5,15 @@ urlpatterns = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 9489b5e (add user authentication tests and update URL patterns with named routes)
     path('login/', views.login_user, name='login_user'),
     path('logout/', views.logout, name='logout'),
     path('register/', views.register_user, name='register_user'),
     path('profile/', views.profile_user, name='profile_user'),
     path('profile/change-password/', views.change_password, name='change_password'),
+<<<<<<< HEAD
 =======
     path('register/', views.register_user)
 >>>>>>> 0c2974f (Add registration)
@@ -25,4 +29,6 @@ urlpatterns = [
     path('profile/', views.profile_user),
     path('profile/change-password/', views.change_password)
 >>>>>>> a3027a8 (Add user profile)
+=======
+>>>>>>> 9489b5e (add user authentication tests and update URL patterns with named routes)
 ]
