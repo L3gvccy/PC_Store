@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 94d0bc9 (add component detail links to configurator template and update URL patterns)
 from django.urls import path, include
 from . import views
 
