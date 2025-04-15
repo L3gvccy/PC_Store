@@ -1,7 +1,6 @@
 from django.urls import path, include
 from . import views
 
-
 urlpatterns = [
     path('', views.configurator_view, name="configurator"),
     path('components/', include(('components.urls', 'components'), namespace='components')),
