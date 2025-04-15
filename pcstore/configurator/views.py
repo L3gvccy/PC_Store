@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from decimal import Decimal
 from components.models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
+from cart.views import add_to_cart
 from .models import Configuration
 
 
@@ -292,6 +293,7 @@ def clear_configuration(request):
     configuration.case = None
     configuration.total_price = 0.00
     configuration.save()
+    messages.success(request, "Конфігуратор було очищено!")
 
     return redirect('configurator')
 
@@ -300,5 +302,33 @@ def err_configuration(request):
     return redirect('configurator')
 
 def save_configuration(request):
-    messages.success(request, "Ваша збірка була збережена!")
+    configuration = Configuration.objects.get(user=request.user)
+    if configuration.cpu:
+        add_to_cart(request, configuration.cpu.id)
+
+    if configuration.motherboard:
+        add_to_cart(request, configuration.motherboard.id)
+
+    if configuration.ram:
+        add_to_cart(request, configuration.ram.id)
+
+    if configuration.gpu:
+        add_to_cart(request, configuration.gpu.id)
+
+    if configuration.storage:
+        add_to_cart(request, configuration.storage.id)
+
+    if configuration.psu:
+        add_to_cart(request, configuration.psu.id)
+
+    if configuration.cooler:
+        add_to_cart(request, configuration.cooler.id)
+
+    if configuration.aio:
+        add_to_cart(request, configuration.aio.id)
+
+    if configuration.case:
+        add_to_cart(request, configuration.case.id)
+        
+    messages.success(request, "Ваша збірка була додана до кошика!")
     return redirect('configurator')
