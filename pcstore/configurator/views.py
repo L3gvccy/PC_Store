@@ -7,7 +7,7 @@ from cart.views import add_to_cart
 =======
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
-from django.views.decorators.http import require_POST
+from decimal import Decimal
 from components.models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 >>>>>>> 394cf17 (add configurator)
 from .models import Configuration
@@ -119,41 +119,117 @@ def configurator_view(request):
 =======
 =======
     motherboards = Motherboard.objects.all()
+    gpus = GPU.objects.all()
     rams = RAM.objects.all()
+<<<<<<< HEAD
 >>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
+=======
+    storages = Storage.objects.all()
+    psus = PSU.objects.all()
+    coolers = Cooler.objects.all()
+    aios = AIO.objects.all()
+    cases = Case.objects.all()
+>>>>>>> 1b37a02 (add GPU, storage, PSU, cooler, AIO, and case selection functionality to configurator)
     configuration = None
 
     ram_msg = None
+    storage_msg = None
+    psu_msg = None
+    cooler_msg = None
+    aio_msg = None
+    case_msg = None
 
     if request.user.is_authenticated:
         configuration, created = Configuration.objects.get_or_create(user=request.user)
 
         if configuration.cpu:
             motherboards = motherboards.filter(socket=configuration.cpu.socket)
+            min_cooler_tdp = configuration.cpu.TDP * 1.5
+            aios = aios.filter(max_tdp__gte=min_cooler_tdp)
+            coolers = coolers.filter(max_tdp__gte=min_cooler_tdp)
 
         if configuration.motherboard:
             cpus = cpus.filter(socket=configuration.motherboard.socket)
             rams = rams.filter(ram_type=configuration.motherboard.RAM_type)
+            if configuration.motherboard.form_factor == 'ATX':
+                cases = cases.filter(form_factor='ATX')
+
+        if configuration.gpu and configuration.cpu:
+            min_rec_tdp = (configuration.gpu.TDP + configuration.cpu.TDP) * 1.8
+            psus = psus.filter(wattage__gte=min_rec_tdp)
+
+        if configuration.case:
+            if configuration.case.form_factor == 'Micro-ATX':
+                motherboards = motherboards.filter(form_factor='Micro-ATX')
+            coolers = coolers.filter(height__lte=configuration.case.max_cooler_height)
+            aios = aios.filter(size__lte=configuration.case.max_aio_size)
 
         if configuration.ram and configuration.motherboard:
             if configuration.ram.ram_type != configuration.motherboard.RAM_type:
                 ram_msg = "Обрана оперативна пам'ять не підходить до материнської плати!"
 
+        if configuration.psu and configuration.gpu and configuration.cpu:
+            min_rec_tdp = (configuration.gpu.TDP + configuration.cpu.TDP) * 1.8
+            if configuration.psu.wattage < min_rec_tdp:
+                psu_msg = "Блок живлення недостатньої потужності!"
+
+        if configuration.storage and configuration.motherboard:
+            if configuration.storage.storage_type != 'NVMe' and configuration.motherboard.RAM_type == 'DDR5':
+                storage_msg = "Обрана материнська плата підтримує M.2 SSD, рекомендуємо вибрати NVMe SSD!"
+
+        if configuration.cpu and configuration.cooler:
+            min_cooler_tdp = configuration.cpu.TDP * 1.5
+            if configuration.cooler.max_tdp < min_cooler_tdp:
+                cooler_msg = "Обраний кулер не підходить до процесора!"
+
+        if configuration.cpu and configuration.aio:
+            min_aio_tdp = configuration.cpu.TDP * 1.5
+            if configuration.aio.max_tdp < min_aio_tdp:
+                aio_msg = "Обрана система рідинного охолодження не підходить до процесора!"
+
+        if configuration.case and configuration.aio:
+            if configuration.aio.size > configuration.case.max_aio_size:
+                aio_msg = "Обрана система рідинного охолодження не підходить для обраного корпуса!"
+
+        if configuration.case and configuration.cooler:
+            if configuration.cooler.height > configuration.case.max_cooler_height:
+                cooler_msg = "Обраний кулер не підходить для обраного корпуса!"
+
+        configuration.total_price = calculate_price(configuration)
+        configuration.save()
+
     context = {
         'cpus': cpus,
         'motherboards': motherboards,
+        'gpus': gpus,
         'rams': rams,
+        'storages': storages,
+        'psus': psus,
+        'coolers': coolers,
+        'aios': aios,
+        'cases': cases,
         'configuration': configuration,
 <<<<<<< HEAD
 >>>>>>> 394cf17 (add configurator)
 =======
         'ram_msg': ram_msg,
+<<<<<<< HEAD
 >>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
+=======
+        'storage_msg': storage_msg,
+        'psu_msg': psu_msg,
+        'cooler_msg': cooler_msg,
+        'aio_msg': aio_msg,
+        'case_msg': case_msg,
+>>>>>>> 1b37a02 (add GPU, storage, PSU, cooler, AIO, and case selection functionality to configurator)
     }
 
     return render(request, 'configurator/configurator.html', context)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1b37a02 (add GPU, storage, PSU, cooler, AIO, and case selection functionality to configurator)
 def calculate_price(configuration):
     total_price = Decimal(0.00)
 
@@ -179,8 +255,11 @@ def calculate_price(configuration):
     return total_price
 
 
+<<<<<<< HEAD
 =======
 >>>>>>> 394cf17 (add configurator)
+=======
+>>>>>>> 1b37a02 (add GPU, storage, PSU, cooler, AIO, and case selection functionality to configurator)
 def select_cpu(request, cpu_id):
     cpu = get_object_or_404(CPU, id=cpu_id)
 
@@ -236,6 +315,9 @@ def remove_ram(request):
     configuration.save()
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 1b37a02 (add GPU, storage, PSU, cooler, AIO, and case selection functionality to configurator)
     return redirect('configurator')
 
 def select_gpu(request, gpu_id):
@@ -347,6 +429,7 @@ def clear_configuration(request):
     configuration.case = None
     configuration.total_price = 0.00
     configuration.save()
+<<<<<<< HEAD
     messages.success(request, "Конфігуратор було очищено!")
 
     return redirect('configurator')
@@ -391,4 +474,7 @@ def save_configuration(request):
 >>>>>>> 82bb7ff (add remove CPU functionality and update configurator template)
 =======
 >>>>>>> def463c (add motherboard and RAM selection functionality to configurator)
+=======
+
+>>>>>>> 1b37a02 (add GPU, storage, PSU, cooler, AIO, and case selection functionality to configurator)
     return redirect('configurator')
