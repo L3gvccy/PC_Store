@@ -166,12 +166,65 @@
             </div>
         </div>
 
+        <!-- Відеокарта -->
+        <div class="accordion-item">
+            <div class="accordion-header rounded bg-dark p-4 border-bottom border-light rounded-0" id="headingGPU">
+                {% if configuration.gpu %}
+                <button class="accordion-button h4 collapsed bg-dark text-light mb-4 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGPU">
+                    Відеокарта
+                </button>
+                <div class="row row d-flex align-items-center bg-dark text-light">
+                    <div class="col-md-1 col-sm-2">
+                        <img src="{{ configuration.gpu.image }}" class="image-fluid w-100">
+                    </div>
+                    <div class="col-md-7">
+                        <h5 class="m-0">{{ configuration.gpu }}</h5>
+                        <p class="m-0">{{ configuration.gpu.price }} ₴</p>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end flex-column">
+                        <a href="{% url 'remove_gpu' %}" type="submit" class="btn btn-danger px-4">Видалити</a>
+                    </div>
+                </div>
+                {% else %}
+                <button class="accordion-button h1 collapsed bg-dark text-light mb-0 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGPU">
+                    Відеокарта
+                </button>
+                {% endif %}
+            </div>
+            <div id="collapseGPU" class="accordion-collapse collapse">
+            <div class="accordion-body bg-dark border-bottom border-light rounded-0">
+                {% if gpus.count > 0 %}
+                {% for gpu in gpus %}
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-2 p-4 justify-content-center">
+                            <img src="{{ gpu.image }}" alt="{{ gpu.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
+                        </div>
+                        <div class="col-md-8 text-start p-4 text-light">
+                            <h5>{{ gpu }}</h5>
+                            <p class="mb-2">{{ gpu.memory }} GB {{ gpu.memory_type }}</p>
+                            <p class="mb-2">Ціна: <span class="fw-bold">{{ gpu.price }}</span> ₴</p>
+                        </div>
+                        <div class="col-md-2 p-4">
+                            <form method="post">
+                                {% csrf_token %}
+                                <a href="{% url 'select_gpu' gpu.id %}" type="submit" class="btn w-100 btn-mainpurple">Обрати</a>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                <p class="text-center text-light my-4">Відповідних товарів не знайдено</p>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
         <!-- Оперативна пам'ять -->
         <div class="accordion-item">
             <div class="accordion-header rounded bg-dark p-4 border-bottom border-light rounded-0" id="headingRAM">
                 {% if configuration.ram %}
                 <button class="accordion-button h4 collapsed bg-dark text-light mb-4 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRAM">
-                    Оперативна пам'ять {% if ram_msg %}<span class="text-warning">&nbsp;{{ ram_msg }}</span>{% endif %}
+                    Оперативна пам'ять {% if ram_msg %}<span class="text-danger">&nbsp;{{ ram_msg }}</span>{% endif %}
                 </button>
                 <div class="row row d-flex align-items-center bg-dark text-light">
                     <div class="col-md-1 col-sm-2">
@@ -219,7 +272,285 @@
             </div>
         </div>
 
+        <!-- Накопичувач -->
+        <div class="accordion-item">
+            <div class="accordion-header rounded bg-dark p-4 border-bottom border-light rounded-0" id="headingStorage">
+                {% if configuration.storage %}
+                <button class="accordion-button h4 collapsed bg-dark text-light mb-4 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStorage">
+                    Накопичувач {% if storage_msg %}<span class="text-warning">&nbsp;{{ storage_msg }}</span>{% endif %}
+                </button>
+                <div class="row row d-flex align-items-center bg-dark text-light">
+                    <div class="col-md-1 col-sm-2">
+                        <img src="{{ configuration.storage.image }}" class="image-fluid w-100">
+                    </div>
+                    <div class="col-md-7">
+                        <h5 class="m-0">{{ configuration.storage }}</h5>
+                        <p class="m-0">{{ configuration.storage.price }} ₴</p>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end flex-column">
+                        <a href="{% url 'remove_storage' %}" type="submit" class="btn btn-danger px-4">Видалити</a>
+                    </div>
+                </div>
+                {% else %}
+                <button class="accordion-button h1 collapsed bg-dark text-light mb-0 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStorage">
+                    Накопичувач
+                </button>
+                {% endif %}
+            </div>
+            <div id="collapseStorage" class="accordion-collapse collapse">
+            <div class="accordion-body bg-dark border-bottom border-light rounded-0">
+                {% if storages.count > 0 %}
+                {% for storage in storages %}
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-2 p-4 justify-content-center">
+                            <img src="{{ storage.image }}" alt="{{ storage.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
+                        </div>
+                        <div class="col-md-8 text-start p-4 text-light">
+                            <h5>{{ storage }}</h5>
+                            <p class="mb-2">{{ storage.capacity }} {{ storage.storage_type }}, {{ storage.speed }} МБ/с</p>
+                            <p class="mb-2">Ціна: <span class="fw-bold">{{ storage.price }}</span> ₴</p>
+                        </div>
+                        <div class="col-md-2 p-4">
+                            <form method="post">
+                                {% csrf_token %}
+                                <a href="{% url 'select_storage' storage.id %}" type="submit" class="btn w-100 btn-mainpurple">Обрати</a>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                <p class="text-center text-light my-4">Відповідних товарів не знайдено</p>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+        <!-- Блок живлення -->
+        <div class="accordion-item">
+            <div class="accordion-header rounded bg-dark p-4 border-bottom border-light rounded-0" id="headingPSU">
+                {% if configuration.psu %}
+                <button class="accordion-button h4 collapsed bg-dark text-light mb-4 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePSU">
+                    Блок живлення {% if psu_msg %}<span class="text-danger">&nbsp;{{ psu_msg }}</span>{% endif %}
+                </button>
+                <div class="row row d-flex align-items-center bg-dark text-light">
+                    <div class="col-md-1 col-sm-2">
+                        <img src="{{ configuration.psu.image }}" class="image-fluid w-100">
+                    </div>
+                    <div class="col-md-7">
+                        <h5 class="m-0">{{ configuration.psu }}</h5>
+                        <p class="m-0">{{ configuration.psu.price }} ₴</p>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end flex-column">
+                        <a href="{% url 'remove_psu' %}" type="submit" class="btn btn-danger px-4">Видалити</a>
+                    </div>
+                </div>
+                {% else %}
+                <button class="accordion-button h1 collapsed bg-dark text-light mb-0 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePSU">
+                    Блок живлення
+                </button>
+                {% endif %}
+            </div>
+            <div id="collapsePSU" class="accordion-collapse collapse">
+            <div class="accordion-body bg-dark border-bottom border-light rounded-0">
+                {% if psus.count > 0 %}
+                {% for psu in psus %}
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-2 p-4 justify-content-center">
+                            <img src="{{ psu.image }}" alt="{{ psu.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
+                        </div>
+                        <div class="col-md-8 text-start p-4 text-light">
+                            <h5>{{ psu }}</h5>
+                            <p class="mb-2">{{ psu.wattage }} Вт, {{ psu.certificate }}</p>
+                            <p class="mb-2">Ціна: <span class="fw-bold">{{ psu.price }}</span> ₴</p>
+                        </div>
+                        <div class="col-md-2 p-4">
+                            <form method="post">
+                                {% csrf_token %}
+                                <a href="{% url 'select_psu' psu.id %}" type="submit" class="btn w-100 btn-mainpurple">Обрати</a>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                <p class="text-center text-light my-4">Відповідних товарів не знайдено</p>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+        <!-- Повітряне охолодження -->
+        <div class="accordion-item">
+            <div class="accordion-header rounded bg-dark p-4 border-bottom border-light rounded-0" id="headingCooler">
+                {% if configuration.cooler %}
+                <button class="accordion-button h4 collapsed bg-dark text-light mb-4 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCooler">
+                    Повітряне охолодження {% if cooler_msg %}<span class="text-danger">&nbsp;{{ cooler_msg }}</span>{% endif %}
+                </button>
+                <div class="row row d-flex align-items-center bg-dark text-light">
+                    <div class="col-md-1 col-sm-2">
+                        <img src="{{ configuration.cooler.image }}" class="image-fluid w-100">
+                    </div>
+                    <div class="col-md-7">
+                        <h5 class="m-0">{{ configuration.cooler }}</h5>
+                        <p class="m-0">{{ configuration.cooler.price }} ₴</p>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end flex-column">
+                        <a href="{% url 'remove_cooler' %}" type="submit" class="btn btn-danger px-4">Видалити</a>
+                    </div>
+                </div>
+                {% else %}
+                <button class="accordion-button h1 collapsed bg-dark text-light mb-0 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCooler">
+                    Повітряне охолодження
+                </button>
+                {% endif %}
+            </div>
+            <div id="collapseCooler" class="accordion-collapse collapse">
+            <div class="accordion-body bg-dark border-bottom border-light rounded-0">
+                {% if configuration.aio %}
+                <p class="text-center text-light my-4">Ви вже обрали систему рідинного охолодження</p>
+                {% else %}
+                    {% if coolers.count > 0 %}
+                    {% for cooler in coolers %}
+                        <div class="row d-flex align-items-center">
+                            <div class="col-md-2 p-4 justify-content-center">
+                                <img src="{{ cooler.image }}" alt="{{ cooler.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
+                            </div>
+                            <div class="col-md-8 text-start p-4 text-light">
+                                <h5>{{ cooler }}</h5>
+                                <p class="mb-2">{{ cooler.max_tdp }} Вт, {{ cooler.heat_tube_number }}</p>
+                                <p class="mb-2">Ціна: <span class="fw-bold">{{ cooler.price }}</span> ₴</p>
+                            </div>
+                            <div class="col-md-2 p-4">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <a href="{% url 'select_cooler' cooler.id %}" type="submit" class="btn w-100 btn-mainpurple">Обрати</a>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                    <p class="text-center text-light my-4">Відповідних товарів не знайдено</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+        <!-- Система рідинного охолодження -->
+        <div class="accordion-item">
+            <div class="accordion-header rounded bg-dark p-4 border-bottom border-light rounded-0" id="headingAIO">
+                {% if configuration.aio %}
+                <button class="accordion-button h4 collapsed bg-dark text-light mb-4 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAIO">
+                    Система рідинного охолодження {% if aio_msg %}<span class="text-danger">&nbsp;{{ aio_msg }}</span>{% endif %}
+                </button>
+                <div class="row row d-flex align-items-center bg-dark text-light">
+                    <div class="col-md-1 col-sm-2">
+                        <img src="{{ configuration.aio.image }}" class="image-fluid w-100">
+                    </div>
+                    <div class="col-md-7">
+                        <h5 class="m-0">{{ configuration.aio }}</h5>
+                        <p class="m-0">{{ configuration.aio.price }} ₴</p>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end flex-column">
+                        <a href="{% url 'remove_aio' %}" type="submit" class="btn btn-danger px-4">Видалити</a>
+                    </div>
+                </div>
+                {% else %}
+                <button class="accordion-button h1 collapsed bg-dark text-light mb-0 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAIO">
+                    Система рідинного охолодження
+                </button>
+                {% endif %}
+            </div>
+            <div id="collapseAIO" class="accordion-collapse collapse">
+            <div class="accordion-body bg-dark border-bottom border-light rounded-0">
+                {% if configuration.cooler %}
+                <p class="text-center text-light my-4">Ви вже обрали систему повітряного охолодження</p>
+                {% else %}
+                    {% if aios.count > 0 %}
+                    {% for aio in aios %}
+                        <div class="row d-flex align-items-center">
+                            <div class="col-md-2 p-4 justify-content-center">
+                                <img src="{{ aio.image }}" alt="{{ aio.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
+                            </div>
+                            <div class="col-md-8 text-start p-4 text-light">
+                                <h5>{{ aio }}</h5>
+                                <p class="mb-2">{{ aio.max_tdp }} Вт, {{ aio.size }} мм</p>
+                                <p class="mb-2">Ціна: <span class="fw-bold">{{ aio.price }}</span> ₴</p>
+                            </div>
+                            <div class="col-md-2 p-4">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <a href="{% url 'select_aio' aio.id %}" type="submit" class="btn w-100 btn-mainpurple">Обрати</a>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% else %}
+                    <p class="text-center text-light my-4">Відповідних товарів не знайдено</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
+        <!-- Корпус -->
+        <div class="accordion-item">
+            <div class="accordion-header rounded bg-dark p-4 border-bottom border-light rounded-0" id="headingCase">
+                {% if configuration.case %}
+                <button class="accordion-button h4 collapsed bg-dark text-light mb-4 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCase">
+                    Корпус {% if case_msg %}<span class="text-warning">&nbsp;{{ case_msg }}</span>{% endif %}
+                </button>
+                <div class="row row d-flex align-items-center bg-dark text-light">
+                    <div class="col-md-1 col-sm-2">
+                        <img src="{{ configuration.case.image }}" class="image-fluid w-100">
+                    </div>
+                    <div class="col-md-7">
+                        <h5 class="m-0">{{ configuration.case }}</h5>
+                        <p class="m-0">{{ configuration.case.price }} ₴</p>
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end flex-column">
+                        <a href="{% url 'remove_case' %}" type="submit" class="btn btn-danger px-4">Видалити</a>
+                    </div>
+                </div>
+                {% else %}
+                <button class="accordion-button h1 collapsed bg-dark text-light mb-0 p-0 rounded-0" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCase">
+                    Корпус
+                </button>
+                {% endif %}
+            </div>
+            <div id="collapseCase" class="accordion-collapse collapse">
+            <div class="accordion-body bg-dark border-bottom border-light rounded-0">
+                {% if cases.count > 0 %}
+                {% for case in cases %}
+                    <div class="row d-flex align-items-center">
+                        <div class="col-md-2 p-4 justify-content-center">
+                            <img src="{{ case.image }}" alt="{{ case.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
+                        </div>
+                        <div class="col-md-8 text-start p-4 text-light">
+                            <h5>{{ case }}</h5>
+                            <p class="mb-2">{{ case.form_factor }}, {% if case.fans > 0 %} Кількість превстановлених вентиляторів: {{ case.fans }} {% else %} Без предвстановлених вентиляторів {% endif %}</p>
+                            <p class="mb-2">Ціна: <span class="fw-bold">{{ case.price }}</span> ₴</p>
+                        </div>
+                        <div class="col-md-2 p-4">
+                            <form method="post">
+                                {% csrf_token %}
+                                <a href="{% url 'select_case' case.id %}" type="submit" class="btn w-100 btn-mainpurple">Обрати</a>
+                            </form>
+                        </div>
+                    </div>
+                {% endfor %}
+                {% else %}
+                <p class="text-center text-light my-4">Відповідних товарів не знайдено</p>
+                {% endif %}
+            </div>
+            </div>
+        </div>
+
     </form>
+    </div>
+    <div class="my-4">
+        <h4>Загальна вартість збірки: {{ configuration.total_price }} ₴</h4>
+        <a href="clear_configuration" class="btn btn-outline-light">Очистити конфігуратор</a>
+        <a href="" class="btn btn-mainpurple">Додати товари до кошика</a>
     </div>
 </div>
 
