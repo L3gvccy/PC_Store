@@ -1,9 +1,10 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 
 urlpatterns = [
     path('', views.configurator_view, name="configurator"),
+    path('components/', include(('components.urls', 'components'), namespace='components')),
     path('select_cpu/<int:cpu_id>/', views.select_cpu, name="select_cpu"),
     path('remove_cpu/', views.remove_cpu, name="remove_cpu"),
     path('select_mb/<int:mb_id>/', views.select_mb, name="select_mb"),
