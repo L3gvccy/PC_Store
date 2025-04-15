@@ -8,6 +8,7 @@ urlpatterns = [
     path('cpus/', views.CPUs_view, name='cpus'),
 =======
     path('', views.components),
+<<<<<<< HEAD
     path('cpus/', views.CPUs_view),
 >>>>>>> 218d31d (add components main page)
     path('cpu_detail/<int:cpu_id>/', views.cpu_detail, name='cpu_detail'),
@@ -65,13 +66,32 @@ urlpatterns = [
     path('psu_detail/<int:psu_id>/', views.psu_detail, name='psu_detail'),
 >>>>>>> 99cc666 (add PSUs)
     path('coolers/', views.Coolers_view),
+=======
+    path('cpus/', views.CPUs_view, name='cpus'),
+    path('cpu_detail/<int:cpu_id>/', views.cpu_detail, name='cpu_detail'),
+    path('motherboards/', views.Motherboards_view, name='motherboards'),
+    path('motherboard_detail/<int:motherboard_id>/', views.motherboard_detail, name='motherboard_detail'),
+    path('gpus/', views.GPUs_view, name='gpus'),
+    path('gpu_detail/<int:gpu_id>/', views.gpu_detail, name='gpu_detail'),
+    path('rams/', views.RAMs_view, name='rams'),
+    path('ram_detail/<int:ram_id>/', views.ram_detail, name='ram_detail'),
+    path('storages/', views.Storages_view, name='storages'),
+    path('storage_detail/<int:storage_id>/', views.storage_detail, name='storage_detail'),
+    path('psus/', views.PSUs_view, name='psus'),
+    path('psu_detail/<int:psu_id>/', views.psu_detail, name='psu_detail'),
+    path('coolers/', views.Coolers_view, name='coolers'),
+>>>>>>> bd47084 (Add detailed tests for component views and update URL patterns with named routes)
     path('cooler_detail/<int:cooler_id>/', views.cooler_detail, name='cooler_detail'),
-    path('aios/', views.AIOs_view),
+    path('aios/', views.AIOs_view, name='aios'),
     path('aio_detail/<int:aio_id>/', views.aio_detail, name='aio_detail'),
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> 9d3cf93 (add coolers and aios)
 =======
     path('cases/', views.Cases_view),
+=======
+    path('cases/', views.Cases_view, name='cases'),
+>>>>>>> bd47084 (Add detailed tests for component views and update URL patterns with named routes)
     path('case_detail/<int:case_id>/', views.case_detail, name='case_detail'),
 >>>>>>> 5b57886 (add cases)
 ]
