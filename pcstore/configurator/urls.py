@@ -26,6 +26,7 @@ urlpatterns = [
     path('clear_configuration/', views.clear_configuration, name="clear_configuration"),
     path('err_configuration/', views.err_configuration, name="err_configuration"),
     path('save_configuration/', views.save_configuration, name="save_configuration"),
+<<<<<<< HEAD
 =======
 from django.urls import path
 from . import views
@@ -62,4 +63,6 @@ urlpatterns = [
     path('remove_case/', views.remove_case, name="remove_case"),
     path('clear_configuration/', views.clear_configuration, name="clear_configuration"),
 >>>>>>> 1b37a02 (add GPU, storage, PSU, cooler, AIO, and case selection functionality to configurator)
+=======
+>>>>>>> b39dc15 (add error handling and save configuration functionality to configurator)
 ]

@@ -1070,7 +1070,11 @@
     <div class="my-4">
         <h4>Загальна вартість збірки: {{ configuration.total_price }} ₴</h4>
         <a href="clear_configuration" class="btn btn-outline-light">Очистити конфігуратор</a>
-        <a href="" class="btn btn-mainpurple">Додати товари до кошика</a>
+        {% if is_valid %}
+        <a href="{% url 'save_configuration' %}" class="btn btn-mainpurple">Додати товари до кошика</a>
+        {% else %}
+        <a href="{% url 'err_configuration' %}" class="btn btn-mainpurple">Додати товари до кошика</a>
+        {% endif %}
     </div>
 >>>>>>> 1b37a02 (add GPU, storage, PSU, cooler, AIO, and case selection functionality to configurator)
 </div>
