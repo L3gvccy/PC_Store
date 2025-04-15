@@ -5,6 +5,7 @@ from django.contrib import messages
 from decimal import Decimal
 from components.models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 from cart.views import add_to_cart
+<<<<<<< HEAD
 =======
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, redirect
@@ -15,6 +16,8 @@ from django.contrib import messages
 from decimal import Decimal
 from components.models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 >>>>>>> 394cf17 (add configurator)
+=======
+>>>>>>> 479d32a (add save configuration functionality to add components to cart and update success messages)
 from .models import Configuration
 
 
@@ -445,6 +448,9 @@ def clear_configuration(request):
     configuration.total_price = 0.00
     configuration.save()
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 479d32a (add save configuration functionality to add components to cart and update success messages)
     messages.success(request, "Конфігуратор було очищено!")
 
     return redirect('configurator')
@@ -455,6 +461,9 @@ def err_configuration(request):
 
 def save_configuration(request):
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 479d32a (add save configuration functionality to add components to cart and update success messages)
     configuration = Configuration.objects.get(user=request.user)
     if configuration.cpu:
         add_to_cart(request, configuration.cpu.id)
@@ -484,6 +493,7 @@ def save_configuration(request):
         add_to_cart(request, configuration.case.id)
         
     messages.success(request, "Ваша збірка була додана до кошика!")
+<<<<<<< HEAD
 =======
 >>>>>>> 394cf17 (add configurator)
 =======
@@ -496,4 +506,6 @@ def save_configuration(request):
 =======
     messages.success(request, "Ваша збірка була збережена!")
 >>>>>>> b39dc15 (add error handling and save configuration functionality to configurator)
+=======
+>>>>>>> 479d32a (add save configuration functionality to add components to cart and update success messages)
     return redirect('configurator')
