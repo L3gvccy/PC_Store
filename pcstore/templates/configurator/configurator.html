@@ -72,7 +72,7 @@
                         <img src="{{ configuration.cpu.image }}" class="image-fluid w-100">
                     </div>
                     <div class="col-md-7">
-                        <h5 class="m-0">{{ configuration.cpu }}</h5>
+                        <h5 class="m-0"><a href="{% url 'components:cpu_detail' configuration.cpu.id %}" target="_blank" class="text-decoration-none text-light">{{ configuration.cpu }}</a></h5>
                         <p class="m-0">{{ configuration.cpu.price }} ₴</p>
                     </div>
                     <div class="col-md-4 d-flex align-items-end flex-column">
@@ -94,7 +94,7 @@
                             <img src="{{ cpu.image }}" alt="{{ cpu.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
                         </div>
                         <div class="col-md-8 text-start p-4 text-light">
-                            <h5>{{ cpu }}</h5>
+                            <h5><a href="{% url 'components:cpu_detail' cpu.id %}" target="_blank" class="text-decoration-none text-light">{{ cpu }}</a></h5>
                             <p class="mb-2">{{ cpu.socket }} сокет, {{ cpu.cores }} ядер {{ cpu.threads }} потоків, {{ cpu.frequency }} Ггц</p>
                             <p class="mb-2">Ціна: <span class="fw-bold">{{ cpu.price }}</span> ₴</p>
                         </div>
@@ -125,7 +125,7 @@
                         <img src="{{ configuration.motherboard.image }}" class="image-fluid w-100">
                     </div>
                     <div class="col-md-7">
-                        <h5 class="m-0">{{ configuration.motherboard }}</h5>
+                        <h5 class="m-0"><a href="{% url 'components:motherboard_detail' configuration.motherboard.id %}" target="_blank" class="text-decoration-none text-light">{{ configuration.motherboard }}</a></h5>
                         <p class="m-0">{{ configuration.motherboard.price }} ₴</p>
                     </div>
                     <div class="col-md-4 d-flex align-items-end flex-column">
@@ -147,7 +147,7 @@
                             <img src="{{ mb.image }}" alt="{{ mb.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
                         </div>
                         <div class="col-md-8 text-start p-4 text-light">
-                            <h5>{{ mb }}</h5>
+                            <h5><a href="{% url 'components:motherboard_detail' mb.id %}" target="_blank" class="text-decoration-none text-light">{{ mb }}</a></h5>
                             <p class="mb-2">{{ mb.socket }} сокет, {{ mb.chipset }} чіпсет, {{ mb.form_factor }}, {{ mb.RAM_type }}</p>
                             <p class="mb-2">Ціна: <span class="fw-bold">{{ mb.price }}</span> ₴</p>
                         </div>
@@ -178,7 +178,7 @@
                         <img src="{{ configuration.gpu.image }}" class="image-fluid w-100">
                     </div>
                     <div class="col-md-7">
-                        <h5 class="m-0">{{ configuration.gpu }}</h5>
+                        <h5 class="m-0"><a href="{% url 'components:gpu_detail' configuration.gpu.id %}" target="_blank" class="text-decoration-none text-light">{{ configuration.gpu }}</a></h5>
                         <p class="m-0">{{ configuration.gpu.price }} ₴</p>
                     </div>
                     <div class="col-md-4 d-flex align-items-end flex-column">
@@ -200,7 +200,7 @@
                             <img src="{{ gpu.image }}" alt="{{ gpu.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
                         </div>
                         <div class="col-md-8 text-start p-4 text-light">
-                            <h5>{{ gpu }}</h5>
+                            <h5><a href="{% url 'components:gpu_detail' gpu.id %}" target="_blank" class="text-decoration-none text-light">{{ gpu }}</a></h5>
                             <p class="mb-2">{{ gpu.memory }} GB {{ gpu.memory_type }}</p>
                             <p class="mb-2">Ціна: <span class="fw-bold">{{ gpu.price }}</span> ₴</p>
                         </div>
@@ -231,7 +231,7 @@
                         <img src="{{ configuration.ram.image }}" class="image-fluid w-100">
                     </div>
                     <div class="col-md-7">
-                        <h5 class="m-0">{{ configuration.ram }}</h5>
+                        <h5 class="m-0"><a href="{% url 'components:ram_detail' configuration.ram.id %}" target="_blank" class="text-decoration-none text-light">{{ configuration.ram }}</a></h5>
                         <p class="m-0">{{ configuration.ram.price }} ₴</p>
                     </div>
                     <div class="col-md-4 d-flex align-items-end flex-column">
@@ -253,7 +253,7 @@
                             <img src="{{ ram.image }}" alt="{{ ram.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
                         </div>
                         <div class="col-md-8 text-start p-4 text-light">
-                            <h5>{{ ram }}</h5>
+                            <h5><a href="{% url 'components:ram_detail' ram.id %}" target="_blank" class="text-decoration-none text-light">{{ ram }}</a></h5>
                             <p class="mb-2">{{ ram.capacity }} GB, {{ ram.frequency }} MHz, {{ ram.ram_type }}</p>
                             <p class="mb-2">Ціна: <span class="fw-bold">{{ ram.price }}</span> ₴</p>
                         </div>
@@ -284,7 +284,7 @@
                         <img src="{{ configuration.storage.image }}" class="image-fluid w-100">
                     </div>
                     <div class="col-md-7">
-                        <h5 class="m-0">{{ configuration.storage }}</h5>
+                        <h5 class="m-0"><a href="{% url 'components:storage_detail' configuration.storage.id %}" target="_blank" class="text-decoration-none text-light">{{ configuration.storage }}</a></h5>
                         <p class="m-0">{{ configuration.storage.price }} ₴</p>
                     </div>
                     <div class="col-md-4 d-flex align-items-end flex-column">
@@ -306,7 +306,7 @@
                             <img src="{{ storage.image }}" alt="{{ storage.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
                         </div>
                         <div class="col-md-8 text-start p-4 text-light">
-                            <h5>{{ storage }}</h5>
+                            <h5><a href="{% url 'components:storage_detail' storage.id %}" target="_blank" class="text-decoration-none text-light">{{ storage }}</a></h5>
                             <p class="mb-2">{{ storage.capacity }} {{ storage.storage_type }}, {{ storage.speed }} МБ/с</p>
                             <p class="mb-2">Ціна: <span class="fw-bold">{{ storage.price }}</span> ₴</p>
                         </div>
@@ -337,7 +337,7 @@
                         <img src="{{ configuration.psu.image }}" class="image-fluid w-100">
                     </div>
                     <div class="col-md-7">
-                        <h5 class="m-0">{{ configuration.psu }}</h5>
+                        <h5 class="m-0"><a href="{% url 'components:psu_detail' configuration.psu.id %}" target="_blank" class="text-decoration-none text-light">{{ configuration.psu }}</a></h5>
                         <p class="m-0">{{ configuration.psu.price }} ₴</p>
                     </div>
                     <div class="col-md-4 d-flex align-items-end flex-column">
@@ -359,7 +359,7 @@
                             <img src="{{ psu.image }}" alt="{{ psu.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
                         </div>
                         <div class="col-md-8 text-start p-4 text-light">
-                            <h5>{{ psu }}</h5>
+                            <h5><a href="{% url 'components:psu_detail' psu.id %}" target="_blank" class="text-decoration-none text-light">{{ psu }}</a></h5>
                             <p class="mb-2">{{ psu.wattage }} Вт, {{ psu.certificate }}</p>
                             <p class="mb-2">Ціна: <span class="fw-bold">{{ psu.price }}</span> ₴</p>
                         </div>
@@ -390,7 +390,7 @@
                         <img src="{{ configuration.cooler.image }}" class="image-fluid w-100">
                     </div>
                     <div class="col-md-7">
-                        <h5 class="m-0">{{ configuration.cooler }}</h5>
+                        <h5 class="m-0"><a href="{% url 'components:cooler_detail' configuration.cooler.id %}" target="_blank" class="text-decoration-none text-light">{{ configuration.cooler }}</a></h5>
                         <p class="m-0">{{ configuration.cooler.price }} ₴</p>
                     </div>
                     <div class="col-md-4 d-flex align-items-end flex-column">
@@ -415,7 +415,7 @@
                                 <img src="{{ cooler.image }}" alt="{{ cooler.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
                             </div>
                             <div class="col-md-8 text-start p-4 text-light">
-                                <h5>{{ cooler }}</h5>
+                                <h5><a href="{% url 'components:cooler_detail' cooler.id %}" target="_blank" class="text-decoration-none text-light">{{ cooler }}</a></h5>
                                 <p class="mb-2">{{ cooler.max_tdp }} Вт, {{ cooler.heat_tube_number }}</p>
                                 <p class="mb-2">Ціна: <span class="fw-bold">{{ cooler.price }}</span> ₴</p>
                             </div>
@@ -447,7 +447,7 @@
                         <img src="{{ configuration.aio.image }}" class="image-fluid w-100">
                     </div>
                     <div class="col-md-7">
-                        <h5 class="m-0">{{ configuration.aio }}</h5>
+                        <h5 class="m-0"><a href="{% url 'components:aio_detail' configuration.aio.id %}" target="_blank" class="text-decoration-none text-light">{{ configuration.aio }}</a></h5>
                         <p class="m-0">{{ configuration.aio.price }} ₴</p>
                     </div>
                     <div class="col-md-4 d-flex align-items-end flex-column">
@@ -472,7 +472,7 @@
                                 <img src="{{ aio.image }}" alt="{{ aio.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
                             </div>
                             <div class="col-md-8 text-start p-4 text-light">
-                                <h5>{{ aio }}</h5>
+                                <h5><a href="{% url 'components:aio_detail' aio.id %}" target="_blank" class="text-decoration-none text-light">{{ aio }}</a></h5>
                                 <p class="mb-2">{{ aio.max_tdp }} Вт, {{ aio.size }} мм</p>
                                 <p class="mb-2">Ціна: <span class="fw-bold">{{ aio.price }}</span> ₴</p>
                             </div>
@@ -504,7 +504,7 @@
                         <img src="{{ configuration.case.image }}" class="image-fluid w-100">
                     </div>
                     <div class="col-md-7">
-                        <h5 class="m-0">{{ configuration.case }}</h5>
+                        <h5 class="m-0"><a href="{% url 'components:case_detail' configuration.case.id %}" target="_blank" class="text-decoration-none text-light">{{ configuration.case }}</a></h5>
                         <p class="m-0">{{ configuration.case.price }} ₴</p>
                     </div>
                     <div class="col-md-4 d-flex align-items-end flex-column">
@@ -526,7 +526,7 @@
                             <img src="{{ case.image }}" alt="{{ case.name }}" class="img-fluid w-100" style="max-height: 150px; max-width: 150px;">
                         </div>
                         <div class="col-md-8 text-start p-4 text-light">
-                            <h5>{{ case }}</h5>
+                            <h5><a href="{% url 'components:case_detail' case.id %}" target="_blank" class="text-decoration-none text-light">{{ case }}</a></h5>
                             <p class="mb-2">{{ case.form_factor }}, {% if case.fans > 0 %} Кількість превстановлених вентиляторів: {{ case.fans }} {% else %} Без предвстановлених вентиляторів {% endif %}</p>
                             <p class="mb-2">Ціна: <span class="fw-bold">{{ case.price }}</span> ₴</p>
                         </div>
@@ -547,13 +547,13 @@
 
     </form>
     </div>
-    <div class="my-4">
-        <h4>Загальна вартість збірки: {{ configuration.total_price }} ₴</h4>
-        <a href="clear_configuration" class="btn btn-outline-light">Очистити конфігуратор</a>
+    <div class="my-4 text-center">
+        <h4 class="mb-2">Загальна вартість збірки: {{ configuration.total_price }} ₴</h4>
+        <a href="clear_configuration" class="btn btn-outline-light mb-2" style="min-width: 250px;">Очистити конфігуратор</a>
         {% if is_valid %}
-        <a href="{% url 'save_configuration' %}" class="btn btn-mainpurple">Додати товари до кошика</a>
+        <p class="mb-2"><a href="{% url 'save_configuration' %}" class="btn btn-mainpurple" style="min-width: 250px;">Додати товари до кошика</a></p>
         {% else %}
-        <a href="{% url 'err_configuration' %}" class="btn btn-mainpurple">Додати товари до кошика</a>
+        <p class="mb-2"><a href="{% url 'err_configuration' %}" class="btn btn-mainpurple" style="min-width: 250px;">Додати товари до кошика</a></p>
         {% endif %}
     </div>
 </div>
