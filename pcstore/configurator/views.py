@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from decimal import Decimal
 from components.models import CPU, Motherboard, GPU, RAM, Storage, PSU, Cooler, AIO, Case
 from .models import Configuration
@@ -24,6 +24,7 @@ def configurator_view(request):
     cooler_msg = None
     aio_msg = None
     case_msg = None
+    is_valid = True
 
     if request.user.is_authenticated:
         configuration, created = Configuration.objects.get_or_create(user=request.user)
@@ -84,6 +85,9 @@ def configurator_view(request):
         configuration.total_price = calculate_price(configuration)
         configuration.save()
 
+        if cooler_msg != None or aio_msg != None or ram_msg != None or psu_msg != None:
+            is_valid = False
+
     context = {
         'cpus': cpus,
         'motherboards': motherboards,
@@ -101,6 +105,7 @@ def configurator_view(request):
         'cooler_msg': cooler_msg,
         'aio_msg': aio_msg,
         'case_msg': case_msg,
+        'is_valid': is_valid,
     }
 
     return render(request, 'configurator/configurator.html', context)
@@ -288,4 +293,12 @@ def clear_configuration(request):
     configuration.total_price = 0.00
     configuration.save()
 
+    return redirect('configurator')
+
+def err_configuration(request):
+    messages.error(request, "Ваша конфігурація не відповідає вимогам!")
+    return redirect('configurator')
+
+def save_configuration(request):
+    messages.success(request, "Ваша збірка була збережена!")
     return redirect('configurator')
