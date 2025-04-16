@@ -1,0 +1,49 @@
+name: Django CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      docker:
+        image: docker:19.03.12
+        options: --privileged
+        ports:
+          - 8000:8000
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build Docker image
+        run: |
+          docker build -t pcstore ./pcstore
+
+      - name: Run Docker container
+        run: |
+          docker run -d -p 8000:8000 --name pcstore_container pcstore
+
+      - name: Wait for the app to start
+        run: |
+          sleep 10
+
+      - name: Run tests
+        run: |
+          docker exec pcstore_container python manage.py test
+
+      # Крок 7: Зупинка та видалення контейнера
+      - name: Clean up
+        run: |
+          docker stop pcstore_container
+          docker rm pcstore_container
