@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repo
+      uses: actions/checkout@v3
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -30,17 +31,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repo
+      uses: actions/checkout@v3
 
     - name: Install PythonAnywhere CLI
       run: |
         pip install --user pythonanywhere
 
-    - name: Reload PythonAnywhere app
+    - name: Deploy
       env:
-        PA_USERNAME: ${{ secrets.PA_USERNAME }}
         PA_API_TOKEN: ${{ secrets.PA_API_TOKEN }}
-        API_TOKEN: ${{ secrets.PA_API_TOKEN }}
+        PA_USERNAME: ${{ secrets.PA_USERNAME }}
       run: |
         export PATH=$HOME/.local/bin:$PATH
-        pa webapp reload
+        pa login --username $PA_USERNAME --api-token $PA_API_TOKEN
+        pa ssh "cd /home/$PA_USERNAME/pcstore && git pull origin main"
