@@ -40,7 +40,6 @@ jobs:
       
           export PATH=$HOME/.local/bin:$PATH
       
-          pa api webapp reload \
-            --username ${{ secrets.PA_USERNAME }} \
-            --api_token ${{ secrets.PA_API_TOKEN }} \
-            --domain_name ${{ secrets.PA_SITE_NAME }}
+          pa webapp reload ${{ secrets.PA_SITE_NAME }} \
+          --username ${{ secrets.PA_USERNAME }} \
+          --api-token ${{ secrets.PA_API_TOKEN }}
