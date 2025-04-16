@@ -27,10 +27,14 @@ SECRET_KEY = 'django-insecure-0y3(l3@#d60o(w8z)r$v+ba1by&$2f5)=!i^1&-rpo^rq(svb-
 DEBUG = False
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['https://l3gaccy.pythonanywhere.com', '127.0.0.1']
 =======
 ALLOWED_HOSTS = ['https://l3gaccy.pythonanywhere.com']
 >>>>>>> 4efa46a (Update ALLOWED_HOSTS to include production URL)
+=======
+ALLOWED_HOSTS = ['https://l3gaccy.pythonanywhere.com', '127.0.0.1']
+>>>>>>> 17e10f2 (Add localhost to ALLOWED_HOSTS for local development)
 
 
 # Application definition
