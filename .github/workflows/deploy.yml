@@ -43,4 +43,4 @@ jobs:
         API_TOKEN: ${{ secrets.PA_API_TOKEN }}
       run: |
         export PATH=$HOME/.local/bin:$PATH
-        pa webapp reload
+        pa webapp reload --verbose
