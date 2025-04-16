@@ -40,9 +40,15 @@ jobs:
   
           export PATH=$HOME/.local/bin:$PATH
   
-          which pythonanywhere
-          pythonanywhere --version
+          echo "✅ PATH: $PATH"
+          echo "📂 List .local/bin:"
+          ls -la $HOME/.local/bin
   
+          echo "🔍 Check pythonanywhere location:"
+          which pythonanywhere || echo "❌ Not found"
+          pythonanywhere --version || echo "❌ Cannot get version"
+  
+          echo "🚀 Reloading app..."
           pythonanywhere api webapp reload \
             --username ${{ secrets.PA_USERNAME }} \
             --api_token ${{ secrets.PA_API_TOKEN }} \
