@@ -30,15 +30,18 @@ jobs:
     runs-on: ubuntu-latest
     if: success()
     steps:
-      - name: Checkout repo
+      - name: Checkout code
         uses: actions/checkout@v3
   
-      - name: Deploy to PythonAnywhere
+      - name: Install PythonAnywhere CLI and deploy
         run: |
           python -m pip install --upgrade pip
           pip install --user pythonanywhere
   
-          export PATH=$PATH:$HOME/.local/bin
+          export PATH=$HOME/.local/bin:$PATH
+  
+          which pythonanywhere
+          pythonanywhere --version
   
           pythonanywhere api webapp reload \
             --username ${{ secrets.PA_USERNAME }} \
