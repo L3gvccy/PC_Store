@@ -44,5 +44,4 @@ jobs:
         PA_USERNAME: ${{ secrets.PA_USERNAME }}
       run: |
         export PATH=$HOME/.local/bin:$PATH
-        pa login --username $PA_USERNAME --api-token $PA_API_TOKEN
         pa ssh "cd /home/$PA_USERNAME/pcstore && git pull origin main"
