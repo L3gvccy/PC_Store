@@ -1,0 +1,116 @@
+{% load static %}
+
+<!--  HEADER  -->
+<nav class="sticky-top navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+      <!-- Логотип -->
+      <a class="navbar-brand" href="/">
+        <img src="{% static 'images/logo.png' %}" alt="" height="72px" width="72px">
+        CorePC
+    </a>
+  
+      <!-- Кнопка бургер -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <!-- Меню -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+  
+          <!-- Головна -->
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/' %} text-mainpurple {% endif %}" href="/">Головна</a>
+          </li>
+  
+          <!-- Каталог (розгортаємий список) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle {% if request.path|slice:':11' == '/components' %} text-mainpurple {% endif %}" href="#" id="navbarDarkDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Каталог
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdown">
+              <li><a class="dropdown-item" href="/components/">Весь каталог</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="/components/cpus/">Процесори</a></li>
+              <li><a class="dropdown-item" href="/components/motherboards/">Материнські плати</a></li>
+              <li><a class="dropdown-item" href="/components/gpus/">Відеокарти</a></li>
+              <li><a class="dropdown-item" href="/components/rams/">ОЗП</a></li>
+              <li><a class="dropdown-item" href="/components/storages/">Накопичувачі</a></li>
+              <li><a class="dropdown-item" href="/components/psus/">Блоки живлення</a></li>
+              <li><a class="dropdown-item" href="/components/coolers/">Системи охолодження</a></li>
+              <li><a class="dropdown-item" href="/components/aios/">Водяне охолодження</a></li>
+              <li><a class="dropdown-item" href="/components/cases/">Корпуси</a></li>
+            </ul>
+          </li>
+  
+          <!-- Про нас -->
+          <li class="nav-item">
+            <a class="nav-link" href="/#about">Про нас</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path|slice:':13' == '/configurator' %} text-mainpurple {% endif %}" href="/configurator/">Конфігуратор</a>
+          </li>
+        </ul>
+  
+        <!-- Правий блок -->
+        <ul class="navbar-nav ms-auto">
+  
+          <!-- Іконка корзини -->
+          <li class="nav-item mr-4">
+            <a class="nav-link position-relative" href="/cart/">
+                <img src="{% static 'images/cart.png' %}" alt="" height="24px" width="24px">
+                {% if cart_item_count > 0 %}
+                  <span class="badge bg-danger rounded-pill position-absolute top-0 start-100 translate-middle">
+                    {{ cart_item_count }}
+                  </span>
+                {% endif %}
+            </a>
+          </li>
+  
+          <!-- Користувач (розгортаємий список) -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown">
+                <img src="{% static 'images/person.png' %}" alt="" height="24px" width="24px">
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark">
+  
+              {% if user.is_authenticated %}
+                <li><span class="dropdown-item-text">Привіт, {{ user.username }}!</span></li>
+                <li><a class="dropdown-item" href="/account/profile/">Мій кабінет</a></li>
+                <li><a class="dropdown-item" href="/order/my_orders/">Мої замовлення</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/account/logout/">Вийти</a></li>
+              {% else %}
+                <li><a class="dropdown-item" href="/account/login/">Увійти</a></li>
+                <li><a class="dropdown-item" href="/account/register/">Реєстрація</a></li>
+              {% endif %}
+  
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="toast-container position-fixed top-2 end-0 p-3" style="z-index: 1100;">
+    {% for message in messages %}
+    <div class="toast align-items-center 
+      {% if message.tags == 'success' %}
+        bg-success
+      {% elif message.tags == 'error' %}
+        bg-danger
+      {% elif message.tags == 'warning' %}
+        bg-warning
+      {% else %}
+        bg-info
+      {% endif %}
+      text-white border-0 fade show" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            {{ message }}
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
