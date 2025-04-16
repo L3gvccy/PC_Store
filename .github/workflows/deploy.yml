@@ -42,4 +42,4 @@ jobs:
         PA_API_TOKEN: ${{ secrets.PA_API_TOKEN }}
       run: |
         export PATH=$HOME/.local/bin:$PATH
-        pa webapp reload ${{ secrets.PA_SITE_NAME }}
+        pa webapp reload pcstore
